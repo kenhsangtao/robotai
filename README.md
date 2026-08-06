@@ -1,4 +1,4 @@
-# KST Robot AI Firmware Website
+# KST Robot AI Firmware Website v2
 
 Website: `https://kenhsangtao.github.io/robotai/`
 
@@ -33,3 +33,9 @@ ESP Web Tools khuyến nghị dùng một file firmware đã gộp cho ESP32-S3.
 - Website phải chạy qua HTTPS; GitHub Pages đáp ứng yêu cầu này.
 - Người dùng nên mở bằng Chrome hoặc Edge trên máy tính.
 - Cần xác định đúng cấu trúc firmware và địa chỉ flash trước khi kích hoạt nút nạp.
+
+
+## Thay đổi v2
+
+- Dùng logo KST thật ở đầu trang.
+- Dùng logo KST làm favicon/tab icon.
