@@ -1,41 +1,12 @@
-# KST Robot AI Firmware Website v2
+# KST Robot AI Firmware
 
-Website: `https://kenhsangtao.github.io/robotai/`
+Website chính thức: **https://kenhsangtao.github.io/robotai/**
 
-## Đưa bộ khung lên GitHub
+Firmware dành cho ESP32-S3 16MB, màn hình ST7735 và cảm biến ToF.
 
-1. Mở repository `kenhsangtao/robotai`.
-2. Chọn **Add file → Upload files**.
-3. Giải nén file ZIP này.
-4. Chọn toàn bộ file và thư mục bên trong rồi tải lên.
-5. Bấm **Commit changes**.
-6. Đợi GitHub Pages cập nhật khoảng 1–5 phút.
+- Nạp firmware trực tiếp bằng Chrome hoặc Edge
+- Tải file `.bin`
+- Xem sơ đồ đấu nối SVG
+- Hướng dẫn cấu hình Wi-Fi và kích hoạt
 
-## Khi đã có firmware
-
-ESP Web Tools khuyến nghị dùng một file firmware đã gộp cho ESP32-S3.
-
-1. Đặt file đã gộp vào:
-   `firmware/robotai-merged.bin`
-2. Sửa phiên bản trong `manifest.json`.
-3. Trong `index.html`, thay nút tạm bằng:
-
-```html
-<esp-web-install-button manifest="manifest.json">
-  <button slot="activate" class="primary">Nạp firmware</button>
-</esp-web-install-button>
-```
-
-4. Commit lại lên GitHub.
-
-## Lưu ý
-
-- Website phải chạy qua HTTPS; GitHub Pages đáp ứng yêu cầu này.
-- Người dùng nên mở bằng Chrome hoặc Edge trên máy tính.
-- Cần xác định đúng cấu trúc firmware và địa chỉ flash trước khi kích hoạt nút nạp.
-
-
-## Thay đổi v2
-
-- Dùng logo KST thật ở đầu trang.
-- Dùng logo KST làm favicon/tab icon.
+Phát triển bởi **Kênh Sáng Tạo**.
