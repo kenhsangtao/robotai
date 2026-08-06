@@ -25,6 +25,7 @@
     <a href="#gallery" data-vi="Hình ảnh" data-en="Gallery">Hình ảnh</a>
     <a href="#components" data-vi="Linh kiện" data-en="Components">Linh kiện</a>
     <a href="#wiring" data-vi="Sơ đồ" data-en="Wiring">Sơ đồ</a>
+    <a href="#guide" data-vi="Hướng dẫn" data-en="Guide">Hướng dẫn</a>
   </nav>
   <div class="language-switch" aria-label="Language">
     <button class="lang active" data-lang="vi">VN</button>
@@ -101,36 +102,33 @@
     <div class="section-head">
       <p class="kicker" data-vi="SƠ ĐỒ ĐẤU NỐI" data-en="WIRING DIAGRAM">SƠ ĐỒ ĐẤU NỐI</p>
       <h2>KST AI Robot ST7735</h2>
-      <p data-vi="Ảnh SVG có thể phóng to mà không bị vỡ." data-en="The SVG diagram remains sharp at any zoom level.">Ảnh SVG có thể phóng to mà không bị vỡ.</p>
+      <p data-vi="Chọn VN để xem sơ đồ tiếng Việt, chọn EN để xem sơ đồ tiếng Anh." data-en="Choose VN for the Vietnamese diagram or EN for the English diagram.">Chọn VN để xem sơ đồ tiếng Việt, chọn EN để xem sơ đồ tiếng Anh.</p>
     </div>
-    <a class="diagram-link" href="docs/So-do-dau-noi-ST7735.svg" target="_blank">
-      <img src="docs/So-do-dau-noi-ST7735.svg" alt="KST AI Robot wiring diagram">
-    </a>
-    <div class="center"><a class="btn secondary" href="docs/So-do-dau-noi-ST7735.svg" target="_blank" data-vi="🔍 Mở sơ đồ toàn màn hình" data-en="🔍 Open full-screen diagram">🔍 Mở sơ đồ toàn màn hình</a></div>
-  </section>
-
-  <section class="panel guide">
-    <div>
-      <p class="kicker" data-vi="CẤU HÌNH LẦN ĐẦU" data-en="FIRST-TIME SETUP">CẤU HÌNH LẦN ĐẦU</p>
-      <h2 data-vi="Kết nối Wi‑Fi" data-en="Connect to Wi‑Fi">Kết nối Wi‑Fi</h2>
-      <ol class="vi-panel">
-        <li>Bật robot, tìm Wi‑Fi <code>KST-Robot-Ai-xxxx</code>.</li>
-        <li>Kết nối rồi mở <code>192.168.4.1</code> nếu trang không tự hiện.</li>
-        <li>Chọn Wi‑Fi nhà 2.4GHz, nhập mật khẩu và lưu.</li>
-      </ol>
-      <ol class="en-panel" hidden>
-        <li>Power on the robot and find <code>KST-Robot-Ai-xxxx</code>.</li>
-        <li>Connect, then open <code>192.168.4.1</code> if the page does not appear.</li>
-        <li>Select a 2.4GHz home network, enter the password and save.</li>
-      </ol>
+    <div class="vi-panel">
+      <a class="diagram-link" href="docs/So-do-dau-noi-ST7735.svg" target="_blank"><img src="docs/So-do-dau-noi-ST7735.svg" alt="Sơ đồ đấu nối tiếng Việt"></a>
+      <div class="center"><a class="btn secondary" href="docs/So-do-dau-noi-ST7735.svg" target="_blank">🔍 Mở sơ đồ tiếng Việt toàn màn hình</a></div>
     </div>
-    <div>
-      <p class="kicker" data-vi="TRỢ LÝ GIỌNG NÓI" data-en="VOICE ASSISTANT">TRỢ LÝ GIỌNG NÓI</p>
-      <h2 data-vi="Kích hoạt thiết bị" data-en="Activate the device">Kích hoạt thiết bị</h2>
-      <p data-vi="Nhập mã 6 số trên màn hình tại xiaozhi.me. Từ khóa đánh thức offline là “Hi Lily”; cũng có thể chạm hai lần TTP223 để bật hoặc tắt trò chuyện." data-en="Enter the six-digit code shown on the display at xiaozhi.me. The offline wake word is “Hi Lily”; double-tap the TTP223 to start or stop a conversation.">Nhập mã 6 số trên màn hình tại xiaozhi.me. Từ khóa đánh thức offline là “Hi Lily”; cũng có thể chạm hai lần TTP223 để bật hoặc tắt trò chuyện.</p>
+    <div class="en-panel" hidden>
+      <a class="diagram-link" href="docs/Wiring-Diagram-ST7735-EN.svg" target="_blank"><img src="docs/Wiring-Diagram-ST7735-EN.svg" alt="English wiring diagram"></a>
+      <div class="center"><a class="btn secondary" href="docs/Wiring-Diagram-ST7735-EN.svg" target="_blank">🔍 Open English diagram full screen</a></div>
     </div>
   </section>
 
+  <section class="panel" id="guide">
+    <div class="section-head"><p class="kicker" data-vi="HƯỚNG DẪN SỬ DỤNG" data-en="USER GUIDE">HƯỚNG DẪN SỬ DỤNG</p><h2 data-vi="Cài đặt và sử dụng KST AI Robot" data-en="Set up and use KST AI Robot">Cài đặt và sử dụng KST AI Robot</h2></div>
+    <div class="vi-panel guide-sections">
+      <article class="guide-card"><h3>1. Nạp firmware</h3><ol><li>Cắm ESP32-S3 bằng cáp USB Type-C có truyền dữ liệu.</li><li>Mở trang bằng Chrome hoặc Microsoft Edge.</li><li>Bấm <strong>Nạp firmware</strong> và chọn đúng cổng COM.</li><li>Firmware đã gồm bootloader, ghi tại offset <code>0x0</code>.</li><li>Không rút cáp cho tới khi đạt 100%.</li></ol></article>
+      <article class="guide-card"><h3>2. Cấu hình Wi‑Fi</h3><ol><li>Kết nối mạng <code>KST-Robot-Ai-xxxx</code>.</li><li>Nếu trang không tự mở, vào <code>192.168.4.1</code>.</li><li>Chọn Wi‑Fi 2.4GHz, nhập mật khẩu và lưu.</li><li>Màn hình sẽ hiện <code>http://&lt;IP&gt;/robot</code>.</li></ol><p>Muốn đổi Wi‑Fi: giữ TTP223 khi cấp nguồn khoảng 5 giây.</p></article>
+      <article class="guide-card"><h3>3. Kích hoạt và đánh thức</h3><p>Vào <strong>xiaozhi.me</strong> và nhập mã 6 số trên robot.</p><p>Nói <strong>“Hi Lily”</strong> hoặc chạm hai lần TTP223 để bật/tắt trò chuyện.</p></article>
+      <article class="guide-card warning-card"><h3>4. Lưu ý an toàn</h3><ul><li>ToF mặc định tắt; bật trong <code>/robot</code> rồi khởi động lại.</li><li>Không dùng GPIO36/GPIO37.</li><li>MAX98357A và các servo cần nguồn 5V riêng đủ mạnh.</li><li>Tất cả GND phải nối chung.</li></ul></article>
+    </div>
+    <div class="en-panel guide-sections" hidden>
+      <article class="guide-card"><h3>1. Flash the firmware</h3><ol><li>Connect the ESP32-S3 with a data-capable USB Type-C cable.</li><li>Open the page in Chrome or Microsoft Edge.</li><li>Click <strong>Install firmware</strong> and select the correct COM port.</li><li>The firmware includes the bootloader and is flashed at <code>0x0</code>.</li><li>Do not unplug the cable until it reaches 100%.</li></ol></article>
+      <article class="guide-card"><h3>2. Wi‑Fi setup</h3><ol><li>Connect to <code>KST-Robot-Ai-xxxx</code>.</li><li>If the page does not open, visit <code>192.168.4.1</code>.</li><li>Select a 2.4GHz network, enter the password and save.</li><li>The display shows <code>http://&lt;IP&gt;/robot</code>.</li></ol><p>To change Wi‑Fi, hold TTP223 while powering on for about five seconds.</p></article>
+      <article class="guide-card"><h3>3. Activation and wake word</h3><p>Go to <strong>xiaozhi.me</strong> and enter the six-digit code shown by the robot.</p><p>Say <strong>“Hi Lily”</strong> or double-tap TTP223 to start or stop a conversation.</p></article>
+      <article class="guide-card warning-card"><h3>4. Safety notes</h3><ul><li>ToF is disabled by default; enable it in <code>/robot</code> and reboot.</li><li>Never use GPIO36/GPIO37.</li><li>The MAX98357A and servos require a sufficiently powerful separate 5V supply.</li><li>Connect all grounds together.</li></ul></article>
+    </div>
+  </section>
   <section class="release panel">
     <div><p class="kicker" data-vi="PHIÊN BẢN" data-en="RELEASE">PHIÊN BẢN</p><h2>Stable v1.0.0</h2></div>
     <div>

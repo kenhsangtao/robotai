@@ -2,8 +2,8 @@
 <rect x="0" y="0" width="1600" height="900" fill="#eef2f5"/>
 <rect x="8" y="8" width="1584" height="884" rx="16" fill="#ffffff" stroke="#d7dee3" stroke-width="2"/>
 
-<text x="60" y="46" font-size="26" font-weight="800" fill="#111827">KST AI ROBOT — SƠ ĐỒ ĐẤU NỐI (ST7735 + ToF)</text>
-<text x="60" y="68" font-size="13" fill="#6b7280">Dây từ chân linh kiện → đúng chân GPIO trên ESP32-S3-WROOM-1 (N16R8) · bản này dùng Servo 360° làm bánh xe</text>
+<text x="60" y="46" font-size="26" font-weight="800" fill="#111827">KST AI ROBOT — WIRING DIAGRAM (ST7735 + ToF)</text>
+<text x="60" y="68" font-size="13" fill="#6b7280">Component pins wired to the correct GPIO on ESP32-S3-WROOM-1 (N16R8) · this build uses 360° servos as wheels</text>
 
 <!-- KST brand corner -->
 <g transform="translate(1470,24)">
@@ -82,10 +82,10 @@
 <!-- 3V3 display -->
 <circle cx="940" cy="330" r="4" fill="#e5e7eb"/><line x1="940" y1="330" x2="985" y2="330" stroke="#9ca3af" stroke-width="2" stroke-dasharray="4 3"/>
 <text x="990" y="334" font-size="12" font-weight="700" fill="#374151">3V3</text>
-<!-- GPIO3 LED trai -->
+<!-- GPIO3 LED left -->
 <circle cx="940" cy="375" r="4" fill="#d97706"/><line x1="940" y1="375" x2="985" y2="375" stroke="#d97706" stroke-width="2"/>
 <text x="990" y="379" font-size="12" font-weight="700" fill="#d97706">GPIO3</text>
-<!-- GPIO18 LED phai -->
+<!-- GPIO18 LED right -->
 <circle cx="940" cy="405" r="4" fill="#d97706"/><line x1="940" y1="405" x2="985" y2="405" stroke="#d97706" stroke-width="2"/>
 <text x="990" y="409" font-size="12" font-weight="700" fill="#d97706">GPIO18</text>
 <!-- GPIO38 IN1 (optional) -->
@@ -100,19 +100,19 @@
 <!-- GPIO41 IN4 (optional) -->
 <circle cx="940" cy="540" r="4" fill="#9ca3af"/><line x1="940" y1="540" x2="985" y2="540" stroke="#9ca3af" stroke-width="2" stroke-dasharray="3 3"/>
 <text x="990" y="544" font-size="12" font-weight="700" fill="#9ca3af">GPIO41</text>
-<!-- GPIO47 Servo360 trai (active) -->
+<!-- GPIO47 Servo360 left (active) -->
 <circle cx="940" cy="645" r="4" fill="#ea580c"/><line x1="940" y1="645" x2="985" y2="645" stroke="#ea580c" stroke-width="2.5"/>
 <text x="990" y="649" font-size="12" font-weight="700" fill="#ea580c">GPIO47</text>
-<!-- GPIO45 Servo360 phai (active) -->
+<!-- GPIO45 Servo360 right (active) -->
 <circle cx="940" cy="675" r="4" fill="#ea580c"/><line x1="940" y1="675" x2="985" y2="675" stroke="#ea580c" stroke-width="2.5"/>
 <text x="990" y="679" font-size="12" font-weight="700" fill="#ea580c">GPIO45</text>
 <!-- shared GND right -->
 <circle cx="940" cy="705" r="4" fill="#6b7280"/><line x1="940" y1="705" x2="985" y2="705" stroke="#6b7280" stroke-width="2" stroke-dasharray="4 3"/>
 <text x="990" y="709" font-size="12" font-weight="700" fill="#6b7280">GND</text>
-<!-- GPIO20 servo tay -->
+<!-- GPIO20 arm servo -->
 <circle cx="940" cy="765" r="4" fill="#db2777"/><line x1="940" y1="765" x2="985" y2="765" stroke="#db2777" stroke-width="2"/>
 <text x="990" y="769" font-size="12" font-weight="700" fill="#db2777">GPIO20</text>
-<!-- GPIO21 servo co -->
+<!-- GPIO21 neck servo -->
 <circle cx="940" cy="795" r="4" fill="#db2777"/><line x1="940" y1="795" x2="985" y2="795" stroke="#db2777" stroke-width="2"/>
 <text x="990" y="799" font-size="12" font-weight="700" fill="#db2777">GPIO21</text>
 
@@ -175,7 +175,7 @@
 <rect x="50" y="150" width="190" height="170" rx="10" fill="#ffffff" stroke="#0d9488" stroke-width="2.5"/>
 <circle cx="60" cy="160" r="3" fill="#0d9488"/><circle cx="230" cy="160" r="3" fill="#0d9488"/><circle cx="60" cy="310" r="3" fill="#0d9488"/><circle cx="230" cy="310" r="3" fill="#0d9488"/>
 <text x="145" y="176" text-anchor="middle" font-size="15" font-weight="800" fill="#0d9488">INMP441</text>
-<text x="145" y="192" text-anchor="middle" font-size="10" fill="#6b7280">Microphone I2S</text>
+<text x="145" y="192" text-anchor="middle" font-size="10" fill="#6b7280">I2S microphone</text>
 <line x1="66" y1="200" x2="224" y2="200" stroke="#e5e7eb"/>
 <text x="66" y="215" font-size="12" fill="#374151">VCC → 3V3</text>
 <text x="66" y="245" font-size="12" fill="#374151"><tspan font-weight="700" fill="#0d9488">WS</tspan> → GPIO4</text>
@@ -184,14 +184,14 @@
 <text x="145" y="336" text-anchor="middle" font-size="11" font-weight="700" fill="#b91c1c">L/R → GND</text>
 </g>
 
-<!-- Loa MAX98357A -->
+<!-- Speaker MAX98357A -->
 <g>
 <rect x="50" y="360" width="190" height="150" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2.5"/>
 <circle cx="60" cy="370" r="3" fill="#2563eb"/><circle cx="230" cy="370" r="3" fill="#2563eb"/><circle cx="60" cy="500" r="3" fill="#2563eb"/><circle cx="230" cy="500" r="3" fill="#2563eb"/>
 <text x="145" y="386" text-anchor="middle" font-size="15" font-weight="800" fill="#2563eb">MAX98357A</text>
-<text x="145" y="402" text-anchor="middle" font-size="10" fill="#6b7280">Loa khuếch đại I2S</text>
+<text x="145" y="402" text-anchor="middle" font-size="10" fill="#6b7280">I2S audio amplifier</text>
 <line x1="66" y1="410" x2="224" y2="410" stroke="#e5e7eb"/>
-<text x="66" y="410" font-size="12" fill="#374151">VIN → 5V (nguồn riêng)</text>
+<text x="66" y="410" font-size="12" fill="#374151">VIN → 5V (separate)</text>
 <text x="66" y="438" font-size="12" fill="#374151"><tspan font-weight="700" fill="#2563eb">LRC</tspan> → GPIO15</text>
 <text x="66" y="466" font-size="12" fill="#374151"><tspan font-weight="700" fill="#2563eb">BCLK</tspan> → GPIO16</text>
 <text x="145" y="494" text-anchor="middle" font-size="11" font-weight="700" fill="#b91c1c">GAIN→GND · SD→VIN</text>
@@ -203,7 +203,7 @@
 <rect x="50" y="540" width="190" height="90" rx="10" fill="#ffffff" stroke="#16a34a" stroke-width="2.5"/>
 <circle cx="60" cy="550" r="3" fill="#16a34a"/><circle cx="230" cy="550" r="3" fill="#16a34a"/><circle cx="60" cy="620" r="3" fill="#16a34a"/><circle cx="230" cy="620" r="3" fill="#16a34a"/>
 <text x="145" y="562" text-anchor="middle" font-size="14" font-weight="800" fill="#16a34a">TTP223</text>
-<text x="145" y="577" text-anchor="middle" font-size="10" fill="#6b7280">Cảm ứng chạm</text>
+<text x="145" y="577" text-anchor="middle" font-size="10" fill="#6b7280">Touch sensor</text>
 <text x="66" y="598" font-size="12" fill="#374151">VCC→3V3 · <tspan font-weight="700" fill="#16a34a">OUT</tspan>→GPIO7</text>
 <text x="66" y="616" font-size="12" fill="#374151">GND → GND</text>
 </g>
@@ -213,7 +213,7 @@
 <rect x="50" y="640" width="190" height="90" rx="10" fill="#ffffff" stroke="#0891b2" stroke-width="2.5"/>
 <circle cx="60" cy="650" r="3" fill="#0891b2"/><circle cx="230" cy="650" r="3" fill="#0891b2"/><circle cx="60" cy="720" r="3" fill="#0891b2"/><circle cx="230" cy="720" r="3" fill="#0891b2"/>
 <text x="145" y="662" text-anchor="middle" font-size="14" font-weight="800" fill="#0891b2">VL6180X / TOF050C</text>
-<text x="145" y="677" text-anchor="middle" font-size="10" fill="#6b7280">Cảm biến chống rơi</text>
+<text x="145" y="677" text-anchor="middle" font-size="10" fill="#6b7280">Anti-fall sensor</text>
 <text x="66" y="698" font-size="12" fill="#374151">VCC→3V3 · GND→GND</text>
 <text x="66" y="716" font-size="12" fill="#374151"><tspan font-weight="700" fill="#0891b2">SDA</tspan>→GPIO1 · <tspan font-weight="700" fill="#0891b2">SCL</tspan>→GPIO2</text>
 </g>
@@ -228,12 +228,12 @@
 <path d="M1206,200 q9,7 18,0" stroke="#4ab8e4" stroke-width="2" fill="none"/>
 <text x="1270" y="219" text-anchor="middle" font-size="9" font-weight="700" fill="#4ab8e4">KST AI ROBOT</text>
 <text x="1345" y="192" text-anchor="end" font-size="9" fill="#7fb8d6">ST7735</text>
-<text x="1270" y="245" text-anchor="middle" font-size="13" font-weight="800" fill="#7c3aed">Màn hình ST7735</text>
+<text x="1270" y="245" text-anchor="middle" font-size="13" font-weight="800" fill="#7c3aed">ST7735 Display</text>
 <text x="1270" y="260" text-anchor="middle" font-size="10" fill="#6b7280">SPI 128×160</text>
 <text x="1195" y="280" font-size="11" fill="#374151">MOSI·SCK·DC·CS·RST</text>
 <text x="1195" y="296" font-size="11" fill="#374151">→ GPIO11·12·10·13·14</text>
 <text x="1195" y="312" font-size="11" font-weight="700" fill="#b91c1c">VCC→3V3 · BL→3V3</text>
-<text x="1195" y="330" font-size="10" fill="#9ca3af">3V3 dùng chung (nét đứt)</text>
+<text x="1195" y="330" font-size="10" fill="#9ca3af">shared 3V3 (dashed)</text>
 </g>
 
 <!-- LED -->
@@ -241,21 +241,21 @@
 <rect x="1180" y="359" width="180" height="80" rx="10" fill="#ffffff" stroke="#d97706" stroke-width="2.5"/>
 <circle cx="1210" cy="385" r="10" fill="#fff7ed" stroke="#d97706" stroke-width="2"/>
 <circle cx="1238" cy="385" r="10" fill="#fff7ed" stroke="#d97706" stroke-width="2"/>
-<text x="1300" y="382" font-size="12" font-weight="800" fill="#d97706">LED rời</text>
-<text x="1195" y="418" font-size="11" fill="#374151">Trái <tspan font-weight="700" fill="#d97706">GPIO3</tspan> · Phải <tspan font-weight="700" fill="#d97706">GPIO18</tspan></text>
+<text x="1300" y="382" font-size="12" font-weight="800" fill="#d97706">LEDs</text>
+<text x="1195" y="418" font-size="11" fill="#374151">L <tspan font-weight="700" fill="#d97706">GPIO3</tspan> · R <tspan font-weight="700" fill="#d97706">GPIO18</tspan></text>
 </g>
 
 <!-- L298N optional -->
 <g>
 <rect x="1180" y="453" width="180" height="160" rx="10" fill="#f9fafb" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6 4"/>
-<text x="1270" y="475" text-anchor="middle" font-size="12" font-weight="800" fill="#6b7280">L298N mini (TÙY CHỌN)</text>
-<text x="1270" y="490" text-anchor="middle" font-size="9" font-weight="700" fill="#b91c1c">KHÔNG dùng ở bản này</text>
+<text x="1270" y="475" text-anchor="middle" font-size="12" font-weight="800" fill="#6b7280">L298N mini (OPTIONAL)</text>
+<text x="1270" y="490" text-anchor="middle" font-size="9" font-weight="700" fill="#b91c1c">NOT used in this build</text>
 <text x="1195" y="512" font-size="11" fill="#6b7280">IN1·IN2 → GPIO38·39</text>
 <text x="1195" y="530" font-size="11" fill="#6b7280">IN3·IN4 → GPIO40·41</text>
-<text x="1195" y="552" font-size="10" fill="#9ca3af">Chọn 1 trong 2 kiểu truyền động:</text>
-<text x="1195" y="568" font-size="10" fill="#9ca3af">L298N (4 bánh DC) hoặc Servo 360°</text>
-<text x="1195" y="584" font-size="10" fill="#9ca3af">(xem khối bên dưới - đang dùng)</text>
-<text x="1195" y="602" font-size="10" fill="#9ca3af">Chọn ở trang /robot</text>
+<text x="1195" y="552" font-size="10" fill="#9ca3af">Pick ONE drivetrain option:</text>
+<text x="1195" y="568" font-size="10" fill="#9ca3af">L298N (4x DC wheels) or Servo 360°</text>
+<text x="1195" y="584" font-size="10" fill="#9ca3af">(see block below - active here)</text>
+<text x="1195" y="602" font-size="10" fill="#9ca3af">Selectable in the /robot page</text>
 </g>
 
 <!-- Servo 360 active -->
@@ -265,10 +265,10 @@
 <circle cx="1215" cy="656" r="4" fill="#ea580c"/>
 <circle cx="1250" cy="656" r="16" fill="#ffffff" stroke="#ea580c" stroke-width="2.5"/>
 <circle cx="1250" cy="656" r="4" fill="#ea580c"/>
-<text x="1300" y="652" font-size="12" font-weight="800" fill="#ea580c">Servo 360° — ĐANG DÙNG</text>
-<text x="1300" y="666" font-size="9" fill="#c2410c">bánh trái/phải</text>
-<text x="1195" y="700" font-size="11" fill="#374151">Trái <tspan font-weight="700" fill="#ea580c">GPIO47</tspan> · Phải <tspan font-weight="700" fill="#ea580c">GPIO45</tspan></text>
-<text x="1195" y="718" font-size="10" font-weight="700" fill="#6b7280">VCC 5V riêng · GND chung</text>
+<text x="1300" y="652" font-size="12" font-weight="800" fill="#ea580c">360° Servo — ACTIVE</text>
+<text x="1300" y="666" font-size="9" fill="#c2410c">left/right wheel</text>
+<text x="1195" y="700" font-size="11" fill="#374151">L <tspan font-weight="700" fill="#ea580c">GPIO47</tspan> · R <tspan font-weight="700" fill="#ea580c">GPIO45</tspan></text>
+<text x="1195" y="718" font-size="10" font-weight="700" fill="#6b7280">Separate 5V VCC · shared GND</text>
 </g>
 <text x="1370" y="705" text-anchor="middle" font-size="18">🔋</text>
 
@@ -279,11 +279,11 @@
 <line x1="1223" y1="768" x2="1240" y2="761" stroke="#db2777" stroke-width="3"/>
 <rect x="1195" y="800" width="28" height="28" rx="4" fill="#fdf2f8" stroke="#db2777"/>
 <line x1="1223" y1="805" x2="1240" y2="798" stroke="#db2777" stroke-width="3"/>
-<text x="1233" y="781" font-size="10" font-weight="800" fill="#db2777">Tay <tspan fill="#374151" font-weight="400">GPIO20</tspan></text>
-<text x="1233" y="818" font-size="10" font-weight="800" fill="#db2777">Cổ <tspan fill="#374151" font-weight="400">GPIO21</tspan></text>
-<text x="1195" y="842" font-size="10" font-weight="700" fill="#6b7280">VCC 5V riêng · GND chung</text>
+<text x="1233" y="781" font-size="10" font-weight="800" fill="#db2777">Arm <tspan fill="#374151" font-weight="400">GPIO20</tspan></text>
+<text x="1233" y="818" font-size="10" font-weight="800" fill="#db2777">Neck <tspan fill="#374151" font-weight="400">GPIO21</tspan></text>
+<text x="1195" y="842" font-size="10" font-weight="700" fill="#6b7280">Separate 5V VCC · shared GND</text>
 </g>
 <text x="1370" y="815" text-anchor="middle" font-size="18">🔋</text>
 
-<text x="800" y="875" text-anchor="middle" font-size="11" fill="#9ca3af">🔋 = cần nguồn ngoài riêng · nét đứt xám = dây nguồn/GND hoặc khối tuỳ chọn không dùng · Sơ đồ tham khảo, không theo tỉ lệ thực tế</text>
+<text x="800" y="875" text-anchor="middle" font-size="11" fill="#9ca3af">🔋 = needs a separate external supply · grey dashed = power/GND wire or unused optional block · Reference diagram, not to scale</text>
 </svg>
