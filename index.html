@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Trang nạp firmware KST Robot AI cho ESP32-S3">
+  <title>KST Robot AI – Firmware Installer</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module"
+    src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module">
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="KST Robot AI">
+      <span class="brand-mark">KST</span>
+      <span>
+        <strong>Robot AI</strong>
+        <small>Firmware Center</small>
+      </span>
+    </a>
+    <span class="status"><span class="status-dot"></span> Website đang hoạt động</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">KÊNH SÁNG TẠO</p>
+        <h1>Nạp firmware Robot AI<br><span>nhanh và đơn giản</span></h1>
+        <p class="lead">
+          Cắm ESP32-S3 vào máy tính bằng cáp dữ liệu, mở trang bằng Chrome hoặc Edge
+          rồi bấm nút nạp firmware.
+        </p>
+
+        <div class="actions">
+          <button class="primary disabled" type="button" disabled>
+            Firmware sắp được cập nhật
+          </button>
+          <a class="secondary" href="#huong-dan">Xem hướng dẫn</a>
+        </div>
+
+        <p class="notice">
+          Bản firmware chưa được đưa lên. Khi có firmware, nút nạp sẽ được kích hoạt tại đây.
+        </p>
+      </div>
+
+      <div class="device-card" aria-label="Thông tin thiết bị">
+        <div class="robot-face">
+          <span></span><span></span>
+        </div>
+        <h2>KST Robot AI</h2>
+        <dl>
+          <div><dt>Bo mạch</dt><dd>ESP32-S3</dd></div>
+          <div><dt>Phiên bản</dt><dd>Đang chuẩn bị</dd></div>
+          <div><dt>Trạng thái</dt><dd class="pending">Chưa có firmware</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="features">
+      <article>
+        <span class="step">01</span>
+        <h3>Cắm thiết bị</h3>
+        <p>Dùng cáp USB có truyền dữ liệu để kết nối ESP32-S3 với máy tính.</p>
+      </article>
+      <article>
+        <span class="step">02</span>
+        <h3>Chọn cổng COM</h3>
+        <p>Bấm nút nạp firmware rồi chọn đúng cổng USB Serial của bo mạch.</p>
+      </article>
+      <article>
+        <span class="step">03</span>
+        <h3>Chờ hoàn tất</h3>
+        <p>Không rút cáp trong lúc nạp. Khi đạt 100%, khởi động lại thiết bị.</p>
+      </article>
+    </section>
+
+    <section id="huong-dan" class="panel">
+      <div>
+        <p class="eyebrow">HƯỚNG DẪN</p>
+        <h2>Chuẩn bị trước khi nạp</h2>
+      </div>
+      <ul class="checklist">
+        <li>Dùng máy tính Windows, macOS hoặc Linux.</li>
+        <li>Mở bằng Google Chrome hoặc Microsoft Edge.</li>
+        <li>Không nạp trực tiếp bằng trình duyệt trên điện thoại.</li>
+        <li>Đóng Arduino IDE, Serial Monitor và phần mềm đang giữ cổng COM.</li>
+        <li>Nếu không thấy cổng COM, kiểm tra cáp hoặc cài driver USB phù hợp.</li>
+      </ul>
+    </section>
+
+    <section class="panel compact">
+      <div>
+        <p class="eyebrow">CẬP NHẬT</p>
+        <h2>Lịch sử phiên bản</h2>
+      </div>
+      <div class="release">
+        <strong>Website v1.0</strong>
+        <span>Đã tạo bộ khung trang nạp firmware.</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Kênh Sáng Tạo · KST Robot AI</p>
+    <p>Trang chính thức: kenhsangtao.github.io/robotai</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
