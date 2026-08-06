@@ -1,12 +1,14 @@
 # KST Robot AI Firmware
 
-Trang chính thức: **https://kenhsangtao.github.io/robotai/**
+Official website: **https://kenhsangtao.github.io/robotai/**
 
-Firmware cho **ESP32-S3 16MB**, màn hình **ST7735** và cảm biến **ToF**.
+Bilingual Vietnamese/English firmware center for the KST AI Robot ST7735 + ToF edition.
 
-- Nạp firmware trực tiếp bằng Chrome hoặc Microsoft Edge
-- Tải file firmware `.bin`
-- Xem sơ đồ đấu nối SVG
-- Hướng dẫn cấu hình Wi‑Fi và kích hoạt
+- One-click web flashing for ESP32-S3
+- Firmware `.bin` download
+- Real robot gallery
+- Component list
+- SVG wiring diagram
+- Vietnamese / English switch
 
-Phát triển bởi **Kênh Sáng Tạo**.
+Developed by **Kênh Sáng Tạo .COM x Creative Channel**.

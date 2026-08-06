@@ -4,87 +4,147 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#07111f">
-  <meta name="description" content="Trang chính thức nạp firmware KST AI Robot ST7735 cho ESP32-S3 N16R8.">
-  <title>KST Robot AI – Firmware Installer</title>
-  <link rel="icon" href="assets/images/kst-logo.png">
-  <link rel="apple-touch-icon" href="assets/images/kst-logo.png">
+  <meta name="description" content="KST AI Robot ST7735 firmware installer for ESP32-S3.">
+  <meta property="og:title" content="KST Robot AI – Firmware Center">
+  <meta property="og:description" content="Nạp firmware KST AI Robot trực tiếp bằng Chrome hoặc Edge.">
+  <meta property="og:image" content="assets/images/robot-front.jpg">
+  <title>KST Robot AI – Firmware Center</title>
+  <link rel="icon" href="assets/images/kst-logo-12years.png">
+  <link rel="apple-touch-icon" href="assets/images/kst-logo-12years.png">
   <link rel="stylesheet" href="assets/css/style.css">
   <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
 </head>
 <body>
 <header class="header">
   <a class="brand" href="#home">
-    <img src="assets/images/kst-logo.png" alt="Logo KST">
+    <img src="assets/images/kst-logo-12years.png" alt="KST logo">
     <span><strong>KST Robot AI</strong><small>Firmware Center</small></span>
   </a>
-  <nav><a href="#firmware">Firmware</a><a href="#wiring">Sơ đồ</a><a href="#guide">Hướng dẫn</a></nav>
-  <span class="online"><i></i> Website hoạt động</span>
+  <nav>
+    <a href="#firmware" data-vi="Firmware" data-en="Firmware">Firmware</a>
+    <a href="#gallery" data-vi="Hình ảnh" data-en="Gallery">Hình ảnh</a>
+    <a href="#components" data-vi="Linh kiện" data-en="Components">Linh kiện</a>
+    <a href="#wiring" data-vi="Sơ đồ" data-en="Wiring">Sơ đồ</a>
+  </nav>
+  <div class="language-switch" aria-label="Language">
+    <button class="lang active" data-lang="vi">VN</button>
+    <button class="lang" data-lang="en">EN</button>
+  </div>
 </header>
 
 <main id="home">
   <section class="hero">
-    <div>
-      <p class="kicker">KÊNH SÁNG TẠO .COM x Creative Channel</p>
-      <h1>Nạp firmware Robot AI<br><span>chỉ bằng một nút bấm</span></h1>
-      <p class="lead">Dành cho ESP32-S3 flash 16MB, màn hình ST7735, cảm biến chống rơi ToF, động cơ, servo và trợ lý giọng nói AI.</p>
+    <div class="hero-copy">
+      <p class="kicker" data-vi="KÊNH SÁNG TẠO .COM x Creative Channel" data-en="KÊNH SÁNG TẠO .COM x Creative Channel">KÊNH SÁNG TẠO .COM x Creative Channel</p>
+      <h1 data-vi="Nạp firmware Robot AI<br><span>chỉ bằng một nút bấm</span>" data-en="Install Robot AI firmware<br><span>with one click</span>">Nạp firmware Robot AI<br><span>chỉ bằng một nút bấm</span></h1>
+      <p class="lead" data-vi="Dành cho ESP32-S3 flash 16MB, màn hình ST7735, cảm biến chống rơi ToF, servo và trợ lý giọng nói AI." data-en="For ESP32-S3 with 16MB flash, ST7735 display, ToF anti-fall sensor, servos and AI voice assistant.">Dành cho ESP32-S3 flash 16MB, màn hình ST7735, cảm biến chống rơi ToF, servo và trợ lý giọng nói AI.</p>
       <div class="hero-actions" id="firmware">
         <esp-web-install-button manifest="manifest.json">
-          <button slot="activate" class="btn primary">🚀 Nạp firmware</button>
-          <span slot="unsupported">Trình duyệt chưa hỗ trợ. Hãy dùng Chrome hoặc Edge trên máy tính.</span>
-          <span slot="not-allowed">Không thể mở cổng USB trong ngữ cảnh hiện tại.</span>
+          <button slot="activate" class="btn primary" data-vi="🚀 Nạp firmware" data-en="🚀 Install firmware">🚀 Nạp firmware</button>
+          <span slot="unsupported">Please use Chrome or Microsoft Edge on a computer.</span>
+          <span slot="not-allowed">USB access is not allowed in this context.</span>
         </esp-web-install-button>
-        <a class="btn secondary" href="firmware/KST-AI-Robot-ST7735.bin" download>⬇ Tải file .BIN</a>
+        <a class="btn secondary" href="firmware/KST-AI-Robot-ST7735.bin" download data-vi="⬇ Tải file .BIN" data-en="⬇ Download .BIN">⬇ Tải file .BIN</a>
       </div>
-      <p class="note">Chọn đúng cổng USB Serial của ESP32-S3. Không rút cáp trong lúc nạp.</p>
+      <p class="note" data-vi="Chọn đúng cổng USB Serial của ESP32-S3. Không rút cáp trong lúc nạp." data-en="Select the correct ESP32-S3 USB serial port. Do not unplug the cable while flashing.">Chọn đúng cổng USB Serial của ESP32-S3. Không rút cáp trong lúc nạp.</p>
       <div class="badges"><span>ESP32-S3</span><span>Flash 16MB</span><span>Offset 0x0</span><span>Stable v1.0.0</span></div>
     </div>
-
-    <aside class="device">
-      <div class="face"><b></b><b></b></div>
-      <h2>KST AI Robot ST7735</h2>
-      <dl>
-        <div><dt>Firmware</dt><dd>v1.0.0 Stable</dd></div>
-        <div><dt>Dung lượng</dt><dd>8.54 MB</dd></div>
-        <div><dt>Chip</dt><dd>ESP32-S3 N16R8</dd></div>
-        <div><dt>Trạng thái</dt><dd class="ready">Sẵn sàng nạp</dd></div>
-      </dl>
-    </aside>
+    <figure class="hero-photo">
+      <img src="assets/images/robot-front.jpg" alt="KST AI Robot completed">
+      <figcaption data-vi="KST AI Robot – bản ST7735 + ToF" data-en="KST AI Robot – ST7735 + ToF edition">KST AI Robot – bản ST7735 + ToF</figcaption>
+    </figure>
   </section>
 
-  <section class="steps">
-    <article><b>01</b><h3>Cắm thiết bị</h3><p>Dùng cáp USB Type-C có truyền dữ liệu.</p></article>
-    <article><b>02</b><h3>Bấm nạp firmware</h3><p>Chọn đúng cổng USB Serial/COM của bo mạch.</p></article>
-    <article><b>03</b><h3>Chờ hoàn tất</h3><p>Đợi đạt 100%, sau đó robot tự khởi động lại.</p></article>
+  <section class="stats">
+    <article><strong>v1.0.0</strong><span data-vi="Bản ổn định" data-en="Stable release">Bản ổn định</span></article>
+    <article><strong>8.54 MB</strong><span data-vi="Dung lượng firmware" data-en="Firmware size">Dung lượng firmware</span></article>
+    <article><strong>ESP32-S3 N16R8</strong><span data-vi="Bo mạch hỗ trợ" data-en="Supported board">Bo mạch hỗ trợ</span></article>
+  </section>
+
+  <section class="panel" id="gallery">
+    <div class="section-head">
+      <p class="kicker" data-vi="ROBOT HOÀN THIỆN" data-en="COMPLETED ROBOT">ROBOT HOÀN THIỆN</p>
+      <h2 data-vi="Hình ảnh thực tế" data-en="Real product gallery">Hình ảnh thực tế</h2>
+    </div>
+    <div class="gallery">
+      <a href="assets/images/robot-front.jpg" target="_blank"><img src="assets/images/robot-front.jpg" alt="Robot front"></a>
+      <a href="assets/images/robot-angle.jpg" target="_blank"><img src="assets/images/robot-angle.jpg" alt="Robot angle"></a>
+      <a href="assets/images/robot-open-front.jpg" target="_blank"><img src="assets/images/robot-open-front.jpg" alt="Robot internals front"></a>
+      <a href="assets/images/robot-open-top.jpg" target="_blank"><img src="assets/images/robot-open-top.jpg" alt="Robot internals top"></a>
+    </div>
+  </section>
+
+  <section class="panel" id="components">
+    <div class="section-head">
+      <p class="kicker" data-vi="DANH SÁCH LINH KIỆN" data-en="COMPONENT LIST">DANH SÁCH LINH KIỆN</p>
+      <h2 data-vi="KST AI Robot ST7735 + ToF" data-en="KST AI Robot ST7735 + ToF">KST AI Robot ST7735 + ToF</h2>
+    </div>
+    <div class="lang-panel vi-panel components-grid"><article class="component-card"><h3>Vi điều khiển</h3><ul><li>1× ESP32-S3 N16R8 (16MB Flash / 8MB PSRAM) – board dev kit</li></ul></article>
+<article class="component-card"><h3>Màn hình và cảm biến</h3><ul><li>1× Màn hình TFT ST7735 128×160 (SPI)</li><li>1× Cảm biến khoảng cách chống rơi VL6180X / TOF050C (I2C)</li><li>1× Cảm ứng chạm TTP223</li></ul></article>
+<article class="component-card"><h3>Âm thanh</h3><ul><li>1× Microphone số INMP441 (I2S)</li><li>1× Mạch khuếch đại âm thanh MAX98357A (I2S)</li><li>1× Loa nhỏ 3W 4Ω</li></ul></article>
+<article class="component-card"><h3>Động cơ và chuyển động</h3><ul><li>2× Servo 360° cho bánh trái/phải</li><li>2× Servo cho tay và cổ</li></ul></article>
+<article class="component-card"><h3>Đèn</h3><ul><li>2× LED Edison 3V cho đèn trái/phải</li></ul></article>
+<article class="component-card"><h3>Nguồn điện</h3><ul><li>1× Pin LiPo 3.7V 2000mAh</li><li>1× Mạch sạc TP4056 Type-C có bảo vệ sạc/xả</li><li>1× Công tắc nguồn ON/OFF</li><li>Mạch tăng áp 5V đủ dòng cho MAX98357A và hai servo khi chạy bằng pin</li></ul></article></div>
+    <div class="lang-panel en-panel components-grid" hidden><article class="component-card"><h3>Microcontroller</h3><ul><li>1× ESP32-S3 N16R8 development board (16MB Flash / 8MB PSRAM)</li></ul></article>
+<article class="component-card"><h3>Display and sensors</h3><ul><li>1× ST7735 128×160 TFT display (SPI)</li><li>1× VL6180X / TOF050C anti-fall distance sensor (I2C)</li><li>1× TTP223 touch sensor</li></ul></article>
+<article class="component-card"><h3>Audio</h3><ul><li>1× INMP441 digital microphone (I2S)</li><li>1× MAX98357A audio amplifier (I2S)</li><li>1× 3W 4Ω compact speaker</li></ul></article>
+<article class="component-card"><h3>Motors and movement</h3><ul><li>2× 360° servos for left/right tracks</li><li>2× servos for arm and neck</li></ul></article>
+<article class="component-card"><h3>Lights</h3><ul><li>2× 3V Edison LEDs for left/right lights</li></ul></article>
+<article class="component-card"><h3>Power</h3><ul><li>1× 3.7V 2000mAh LiPo battery</li><li>1× TP4056 Type-C charger with charge/discharge protection</li><li>1× ON/OFF power switch</li><li>A sufficiently powerful 5V boost converter for the MAX98357A and two servos when battery-powered</li></ul></article></div>
+    <div class="power-note">
+      <strong data-vi="Lưu ý nguồn điện" data-en="Power note">Lưu ý nguồn điện</strong>
+      <p data-vi="MAX98357A và hai servo cần nguồn 5V riêng đủ mạnh. Khi dùng pin LiPo 3.7V, cần mạch tăng áp lên 5V; tất cả GND phải nối chung." data-en="The MAX98357A and two servos need a sufficiently powerful separate 5V rail. With a 3.7V LiPo battery, use a 5V boost converter and connect all grounds together.">MAX98357A và hai servo cần nguồn 5V riêng đủ mạnh. Khi dùng pin LiPo 3.7V, cần mạch tăng áp lên 5V; tất cả GND phải nối chung.</p>
+    </div>
   </section>
 
   <section class="panel" id="wiring">
-    <div class="section-head"><p class="kicker">SƠ ĐỒ ĐẤU NỐI</p><h2>KST AI Robot ST7735</h2><p>Ảnh SVG có thể phóng to mà không bị vỡ.</p></div>
-    <a class="diagram-link" href="docs/So-do-dau-noi-ST7735.svg" target="_blank"><img src="docs/So-do-dau-noi-ST7735.svg" alt="Sơ đồ đấu nối KST AI Robot ST7735"></a>
-    <div class="center"><a class="btn secondary" href="docs/So-do-dau-noi-ST7735.svg" target="_blank">🔍 Mở sơ đồ toàn màn hình</a></div>
+    <div class="section-head">
+      <p class="kicker" data-vi="SƠ ĐỒ ĐẤU NỐI" data-en="WIRING DIAGRAM">SƠ ĐỒ ĐẤU NỐI</p>
+      <h2>KST AI Robot ST7735</h2>
+      <p data-vi="Ảnh SVG có thể phóng to mà không bị vỡ." data-en="The SVG diagram remains sharp at any zoom level.">Ảnh SVG có thể phóng to mà không bị vỡ.</p>
+    </div>
+    <a class="diagram-link" href="docs/So-do-dau-noi-ST7735.svg" target="_blank">
+      <img src="docs/So-do-dau-noi-ST7735.svg" alt="KST AI Robot wiring diagram">
+    </a>
+    <div class="center"><a class="btn secondary" href="docs/So-do-dau-noi-ST7735.svg" target="_blank" data-vi="🔍 Mở sơ đồ toàn màn hình" data-en="🔍 Open full-screen diagram">🔍 Mở sơ đồ toàn màn hình</a></div>
   </section>
 
-  <section class="panel" id="guide">
-    <div class="section-head"><p class="kicker">HƯỚNG DẪN</p><h2>Chuẩn bị trước khi nạp</h2></div>
-    <div class="guide-grid">
-      <ul>
-        <li>Dùng Chrome hoặc Microsoft Edge trên máy tính.</li>
-        <li>Bo mạch ESP32-S3 loại flash 16MB.</li>
-        <li>Đóng Arduino IDE, Serial Monitor và phần mềm đang giữ cổng COM.</li>
-        <li>Nếu không thấy cổng COM, kiểm tra lại cáp USB hoặc driver.</li>
-      </ul>
-      <div class="warning"><strong>⚠️ Nguồn và GPIO quan trọng</strong><p>Mic, TTP223, màn hình và ToF dùng 3.3V. Loa MAX98357A và servo dùng nguồn 5V riêng. Tất cả GND phải nối chung.</p><p>Không dùng GPIO36 hoặc GPIO37 vì thuộc bus PSRAM nội bộ.</p></div>
+  <section class="panel guide">
+    <div>
+      <p class="kicker" data-vi="CẤU HÌNH LẦN ĐẦU" data-en="FIRST-TIME SETUP">CẤU HÌNH LẦN ĐẦU</p>
+      <h2 data-vi="Kết nối Wi‑Fi" data-en="Connect to Wi‑Fi">Kết nối Wi‑Fi</h2>
+      <ol class="vi-panel">
+        <li>Bật robot, tìm Wi‑Fi <code>KST-Robot-Ai-xxxx</code>.</li>
+        <li>Kết nối rồi mở <code>192.168.4.1</code> nếu trang không tự hiện.</li>
+        <li>Chọn Wi‑Fi nhà 2.4GHz, nhập mật khẩu và lưu.</li>
+      </ol>
+      <ol class="en-panel" hidden>
+        <li>Power on the robot and find <code>KST-Robot-Ai-xxxx</code>.</li>
+        <li>Connect, then open <code>192.168.4.1</code> if the page does not appear.</li>
+        <li>Select a 2.4GHz home network, enter the password and save.</li>
+      </ol>
+    </div>
+    <div>
+      <p class="kicker" data-vi="TRỢ LÝ GIỌNG NÓI" data-en="VOICE ASSISTANT">TRỢ LÝ GIỌNG NÓI</p>
+      <h2 data-vi="Kích hoạt thiết bị" data-en="Activate the device">Kích hoạt thiết bị</h2>
+      <p data-vi="Nhập mã 6 số trên màn hình tại xiaozhi.me. Từ khóa đánh thức offline là “Hi Lily”; cũng có thể chạm hai lần TTP223 để bật hoặc tắt trò chuyện." data-en="Enter the six-digit code shown on the display at xiaozhi.me. The offline wake word is “Hi Lily”; double-tap the TTP223 to start or stop a conversation.">Nhập mã 6 số trên màn hình tại xiaozhi.me. Từ khóa đánh thức offline là “Hi Lily”; cũng có thể chạm hai lần TTP223 để bật hoặc tắt trò chuyện.</p>
     </div>
   </section>
 
-  <section class="panel two-col">
-    <div><p class="kicker">CẤU HÌNH LẦN ĐẦU</p><h2>Kết nối Wi-Fi</h2><ol><li>Bật robot, tìm Wi-Fi <code>KST-Robot-Ai-xxxx</code>.</li><li>Kết nối rồi mở <code>192.168.4.1</code> nếu trang không tự hiện.</li><li>Chọn Wi-Fi nhà 2.4GHz, nhập mật khẩu và lưu.</li><li>Robot khởi động lại và hiển thị địa chỉ điều khiển LAN.</li></ol></div>
-    <div><p class="kicker">KÍCH HOẠT</p><h2>Trợ lý giọng nói</h2><p>Nhập mã 6 số trên màn hình tại xiaozhi.me để kích hoạt. Từ khóa đánh thức offline là <strong>“Hi Lily”</strong>; cũng có thể chạm hai lần TTP223 để bật hoặc tắt trò chuyện.</p></div>
+  <section class="release panel">
+    <div><p class="kicker" data-vi="PHIÊN BẢN" data-en="RELEASE">PHIÊN BẢN</p><h2>Stable v1.0.0</h2></div>
+    <div>
+      <p data-vi="ST7735 + ToF, chuyển động, servo tay/cổ, cấu hình Wi‑Fi, điều khiển LAN và wake-word offline." data-en="ST7735 + ToF, movement, arm/neck servos, Wi‑Fi setup, LAN control and offline wake word.">ST7735 + ToF, chuyển động, servo tay/cổ, cấu hình Wi‑Fi, điều khiển LAN và wake-word offline.</p>
+      <small>SHA-256: 5c6f53d884ffbb19081e585d738447d1ea81b0faa848c4a0e9cc9831bc0b41ec</small>
+    </div>
   </section>
-
-  <section class="release panel"><div><p class="kicker">PHIÊN BẢN</p><h2>Stable v1.0.0</h2></div><div><p>ST7735 + ToF, động cơ DC, servo tay/cổ, Wi-Fi Config, điều khiển LAN và wake-word offline.</p><small>SHA-256: 5c6f53d884ffbb19081e585d738447d1ea81b0faa848c4a0e9cc9831bc0b41ec</small></div></section>
 </main>
 
-<footer><img src="assets/images/kst-logo.png" alt="KST"><p>© 2026 Kênh Sáng Tạo .COM x Creative Channel · KST Robot AI</p><p>kenhsangtao.github.io/robotai</p></footer>
+<footer>
+  <img src="assets/images/kst-logo-12years.png" alt="KST">
+  <p>© 2026 Kênh Sáng Tạo .COM x Creative Channel · KST Robot AI</p>
+  <p>kenhsangtao.github.io/robotai</p>
+</footer>
 <script src="assets/js/app.js"></script>
 </body>
 </html>
