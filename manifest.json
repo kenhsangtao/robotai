@@ -1,0 +1,16 @@
+{
+  "name": "KST AI Robot ST7735",
+  "version": "1.0.0",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [
+        {
+          "path": "firmware/KST-AI-Robot-ST7735.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
