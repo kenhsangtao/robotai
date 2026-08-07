@@ -13,7 +13,18 @@
   <link rel="icon" href="assets/images/kst-logo-12years.png">
   <link rel="apple-touch-icon" href="assets/images/kst-logo-12years.png">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=F-8srcc9cJTcPQTFMudNfHULcvSJV3Z26mHxpyTdsm6pJMX8pnZMgIioqNBHE19i1I5AN2NZkqcSHpLiEOeho8uWlooL1-Ukf8KMTm6PDXoSDRTuVq9X0Ol4YSoeuacA6rLU8-q75N1pDscTr3h8mij2SM79jxEuBM9d7JC9YgH86kO7-07L7TgNaSSc4bT5YgJa90q23iagoow4J-wQgYv1-pi-UooRQh4f8Y4lHnsovvNg2037VWmk2GEUhKB7DK0aKCPS1KK5YEVHEIO__pGUgZXEBC8VS0eWL_RD6-U144SZ5vE6HAcVCxfcXRJM" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMGZmNzg4MjA2ODA3MzIyZGVlZGJkMzFiYyZmbj1pbmRleCUyODUlMjkuaHRtbCZjZD1hdHRhY2htZW50JnRzPTQ5NjE0NCZwPWZzJmNpZD0xJnNpZz1lMDg0MmU3NDJlMGIwOGQ0ZmQ3NjNjZTcyZDIyNmU5MGIyNzBkYTk2OTg1NjZlODQwMDIxYTk4NmZhNWM0YmMzJnY9MA"/><script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+
+<style id="kst-sticky-nav-fix">
+  header, .site-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+  }
+  html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 95px; }
+</style>
+
 </head>
 <body>
 <header class="header">
@@ -26,7 +37,8 @@
     <a href="#gallery" data-vi="Hình ảnh" data-en="Gallery">Hình ảnh</a>
     <a href="#components" data-vi="Linh kiện" data-en="Components">Linh kiện</a>
     <a href="#wiring" data-vi="Sơ đồ" data-en="Wiring">Sơ đồ</a>
-    <a href="#guide" data-vi="Hướng dẫn" data-en="Guide">Hướng dẫn</a>
+    <a href="#video-guide"><span class="vi-panel">Video</span><span class="en-panel" hidden>Video</span></a>
+          <a href="#guide" data-vi="Hướng dẫn" data-en="Guide">Hướng dẫn</a>
   </nav>
   <div class="language-switch" aria-label="Language">
     <button class="lang active" data-lang="vi">VN</button>
