@@ -13,7 +13,7 @@
   <link rel="icon" href="assets/images/kst-logo-12years.png">
   <link rel="apple-touch-icon" href="assets/images/kst-logo-12years.png">
   <link rel="stylesheet" href="assets/css/style.css?v=20260808-1">
-<style id="kst-mobile-safe">
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=KGBK6TISWzmsvYLXxRYGQAR42OMw80M8Nt9RSF92-zMR3R3atZlEP4AImIDFocd6RVnwUWKgcfUfCQIAe7F4vyT9HInfbqzJiKyAzX-sy2xS7Rye1NRB2__wehlEWcxfNTr8bh-FkPcVvEgWM6Pvfky7WzyQ8kBVjgLUu5t7L_NKb9E1iLYdFAFLBQER6rlnH-k4PdGgI5OTNw0J3GFN5A-LCM6pg8kRBul1-pMo4Uw4amggd8aKU_LjBkeAj4CLZofxFu3W22HFpLhflII_jJOSz5JyITbaf9clRmMAMWtsJ5HWonvQIUJayLGshvqflQ84X17kybnHifAXjbyk0Q" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMGU2ODQ4MjBiYmUzOWUwZGY5MzA4MDAxNyZmbj1pbmRleCUyODIwMjYwODA3LTE3MjYzMSUyOS5odG1sJmNkPWF0dGFjaG1lbnQmdHM9NDk2MTQ1JnA9ZnMmY2lkPTEmc2lnPWRiOGQyM2JhZTI0NTYyYzExNDljM2RiY2E4OGY3YWZmMjBlZDc1YjcwNGQwM2M3NTVlM2Q2YTkxYzdlMDNkOTImdj0w"/><style id="kst-mobile-safe">
   html { scroll-behavior: smooth; }
   section[id] { scroll-margin-top: 20px; }
 </style>
@@ -33,6 +33,56 @@
       border:1px solid #2b4a6b;
       color:#b9cadd;
       font-weight:700;
+    }
+  }
+</style>
+
+
+<style id="kst-safe-sticky-header">
+  header, .site-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+    background: #102f53 !important;
+    background-color: #102f53 !important;
+    opacity: 1 !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,.20) !important;
+    border-bottom: 1px solid rgba(255,255,255,.08) !important;
+  }
+
+  /* Phủ nền kín toàn chiều ngang nhưng vẫn mobile-safe */
+  header::before, .site-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    background: #102f53;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  header nav a,
+  .site-header nav a {
+    border-radius: 10px;
+    transition: color .18s ease, background-color .18s ease;
+  }
+
+  header nav a.active,
+  .site-header nav a.active {
+    color: #fff !important;
+    background: rgba(42,145,255,.22) !important;
+  }
+
+  html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 92px; }
+
+  @media (max-width: 760px) {
+    header, .site-header {
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
     }
   }
 </style>
@@ -321,5 +371,31 @@
 </script>
 
 <script src="assets/js/app.js?v=20260808-1"></script>
+
+<script id="kst-safe-nav-active">
+(() => {
+  const links = Array.from(document.querySelectorAll(
+    'header nav a[href^="#"], .site-header nav a[href^="#"]'
+  ));
+
+  const setActiveFromHash = () => {
+    const hash = location.hash;
+    links.forEach(a => {
+      a.classList.toggle('active', hash && a.getAttribute('href') === hash);
+    });
+  };
+
+  links.forEach(a => {
+    a.addEventListener('click', () => {
+      links.forEach(x => x.classList.remove('active'));
+      a.classList.add('active');
+    }, { passive: true });
+  });
+
+  window.addEventListener('hashchange', setActiveFromHash);
+  setActiveFromHash();
+})();
+</script>
+
 </body>
 </html>
