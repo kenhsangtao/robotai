@@ -13,7 +13,7 @@
   <link rel="icon" href="assets/images/kst-logo-12years.png">
   <link rel="apple-touch-icon" href="assets/images/kst-logo-12years.png">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=iC9e189qC79s8wfdgKJG_Kyer3oYjWAAQH8Sz76wNwDhI6xWNvrWjElhBOaoJzvi9ccqouHikSmiBtKngiv_IqqaTaPtCNQ6rBvANm9BQgRTJ0K5_nxDh3x5LE6axs5xX5Z9Pe1ar42zbXFVTuL85LFXV6rV6Aou729LvOfDPA6LMvNPkTFpX5t4ii6nvDJ-Rzl9Rv5dzaCxUNnOZ86RVixGfQEZ3Z4rwlnG0VCTcC4a9KsoJkNwQL1R_wGSksbgom5jEE_hOf-axEi1zYQfiFQicrDRxAAqbWcFID8ZL-H4kahrN1j0vQvPBTL47mzL" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMGQ3OTA4MjA5YTVmODU0MmFhNmYwOGI3YyZmbj1pbmRleCUyODYlMjkuaHRtbCZjZD1hdHRhY2htZW50JnRzPTQ5NjE0NCZwPWZzJmNpZD0xJnNpZz0xYzM3NDQ2ZTc4NThlNGU2MzVkM2JjMzdiNjA3NjczNWNhNWJhMWI0ZjRiNDI5OWZjMWNmNTNiYWE4MDAwMTRlJnY9MA"/><script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=XMkMZvQdhi7nT13R_j3sfV7CFh2Sopvr8pIDv3Woz0DC1Fe2s1XnyJOUuVDi6DC_X0LXZOoSHFqfgBuQdh_ilhB4LcWNPtmpodd-JRza59etmAV8IiXw4Owwsyuar1W6EhYkIe1cfMSFuVXwuNFEcjZY14G5nx8xX1HQVCXMV1n2Aafhq4KrDb2Ty47NbVbdRzykwJ5qtxqe0xU6q5ebD7zCDRkGFnnsCUG-ZgvOya68sUa92hG5k9gR9c_NfqsVg8OZ310hdV0pFSTPXeaDzTPWNJPUU0EGNhMyavorklhC3SuySrE0iu585A56uo00" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMGY4NDg4MjA5YTMyMTYzNWUxNDZkODk5YSZmbj1pbmRleCUyODclMjkuaHRtbCZjZD1hdHRhY2htZW50JnRzPTQ5NjE0NCZwPWZzJmNpZD0xJnNpZz00NzViYzBkNDdiYjdkN2VlZDA2YTM1NTBmYjA2OGVjNTllZDM3NjhlZmVjZjA0NzI4YzM5Y2RjMjkwNzVjNzg1JnY9MA"/><script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
 
 <style id="kst-sticky-nav-fix">
   header, .site-header {
@@ -38,6 +38,53 @@
   }
   html { scroll-behavior: smooth; }
   section[id] { scroll-margin-top: 95px; }
+</style>
+
+
+<style id="kst-nav-active-fix">
+  /* Giữ nội dung menu thẳng hàng nhưng nền sticky phủ kín 2 mép màn hình */
+  header, .site-header {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    box-shadow:
+      0 0 0 100vmax #102f53,
+      0 8px 24px rgba(0,0,0,.22) !important;
+    clip-path: inset(0 -100vmax);
+  }
+
+  /* Trạng thái menu đang xem */
+  header nav a,
+  .site-header nav a {
+    position: relative;
+    transition: color .18s ease, background-color .18s ease, box-shadow .18s ease;
+    border-radius: 10px;
+  }
+
+  header nav a.active,
+  .site-header nav a.active {
+    color: #ffffff !important;
+    background: rgba(42, 145, 255, .20) !important;
+    box-shadow: inset 0 0 0 1px rgba(84, 180, 255, .38);
+  }
+
+  header nav a.active::after,
+  .site-header nav a.active::after {
+    content: "";
+    position: absolute;
+    left: 14%;
+    right: 14%;
+    bottom: -7px;
+    height: 3px;
+    border-radius: 999px;
+    background: #4db5ff;
+  }
+
+  @media (max-width: 760px) {
+    header nav a.active::after,
+    .site-header nav a.active::after {
+      bottom: -4px;
+    }
+  }
 </style>
 
 </head>
@@ -309,5 +356,58 @@
   <p>kenhsangtao.github.io/robotai</p>
 </footer>
 <script src="assets/js/app.js"></script>
+
+<script id="kst-active-section-nav">
+(() => {
+  const navLinks = [...document.querySelectorAll(
+    'header nav a[href^="#"], .site-header nav a[href^="#"]'
+  )];
+
+  const pairs = navLinks
+    .map(link => {
+      const id = decodeURIComponent(link.getAttribute('href').slice(1));
+      return { link, section: document.getElementById(id) };
+    })
+    .filter(x => x.section);
+
+  if (!pairs.length) return;
+
+  const setActive = (link) => {
+    navLinks.forEach(a => a.classList.remove('active'));
+    if (link) link.classList.add('active');
+  };
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => setActive(link));
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+    if (!visible.length) return;
+
+    const current = pairs.find(x => x.section === visible[0].target);
+    if (current) setActive(current.link);
+  }, {
+    root: null,
+    rootMargin: '-90px 0px -58% 0px',
+    threshold: [0.05, 0.15, 0.3, 0.6]
+  });
+
+  pairs.forEach(x => observer.observe(x.section));
+
+  // Khi mở URL có #wiring, #guide... thì sáng đúng tab ngay.
+  const syncHash = () => {
+    if (!location.hash) return;
+    const found = navLinks.find(a => a.getAttribute('href') === location.hash);
+    if (found) setActive(found);
+  };
+  window.addEventListener('hashchange', syncHash);
+  syncHash();
+})();
+</script>
+
 </body>
 </html>
