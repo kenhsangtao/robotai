@@ -12,12 +12,29 @@
   <title>KST Robot AI – Firmware Center</title>
   <link rel="icon" href="assets/images/kst-logo-12years.png">
   <link rel="apple-touch-icon" href="assets/images/kst-logo-12years.png">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=wYxa9sumNrO2JJER49RPnFqKEFTXSQOEiJ6PKuzRE07umOL3dJdakfVeF92BPYnsDr464UDW6g1i1X-FcjAOoEW1WsM8k3hp2_uKVlbXeZ2xiVOR7VMfyv57YOrTCAWE_C6Z9r1roBSUo_v4cNGYJF8t1VFunGhVST8-vWPv-OCBxILoseDuh6NUz2oGPX3sSGSpgbmh5lKhkjlxUgIe7IQiQyIT3o98HKJ3cO79JWI5rjPsEB_oTR94gI8hHmNKNy_qgvnpqT3UR_j6hmVRNIRr-3tLIcHqPrPiW6ieB8Abuyx6tALCZ_Kl5Z7e4TFx" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMDc5Yjg4MWZhYmIyYTdjMGIyYmY1MWIzZSZmbj1pbmRleCUyODklMjkuaHRtbCZjZD1hdHRhY2htZW50JnRzPTQ5NjE0NSZwPWZzJmNpZD0xJnNpZz0wOGRjOGU3NjBiN2NlZDU1MmJlNzNjNWFhODEwMjhiMjlkMWYzNzQyODNlZjBjZmFhNzgwODYyYzhjMjcwZDc4JnY9MA"/><script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
-
+  <link rel="stylesheet" href="assets/css/style.css?v=20260808-1">
 <style id="kst-mobile-safe">
   html { scroll-behavior: smooth; }
   section[id] { scroll-margin-top: 20px; }
+</style>
+
+
+<style id="kst-mobile-loader-fix">
+  .mobile-flash-note{display:none}
+  @media (max-width: 930px), (hover:none) and (pointer:coarse){
+    esp-web-install-button{display:none!important}
+    .mobile-flash-note{
+      display:flex;
+      align-items:center;
+      min-height:52px;
+      padding:0 18px;
+      border-radius:14px;
+      background:#12263f;
+      border:1px solid #2b4a6b;
+      color:#b9cadd;
+      font-weight:700;
+    }
+  }
 </style>
 
 </head>
@@ -53,6 +70,7 @@
           <span slot="unsupported">Please use Chrome or Microsoft Edge on a computer.</span>
           <span slot="not-allowed">USB access is not allowed in this context.</span>
         </esp-web-install-button>
+        <div class="mobile-flash-note" data-vi="📱 Nạp firmware cần Chrome/Edge trên máy tính." data-en="📱 Firmware flashing requires Chrome/Edge on a computer.">📱 Nạp firmware cần Chrome/Edge trên máy tính.</div>
         <a class="btn secondary" href="firmware/KST-AI-Robot-ST7735.bin" download data-vi="⬇ Tải file .BIN" data-en="⬇ Download .BIN">⬇ Tải file .BIN</a>
       </div>
       <p class="note" data-vi="Chọn đúng cổng USB Serial của ESP32-S3. Không rút cáp trong lúc nạp." data-en="Select the correct ESP32-S3 USB serial port. Do not unplug the cable while flashing.">Chọn đúng cổng USB Serial của ESP32-S3. Không rút cáp trong lúc nạp.</p>
@@ -288,6 +306,20 @@
   <p>© 2026 Kênh Sáng Tạo .COM x Creative Channel · KST Robot AI</p>
   <p>kenhsangtao.github.io/robotai</p>
 </footer>
-<script src="assets/js/app.js"></script>
+
+<script id="kst-esp-web-tools-loader">
+(() => {
+  const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+  if (isMobile) return;
+
+  const script = document.createElement('script');
+  script.type = 'module';
+  script.src = 'https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module';
+  script.onerror = () => console.warn('ESP Web Tools could not be loaded.');
+  document.head.appendChild(script);
+})();
+</script>
+
+<script src="assets/js/app.js?v=20260808-1"></script>
 </body>
 </html>
