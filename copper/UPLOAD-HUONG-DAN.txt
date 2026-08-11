@@ -1,0 +1,3 @@
+UPLOAD: copy toàn bộ nội dung thư mục này vào repo GitHub Pages.
+Nếu muốn giữ chung repo robotai hiện tại: tạo thư mục copper/ rồi upload toàn bộ vào copper/.
+Trang sẽ ở ai.kenhsangtao.com/copper/ nếu custom domain đang trỏ repo robotai.
