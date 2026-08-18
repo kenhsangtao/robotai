@@ -1,0 +1,95 @@
+<svg viewBox="0 0 1000 660" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+<title>So do dau day pin Makita LXT - KST Makita Tool</title>
+
+<defs>
+  <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#4fb0ff"/>
+  </marker>
+  <marker id="arrowO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#ff9f43"/>
+  </marker>
+  <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7d8fa8"/>
+  </marker>
+</defs>
+
+<rect x="0" y="0" width="1000" height="660" fill="#0b1e3a"/>
+
+<text x="500" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Sơ đồ đấu dây pin Makita LXT</text>
+<text x="500" y="62" text-anchor="middle" font-size="13" fill="#a9b7d1">KST Makita Tool — ESP32-S3 (diymore ES3C28P / ES3N28P)</text>
+
+<!-- ESP32-S3 box -->
+<rect x="60" y="140" width="220" height="220" rx="10" fill="#11284d" stroke="#3a9bc4" stroke-width="1.5"/>
+<text x="170" y="170" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">ESP32-S3 Board</text>
+<text x="170" y="188" text-anchor="middle" font-size="10" fill="#a9b7d1">diymore ES3C28P / ES3N28P</text>
+
+<circle cx="280" cy="220" r="3.5" fill="#4fb0ff"/>
+<text x="80" y="224" font-size="13" fill="#e8eef7">GPIO2</text>
+<circle cx="280" cy="260" r="3.5" fill="#4fb0ff"/>
+<text x="80" y="264" font-size="13" fill="#e8eef7">GPIO3</text>
+<circle cx="280" cy="300" r="3.5" fill="#ff9f43"/>
+<text x="80" y="304" font-size="13" fill="#e8eef7">3.3V</text>
+<circle cx="280" cy="340" r="3.5" fill="#7d8fa8"/>
+<text x="80" y="344" font-size="13" fill="#e8eef7">GND</text>
+
+<!-- Makita pack box -->
+<rect x="720" y="140" width="220" height="220" rx="10" fill="#11284d" stroke="#3a9bc4" stroke-width="1.5"/>
+<text x="830" y="170" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Pin Makita LXT 18V</text>
+<text x="830" y="188" text-anchor="middle" font-size="10" fill="#a9b7d1">Yellow Connector</text>
+
+<circle cx="720" cy="220" r="3.5" fill="#4fb0ff"/>
+<text x="740" y="224" font-size="13" fill="#e8eef7">Pin 2 — DATA</text>
+<circle cx="720" cy="260" r="3.5" fill="#4fb0ff"/>
+<text x="740" y="264" font-size="13" fill="#e8eef7">Pin 6 — ENABLE</text>
+<circle cx="720" cy="340" r="3.5" fill="#7d8fa8"/>
+<text x="740" y="344" font-size="13" fill="#e8eef7">B− (cực âm lớn)</text>
+
+<!-- DATA wire with pull-up resistor -->
+<line x1="280" y1="220" x2="720" y2="220" stroke="#4fb0ff" stroke-width="2.2" fill="none" marker-end="url(#arrowB)"/>
+<circle cx="500" cy="220" r="4" fill="#4fb0ff"/>
+
+<!-- resistor zigzag (vertical, from junction up) -->
+<path d="M500,220 L500,205 L492,198 L508,188 L492,178 L508,168 L500,158 L500,145"
+      stroke="#ff9f43" stroke-width="2.2" fill="none" stroke-linejoin="round"/>
+<text x="516" y="180" font-size="13" font-weight="700" fill="#ff9f43">R1</text>
+<text x="516" y="196" font-size="11" fill="#ffcd9a">4.7 kΩ</text>
+<text x="516" y="212" font-size="10" fill="#ffcd9a">(điện trở kéo lên / pull-up)</text>
+
+<!-- 3.3V routed wire to resistor top -->
+<path d="M280,300 L360,300 L360,120 L500,120 L500,145"
+      stroke="#ff9f43" stroke-width="2.2" fill="none" marker-end="url(#arrowO)"/>
+<text x="440" y="112" text-anchor="middle" font-size="11" fill="#ffcd9a">3.3V (kéo lên DATA — TUYỆT ĐỐI không dùng 5V)</text>
+
+<!-- ENABLE wire -->
+<line x1="280" y1="260" x2="720" y2="260" stroke="#4fb0ff" stroke-width="2.2" fill="none" marker-end="url(#arrowB)"/>
+
+<!-- GND wire -->
+<line x1="280" y1="340" x2="720" y2="340" stroke="#7d8fa8" stroke-width="2.2" fill="none" marker-end="url(#arrowG)"/>
+
+<!-- component callout: physical resistor photo-style box -->
+<rect x="430" y="240" width="140" height="0" fill="none"/>
+
+<!-- legend -->
+<rect x="60" y="420" width="420" height="150" rx="10" fill="#11284d" stroke="#2a4370" stroke-width="1.5"/>
+<text x="80" y="448" font-size="14" font-weight="700" fill="#ffffff">Chú thích dây</text>
+<line x1="80" y1="470" x2="115" y2="470" stroke="#4fb0ff" stroke-width="3"/>
+<text x="125" y="475" font-size="12" fill="#e8eef7">Dây tín hiệu (DATA / ENABLE)</text>
+<line x1="80" y1="496" x2="115" y2="496" stroke="#ff9f43" stroke-width="3"/>
+<text x="125" y="501" font-size="12" fill="#e8eef7">Dây nguồn 3.3V (cấp cho điện trở kéo lên)</text>
+<line x1="80" y1="522" x2="115" y2="522" stroke="#7d8fa8" stroke-width="3"/>
+<text x="125" y="527" font-size="12" fill="#e8eef7">Dây GND (nối mát chung)</text>
+<text x="80" y="554" font-size="11" fill="#a9b7d1">Chỉ dùng đầu cắm "Expansion Pins" trên board —</text>
+<text x="80" y="570" font-size="11" fill="#a9b7d1">không dùng nhầm đầu I2C (dành riêng cho cảm ứng).</text>
+
+<!-- safety notes -->
+<rect x="500" y="420" width="440" height="150" rx="10" fill="#2b1c14" stroke="#ff9f43" stroke-width="1.5"/>
+<text x="520" y="448" font-size="14" font-weight="700" fill="#ffcd9a">⚠ Lưu ý an toàn</text>
+<text x="520" y="472" font-size="11.5" fill="#f3d9ba">• Điện trở kéo lên (R1) BẮT BUỘC nối về 3.3V —</text>
+<text x="520" y="488" font-size="11.5" fill="#f3d9ba">  không bao giờ nối vào 5V hay B+/B− của pack pin.</text>
+<text x="520" y="508" font-size="11.5" fill="#f3d9ba">• Chân GPIO của ESP32 không chịu được 5V.</text>
+<text x="520" y="528" font-size="11.5" fill="#f3d9ba">• Xác định đúng Pin 2 / Pin 6 trên đầu Yellow</text>
+<text x="520" y="544" font-size="11.5" fill="#f3d9ba">  connector trước khi đấu dây thật.</text>
+<text x="520" y="564" font-size="11.5" fill="#f3d9ba">• Kiểm tra lại toàn bộ trước khi cấp điện.</text>
+
+<text x="500" y="620" text-anchor="middle" font-size="10" fill="#586b8f">Lắp ráp đúng cách là trách nhiệm của người thực hiện.</text>
+</svg>

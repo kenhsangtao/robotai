@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0d2d4d">
+  <title>KST Makita Tool — Firmware Center</title>
+  <meta name="description" content="KST Makita Tool — công cụ chẩn đoán, xóa lỗi và mở khóa pin Makita LXT 18V trên ESP32-S3.">
+  <link rel="icon" type="image/png" href="assets/images/kst-logo.png">
+  <link rel="apple-touch-icon" href="assets/images/kst-logo.png">
+  <style>
+    :root{--bg:#07111f;--panel:#0d243d;--card:#102b47;--line:#2b5274;--head:#12385f;--txt:#eef6ff;--muted:#a8c8e6;--blue:#55b8ff;--violet:#7357ff;--warn:#ffcf5c;--danger:#ff7474}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.56 Arial,Helvetica,sans-serif}
+    .header{position:sticky;top:0;z-index:999;background:var(--head);border-bottom:1px solid #315d85;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+    .bar{max-width:1220px;margin:auto;min-height:78px;display:flex;align-items:center;gap:18px;padding:10px 18px}
+    .brand-wrap{display:flex;align-items:center;gap:12px;min-width:0}.brand-logo{width:54px;height:54px;object-fit:contain;border-radius:50%;background:white;flex:0 0 auto}
+    .brand{font-size:18px;font-weight:850;white-space:nowrap}.brand small{display:block;color:var(--muted);font-weight:500;font-size:13px}
+    .nav{margin-left:auto;display:flex;align-items:center;gap:18px}.nav a{color:#c7d8e9;text-decoration:none;font-weight:800;white-space:nowrap;padding:8px 3px;border-radius:8px}.nav a:hover,.nav a.active{color:#fff;background:rgba(64,167,255,.13)}
+    .lang{display:flex;background:#0b2239;border:1px solid #315d85;border-radius:12px;padding:3px}.lang button{border:0;background:transparent;color:#c7d8e9;padding:8px 11px;border-radius:9px;font-weight:900;cursor:pointer}.lang button.active{background:#2494ff;color:#fff}
+    .wrap{max-width:1220px;margin:auto;padding:0 18px}section[id]{scroll-margin-top:98px}
+    .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center;padding:76px 0 48px}.kicker{color:#51b8ff;font-weight:900;letter-spacing:2px;margin:0 0 10px}.hero h1{font-size:58px;line-height:1.02;margin:8px 0 18px}.hero h1 span{background:linear-gradient(90deg,#41c2ff,#8b63ff);-webkit-background-clip:text;color:transparent}.lead{font-size:19px;color:#c8d9e9;max-width:720px}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 12px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:13px 20px;border:0;border-radius:14px;text-decoration:none;font-weight:900;color:#fff;background:linear-gradient(90deg,#258fff,#7457ff);cursor:pointer;font:inherit}.btn.secondary{background:#102b47;border:1px solid #315d85}.flash-note{color:#9fc2df;font-size:14px}
+    .hero-card,.panel{background:var(--panel);border:1px solid #294d6d;border-radius:22px}.hero-card{padding:26px}.screen-mock{height:270px;border-radius:18px;background:linear-gradient(145deg,#09121c,#0e2236);border:1px solid #274b69;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;position:relative;overflow:hidden}.screen-mock:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(48,160,255,.25),transparent 65%)}.screen-mock .mock-inner{position:relative;z-index:1}.screen-mock img{width:84px;height:84px;object-fit:contain;border-radius:50%;background:#fff;margin-bottom:12px}.screen-mock b{display:block;font-size:25px}.screen-mock span{color:#91b6d3}.coming{margin-top:14px;padding:12px 14px;border-radius:12px;background:#0b2239;color:#a8c8e6;text-align:center;font-weight:800}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 28px}.stat{padding:24px;background:#102b47;border:1px solid #2a5275;border-radius:18px}.stat strong{font-size:22px}.stat span{display:block;color:#9fc2df;margin-top:4px}
+    .panel{margin:28px 0;padding:30px}.panel h2{text-align:center;font-size:34px;margin:2px 0 24px}.panel-sub{text-align:center;color:#a8c8e6;margin:-12px 0 24px}
+    .features,.parts,.guide{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{padding:20px;background:var(--card);border:1px solid #2a5275;border-radius:18px}.card h3{color:var(--blue);margin:0 0 9px}.card p{margin:6px 0;color:#d8e7f4}.card ul{padding-left:20px;margin:8px 0}.card li{margin:5px 0}.buy{color:#58baff;font-weight:900}.buy-soon{display:inline-block;margin-top:10px;color:#91acc4;font-size:14px;border:1px dashed #486c8b;border-radius:10px;padding:7px 10px}
+    .diagram{width:100%;display:block;background:#fff;border-radius:16px;max-height:900px;object-fit:contain}.diagram-note{margin-top:14px;color:#aac5dd}.safety{border-color:#7e6321;background:#2a2415}.safety h3{color:var(--warn)}
+    .video-placeholder{text-align:center;padding:32px;border:1px dashed #486c8b;border-radius:16px;color:#aac5dd}.code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#071725;border:1px solid #294d6d;padding:3px 7px;border-radius:7px;color:#7dccff}
+    footer{text-align:center;color:#91acc4;padding:42px 20px}.en{display:none}body.enmode .vi{display:none!important}body.enmode .en{display:block}body.enmode span.en{display:inline}body.enmode .nav .en{display:inline}body.enmode .nav .vi{display:none!important}
+    .mobile-flash-note{display:none}
+    @media(max-width:950px){.features,.parts,.guide{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:48px}}
+    @media(max-width:800px){.bar{flex-wrap:wrap}.brand-logo{width:46px;height:46px}.nav{order:3;width:100%;margin:0;overflow-x:auto;gap:12px;padding-bottom:3px}.nav a{padding:7px 4px}.hero{grid-template-columns:1fr;padding-top:42px}.hero h1{font-size:42px}.stats,.features,.parts,.guide{grid-template-columns:1fr}.panel{padding:20px}.wrap{padding:0 14px}.screen-mock{height:235px}}
+    @media(max-width:930px),(hover:none) and (pointer:coarse){esp-web-install-button{display:none!important}.mobile-flash-note{display:inline-flex;align-items:center;min-height:52px;padding:0 16px;border-radius:14px;background:#102b47;border:1px solid #315d85;color:#b9cadd;font-weight:800}}
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="bar">
+    <div class="brand-wrap"><img class="brand-logo" src="assets/images/kst-logo.png" alt="KST"><div class="brand">KST Makita Tool<small>Firmware Center</small></div></div>
+    <nav class="nav">
+      <a href="#firmware">Firmware</a>
+      <a href="#features"><span class="vi">Tính năng</span><span class="en">Features</span></a>
+      <a href="#components"><span class="vi">Linh kiện</span><span class="en">Components</span></a>
+      <a href="#wiring"><span class="vi">Sơ đồ</span><span class="en">Wiring</span></a>
+      <a href="#guide"><span class="vi">Hướng dẫn</span><span class="en">Guide</span></a>
+    </nav>
+    <div class="lang"><button class="active" data-l="vi">VN</button><button data-l="en">EN</button></div>
+  </div>
+</header>
+
+<main class="wrap">
+<section class="hero" id="firmware">
+  <div>
+    <p class="kicker">KÊNH SÁNG TẠO .COM × Creative Channel</p>
+    <div class="vi"><h1>KST Makita Tool<br><span>Xóa lỗi / Mở khóa pin</span></h1><p class="lead">Công cụ chẩn đoán và mở khóa pin Makita LXT 18V chạy trên đúng board diymore ESP32-S3 ES3C28P / ES3N28P, màn hình cảm ứng điện dung 2.8" ILI9341V + FT6336G, 16MB Flash / 8MB PSRAM.</p></div>
+    <div class="en"><h1>KST Makita Tool<br><span>Diagnostic / Unlock</span></h1><p class="lead">Standalone Makita LXT 18V diagnostic/unlock tool for the correct diymore ESP32-S3 ES3C28P / ES3N28P board with 2.8" ILI9341V + FT6336G capacitive touch, 16MB Flash / 8MB PSRAM.</p></div>
+    <div class="buttons">
+      <esp-web-install-button manifest="manifest.json">
+        <button slot="activate" class="btn"><span class="vi">🚀 Nạp firmware</span><span class="en">🚀 Install firmware</span></button>
+        <span slot="unsupported"><span class="vi">Hãy dùng Chrome hoặc Microsoft Edge trên máy tính.</span><span class="en">Please use Chrome or Microsoft Edge on a computer.</span></span>
+      </esp-web-install-button>
+      <div class="mobile-flash-note"><span class="vi">📱 Nạp trực tiếp cần Chrome/Edge trên máy tính.</span><span class="en">📱 Direct flashing requires Chrome/Edge on a computer.</span></div>
+      <a class="btn secondary" href="firmware/firmware.bin" download><span class="vi">⬇ Tải firmware .BIN</span><span class="en">⬇ Download firmware .BIN</span></a>
+    </div>
+    <p class="flash-note"><span class="vi">Firmware đã gộp bootloader + bảng phân vùng + ứng dụng. Nạp tại offset <b>0x0</b>.</span><span class="en">Merged firmware includes bootloader + partition table + app. Flash at offset <b>0x0</b>.</span></p>
+  </div>
+  <aside class="hero-card">
+    <div class="screen-mock"><div class="mock-inner"><img src="assets/images/kst-logo.png" alt="KST"><b>KST Makita Tool</b><span class="vi">Ảnh sản phẩm sẽ cập nhật sau</span><span class="en">Product photo coming soon</span></div></div>
+    <div class="coming"><span class="vi">📷 Khi anh gửi ảnh sản phẩm, chỉ cần thay phần này.</span><span class="en">📷 Product photo can be added later without changing the firmware package.</span></div>
+  </aside>
+</section>
+
+<div class="stats">
+  <div class="stat"><strong>ESP32-S3</strong><span>16MB Flash / 8MB PSRAM</span></div>
+  <div class="stat"><strong>2.8" 240×320</strong><span>ILI9341V + FT6336G Touch</span></div>
+  <div class="stat"><strong>1-Wire</strong><span><span class="vi">Makita LXT 18V</span><span class="en">Makita LXT 18V packs</span></span></div>
+</div>
+
+<section class="panel" id="features">
+  <h2><span class="vi">Tính năng chính</span><span class="en">Main features</span></h2>
+  <div class="features">
+    <article class="card"><h3><span class="vi">🔍 Đọc thông tin pin</span><span class="en">🔍 Battery diagnostics</span></h3><p class="vi">Đọc Model, ROM ID, ngày sản xuất, số lần sạc, điện áp từng cell, nhiệt độ và trạng thái khóa/lỗi.</p><p class="en">Reads model, ROM ID, manufacture date, charge cycles, per-cell voltage, temperature, and lock/error state.</p></article>
+    <article class="card"><h3><span class="vi">🛠 Xóa lỗi / Mở khóa</span><span class="en">🛠 Clear Error / Unlock</span></h3><p class="vi">Thao tác trực tiếp trên màn hình cảm ứng hoặc qua trang điều khiển Wi-Fi.</p><p class="en">Operate directly from the touchscreen or from the Wi-Fi control page.</p></article>
+    <article class="card"><h3><span class="vi">💡 Điều khiển LED pack</span><span class="en">💡 Pack LED control</span></h3><p class="vi">Bật/tắt LED tích hợp trên pack pin Makita hỗ trợ.</p><p class="en">Toggle the built-in LED on supported Makita battery packs.</p></article>
+    <article class="card"><h3>🌐 Wi-Fi</h3><p><b>KST-MAKITA-TOOL</b><br><span class="vi">Mật khẩu:</span><span class="en">Password:</span> <b>makita1234</b><br>192.168.4.1</p></article>
+    <article class="card"><h3><span class="vi">🌏 Song ngữ</span><span class="en">🌏 Bilingual UI</span></h3><p class="vi">Tiếng Việt / English trên cả màn cảm ứng và trang web điều khiển.</p><p class="en">Vietnamese / English on both the touchscreen and Wi-Fi web interface.</p></article>
+    <article class="card"><h3><span class="vi">💤 Ngủ sâu</span><span class="en">💤 Deep sleep</span></h3><p class="vi">Giữ BOOT 2 giây để ngủ sâu; bấm BOOT lần nữa để đánh thức.</p><p class="en">Hold BOOT for 2 seconds to enter deep sleep; press BOOT again to wake.</p></article>
+  </div>
+</section>
+
+<section class="panel" id="components">
+  <h2><span class="vi">📦 Danh sách linh kiện</span><span class="en">📦 Bill of Materials</span></h2>
+  <p class="panel-sub"><span class="vi">Các linh kiện chính dùng để làm KST Makita Tool. Bấm <b>Mua ngay</b> để xem sản phẩm.</span><span class="en">Main parts used to build the KST Makita Tool. Click <b>Buy now</b> to view each product.</span></p>
+  <div class="parts">
+    <article class="card"><h3><span class="vi">🧠 ĐÚNG BẢN: diymore ESP32-S3 + màn cảm ứng 2.8"</span><span class="en">🧠 REQUIRED BOARD: diymore ESP32-S3 + 2.8" touch display</span></h3><p><b>diymore ESP32-S3 ES3C28P / ES3N28P</b><br>ILI9341V 2.8" 240×320 · FT6336G cảm ứng điện dung / capacitive touch · 16MB Flash · 8MB PSRAM</p><p><span class="vi">Mua tại đây: </span><span class="en">Buy here: </span><a class="buy" href="https://s.shopee.vn/5Arlpb69OD" target="_blank" rel="noopener sponsored"><span class="vi">Mua ngay</span><span class="en">Buy now</span></a></p></article>
+
+    <article class="card"><h3><span class="vi">🔌 Dây kết nối Makita</span><span class="en">🔌 Makita connector cable</span></h3><p><span class="vi">Dây/đầu kết nối dùng lấy DATA và ENABLE từ cổng vàng của pack Makita.</span><span class="en">Connector cable used to access DATA and ENABLE from the Makita pack's yellow connector.</span></p><p><span class="vi">Mua tại đây: </span><span class="en">Buy here: </span><a class="buy" href="https://s.shopee.vn/9fKBBoN0wi" target="_blank" rel="noopener sponsored"><span class="vi">Mua ngay</span><span class="en">Buy now</span></a></p></article>
+
+    <article class="card"><h3><span class="vi">🔋 Đế pin Makita</span><span class="en">🔋 Makita battery base</span></h3><p><span class="vi">Đế gài pin Makita LXT 14.4V/18V dùng để lắp bộ tool thành một khối gọn gàng.</span><span class="en">Makita LXT 14.4V/18V battery base for mounting the tool as a compact standalone unit.</span></p><p><span class="vi">Mua tại đây: </span><span class="en">Buy here: </span><a class="buy" href="https://s.shopee.vn/5VUcEGLPFU" target="_blank" rel="noopener sponsored"><span class="vi">Mua ngay</span><span class="en">Buy now</span></a></p></article>
+
+    <article class="card"><h3>Ω 4.7 kΩ</h3><p><span class="vi">1 điện trở 4.7kΩ kéo đường DATA lên <b>3.3V</b>.</span><span class="en">One 4.7kΩ resistor used to pull the DATA line up to <b>3.3V</b>.</span></p><p><span class="vi">Mua tại đây: </span><span class="en">Buy here: </span><a class="buy" href="https://s.shopee.vn/6VN9QDJrIa" target="_blank" rel="noopener sponsored"><span class="vi">Mua ngay</span><span class="en">Buy now</span></a></p></article>
+
+    <article class="card"><h3><span class="vi">🧱 Box in 3D</span><span class="en">🧱 3D-printed enclosure</span></h3><p><span class="vi">Vỏ/box in 3D dành riêng cho KST Makita Tool.</span><span class="en">Custom 3D-printed enclosure for the KST Makita Tool.</span></p><span class="buy-soon"><span class="vi">File 3D: sẽ cập nhật sau</span><span class="en">3D file: coming soon</span></span></article>
+
+    <article class="card"><h3>🔋 Makita LXT 18V</h3><p>BL1815 / BL1820B / BL1830B / BL1850B <span class="vi">hoặc pack tương thích để kiểm tra.</span><span class="en">or a compatible pack for testing.</span></p></article>
+
+    <article class="card"><h3>🔋 Li-Po 3.7V <span class="vi">(tùy chọn)</span><span class="en">(optional)</span></h3><p><span class="vi">Pin JST-PH 2 chân giúp board chạy độc lập. Board có sẵn mạch sạc TP4054.</span><span class="en">2-pin JST-PH battery for standalone operation. The board has a built-in TP4054 charger.</span></p><p><span class="vi">Mua tại đây: </span><span class="en">Buy here: </span><a class="buy" href="https://s.shopee.vn/4Vc52leAkv" target="_blank" rel="noopener sponsored"><span class="vi">Mua ngay</span><span class="en">Buy now</span></a></p></article>
+
+    
+  </div>
+</section>
+
+<section class="panel" id="wiring">
+  <h2><span class="vi">Sơ đồ đấu nối</span><span class="en">Wiring diagram</span></h2>
+  <div class="vi"><img class="diagram" src="docs/wiring_diagram.svg" alt="Sơ đồ đấu nối KST Makita Tool"></div>
+  <div class="en"><img class="diagram" src="docs/wiring_diagram_en.svg" alt="KST Makita Tool wiring diagram"></div>
+  <p class="diagram-note vi"><b>Expansion Pins:</b> DATA → GPIO2, ENABLE → GPIO3, B- → GND. Điện trở 4.7kΩ kéo DATA lên <b>3.3V</b>. Không dùng nhầm đầu I2C.</p>
+  <p class="diagram-note en"><b>Expansion Pins:</b> DATA → GPIO2, ENABLE → GPIO3, B- → GND. Pull DATA up to <b>3.3V</b> through 4.7kΩ. Do not use the I2C header.</p>
+</section>
+
+<section class="panel" id="guide">
+  <h2><span class="vi">Hướng dẫn sử dụng</span><span class="en">Setup & usage guide</span></h2>
+  <div class="guide">
+    <article class="card"><h3><span class="vi">1. Nạp firmware</span><span class="en">1. Flash firmware</span></h3><p class="vi">Dùng nút <b>Nạp firmware</b> ở đầu trang trên Chrome/Edge máy tính, hoặc tải <span class="code">firmware.bin</span>. File đã gộp và nạp tại <b>0x0</b>.</p><p class="en">Use the <b>Install firmware</b> button in desktop Chrome/Edge, or download <span class="code">firmware.bin</span>. It is a merged image flashed at <b>0x0</b>.</p></article>
+    <article class="card"><h3><span class="vi">2. Đấu pack Makita</span><span class="en">2. Connect the Makita pack</span></h3><p class="vi">Dùng đầu <b>Expansion Pins</b>: DATA → GPIO2, ENABLE → GPIO3, B- → GND. Điện trở 4.7kΩ kéo DATA lên 3.3V.</p><p class="en">Use the <b>Expansion Pins</b> header: DATA → GPIO2, ENABLE → GPIO3, B- → GND. Pull DATA up to 3.3V with 4.7kΩ.</p></article>
+    <article class="card"><h3><span class="vi">3. Dùng màn cảm ứng</span><span class="en">3. Touchscreen</span></h3><p class="vi">Các nút chính: <b>XÓA LỖI</b>, <b>MỞ KHÓA</b>, <b>LED</b>, <b>ĐỌC PIN</b>. Có nút đổi VN/EN.</p><p class="en">Main buttons: <b>CLEAR ERROR</b>, <b>UNLOCK</b>, <b>LED</b>, <b>READ</b>. VI/EN language toggle is available.</p></article>
+    <article class="card"><h3><span class="vi">4. Điều khiển qua Wi-Fi</span><span class="en">4. Wi-Fi control</span></h3><p class="vi">Kết nối <b>KST-MAKITA-TOOL</b>, mật khẩu <b>makita1234</b>, sau đó mở <b>192.168.4.1</b>.</p><p class="en">Connect to <b>KST-MAKITA-TOOL</b>, password <b>makita1234</b>, then open <b>192.168.4.1</b>.</p></article>
+    <article class="card"><h3><span class="vi">5. Ngủ sâu</span><span class="en">5. Deep sleep</span></h3><p class="vi">Giữ nút BOOT khoảng 2 giây để tắt màn hình/Wi-Fi và tiết kiệm pin. Bấm BOOT lần nữa để khởi động.</p><p class="en">Hold BOOT for about 2 seconds to turn off the screen/Wi-Fi and save power. Press BOOT again to restart.</p></article>
+    <article class="card safety"><h3><span class="vi">⚠️ An toàn</span><span class="en">⚠️ Safety</span></h3><p class="vi">Điện trở kéo lên DATA <b>chỉ được nối 3.3V</b>; tuyệt đối không nối 5V hoặc B+/B-. GPIO ESP32 không chịu được 5V.</p><p class="en">The DATA pull-up must connect to <b>3.3V only</b>; never connect it to 5V or B+/B-. ESP32 GPIOs are not 5V-tolerant.</p></article>
+  </div>
+</section>
+
+<section class="panel">
+  <h2><span class="vi">Video & ảnh sản phẩm</span><span class="en">Video & product photos</span></h2>
+  <div class="video-placeholder"><span class="vi">📷🎬 Chưa có ảnh sản phẩm và link video. Khi anh gửi, chỉ cần cập nhật <b>index.html</b>.</span><span class="en">📷🎬 Product photos and video links are not available yet. They can be added later by updating <b>index.html</b>.</span></div>
+</section>
+</main>
+
+<footer>© 2026 Kênh Sáng Tạo .COM × Creative Channel · KST Makita Tool</footer>
+
+<script>
+  const buttons=[...document.querySelectorAll('.lang button')];
+  const navLinks=[...document.querySelectorAll('.nav a')];
+  function setLang(l){document.body.classList.toggle('enmode',l==='en');document.documentElement.lang=l;buttons.forEach(b=>b.classList.toggle('active',b.dataset.l===l));localStorage.setItem('kst-makita-lang',l)}
+  buttons.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
+  setLang(localStorage.getItem('kst-makita-lang')||'vi');
+  if('IntersectionObserver' in window){const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-24% 0px -66% 0px'});document.querySelectorAll('section[id]').forEach(sec=>obs.observe(sec));}
+</script>
+<script id="kst-esp-web-tools-loader">
+(() => {
+  const isMobile=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+  if(isMobile) return;
+  const script=document.createElement('script');
+  script.type='module';
+  script.src='https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module';
+  script.onerror=()=>console.warn('ESP Web Tools could not be loaded.');
+  document.head.appendChild(script);
+})();
+</script>
+</body></html>
