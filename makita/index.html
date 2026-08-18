@@ -33,43 +33,136 @@
     @media(max-width:930px),(hover:none) and (pointer:coarse){esp-web-install-button{display:none!important}.mobile-flash-note{display:inline-flex;align-items:center;min-height:52px;padding:0 16px;border-radius:14px;background:#102b47;border:1px solid #315d85;color:#b9cadd;font-weight:800}}
   </style>
 
-<style id="kst-mobile-no-header">
-  .mobile-lang-lite{display:none}
+<style id="kst-light-header">
+  .header{
+    position:relative !important;
+    top:auto !important;
+    z-index:20 !important;
+    background:#12385f !important;
+    border-bottom:1px solid #315d85 !important;
+    box-shadow:none !important;
+  }
+  .bar{
+    max-width:1220px !important;
+    margin:0 auto !important;
+    min-height:76px !important;
+    padding:10px 18px !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:18px !important;
+    overflow:visible !important;
+  }
+  .brand-wrap{
+    display:flex !important;
+    align-items:center !important;
+    gap:12px !important;
+    min-width:0 !important;
+  }
+  .brand-logo{
+    width:54px !important;
+    height:54px !important;
+    object-fit:contain !important;
+    flex:0 0 auto !important;
+  }
+  .brand{
+    font-size:18px !important;
+    font-weight:800 !important;
+    line-height:1.2 !important;
+    white-space:nowrap !important;
+  }
+  .brand small{
+    display:block !important;
+    margin-top:4px !important;
+    color:#a8c8e6 !important;
+    font-size:13px !important;
+    font-weight:500 !important;
+  }
+  .nav{
+    margin-left:auto !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:18px !important;
+  }
+  .nav a{
+    color:#c7d8e9 !important;
+    text-decoration:none !important;
+    font-weight:800 !important;
+    white-space:nowrap !important;
+    padding:7px 3px !important;
+    background:transparent !important;
+  }
+  .nav a:hover,
+  .nav a.active{
+    color:#fff !important;
+  }
+  .lang{
+    display:flex !important;
+    flex:0 0 auto !important;
+    background:#0b2239 !important;
+    border:1px solid #315d85 !important;
+    border-radius:12px !important;
+    padding:3px !important;
+  }
+  .lang button{
+    border:0 !important;
+    background:transparent !important;
+    color:#c7d8e9 !important;
+    padding:8px 11px !important;
+    border-radius:9px !important;
+    font-weight:900 !important;
+  }
+  .lang button.active{
+    background:#2494ff !important;
+    color:#fff !important;
+  }
 
-  @media (max-width: 800px), (hover:none) and (pointer:coarse) {
-    .header{
-      display:none !important;
-      position:static !important;
+  @media(max-width:800px){
+    .bar{
+      min-height:auto !important;
+      padding:10px 12px !important;
+      flex-wrap:wrap !important;
+      gap:8px 12px !important;
     }
+    .brand-logo{
+      width:42px !important;
+      height:42px !important;
+    }
+    .brand{
+      font-size:15px !important;
+    }
+    .brand small{
+      font-size:11px !important;
+    }
+    .lang{
+      margin-left:auto !important;
+      order:2 !important;
+    }
+    .nav{
+      order:3 !important;
+      width:100% !important;
+      margin:0 !important;
+      gap:14px !important;
+      overflow-x:auto !important;
+      padding:2px 0 3px !important;
+      scrollbar-width:none !important;
+    }
+    .nav::-webkit-scrollbar{display:none !important;}
+    .nav a{
+      font-size:14px !important;
+      flex:0 0 auto !important;
+    }
+  }
+</style>
 
-    section[id]{
-      scroll-margin-top:12px !important;
-    }
 
-    .hero{
-      padding-top:24px !important;
-    }
-
-    .mobile-lang-lite{
-      display:flex;
-      justify-content:flex-end;
-      gap:4px;
-      margin:0 0 18px;
-    }
-
-    .mobile-lang-lite button{
-      border:1px solid #315d85;
-      background:#0b2239;
-      color:#c7d8e9;
-      padding:8px 12px;
-      border-radius:10px;
-      font-weight:900;
-    }
-
-    .mobile-lang-lite button.active{
-      background:#2494ff;
-      color:#fff;
-    }
+<style id="kst-header-no-sticky">
+  .header{
+    position:relative !important;
+    top:auto !important;
+    left:auto !important;
+    right:auto !important;
+    transform:none !important;
+    will-change:auto !important;
   }
 </style>
 
@@ -91,10 +184,6 @@
 
 <main class="wrap">
 <section class="hero" id="firmware">
-  <div class="mobile-lang-lite">
-    <button class="active" data-mobile-l="vi">VN</button>
-    <button data-mobile-l="en">EN</button>
-  </div>
   <div>
     <p class="kicker">KÊNH SÁNG TẠO .COM × Creative Channel</p>
 
@@ -253,29 +342,6 @@
     mount.innerHTML = '<span style="color:#a8c8e6;font-weight:700">ESP Web Tools unavailable</span>';
   };
   document.head.appendChild(script);
-})();
-</script>
-
-
-<script id="kst-mobile-lang-sync">
-(() => {
-  const mobileButtons = Array.from(document.querySelectorAll('[data-mobile-l]'));
-  if (!mobileButtons.length) return;
-
-  const sync = () => {
-    const en = document.body.classList.contains('enmode');
-    mobileButtons.forEach(b => b.classList.toggle('active', b.dataset.mobileL === (en ? 'en' : 'vi')));
-  };
-
-  mobileButtons.forEach(b => {
-    b.addEventListener('click', () => {
-      const target = document.querySelector('.lang button[data-l="' + b.dataset.mobileL + '"]');
-      if (target) target.click();
-      sync();
-    });
-  });
-
-  sync();
 })();
 </script>
 
