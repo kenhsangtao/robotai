@@ -8,7 +8,7 @@
   <meta name="description" content="KST Makita Tool — công cụ chẩn đoán, xóa lỗi và mở khóa pin Makita LXT 18V trên ESP32-S3.">
   <link rel="icon" type="image/png" href="assets/images/kst-logo.png">
   <link rel="apple-touch-icon" href="assets/images/kst-logo.png">
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=mQ_NsGxzVVb5Q8cESW_o8aA1ylhFoozNayHx9yUV5aexJmO9cpTgjnXQFnM-rjdbl0SbICX-n5S9omVmjNrjQn48oh3gIxxjA1x8ssAus-DBcvUdQnrD5RdrXZDr7XgMYNHsLxnQXjve-_E9S_xTAZobfpe6WNEbk3Nhyw3qwlNL-FU3Av8GZwLJY3km3HgO2Ep4Hkrj5wgltORfAJy5BJIa-tBpSnFjUoQUp-EIo7gdG8ianVYf_uZ8pbsN0RbOVbwRUXkXsejYpccLKnb5KRyHqb4QevpjygX4dmX6oWuC6n_b_jbcpw48RX6KAUU1cbaoZp8-mQu6XqlopSXWLw" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMDY3YTg4MjA5YWVjYzBkNjk3MTc2NGE0OSZmbj1pbmRleCUyODIwMjYwODE4LTAxMjg1NCUyOS5odG1sJmNkPWF0dGFjaG1lbnQmdHM9NDk2MzkzJnA9ZnMmY2lkPTEmc2lnPWNiNDQyYjQ3ODFlYTYzMTkyZTkwZjkxMTk4YTdhZmUxYmE4MTI2NjhmMjFiYTM3NWU4ODliN2Q3ODJiN2M0MjUmdj0w"/><style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=lAHYk4CIGPzuRCqcNVfeBjEKyNdLK270pZPgVAuYuKItn_CChOX5U16kSCT63gq9liOnK8zh5YfNQfYgZjyNO_2_Oxso-waC3idQTD0B9YLTMOx1JmmA7T4nRVv4qd-gb1NaMYDMpNqV2vGGIlR2B9O6Lofdtitug_CUzhuWWlRijhn0RgbPiG_bPYtLhBEZrIghTAQoITUxifxOUD8CxlGGw1dah36y-ZPos2qSqZgcLoVYC0gx7F-1aok8070S9ia_HLHrnWHjwFbk0dnB6yWJY5iPuEU9gcgojuzOyhI9cOyCwZMnSHo35FsdLv3fI82tkbwb6Kua7HTwl7nxRA" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMDFkMWM4MjBiYmJkMTM0ZmU1NWViYWQ3NiZmbj1pbmRleCUyODIwMjYwODE4LTAzMDcyMSUyOS5odG1sJmNkPWF0dGFjaG1lbnQmdHM9NDk2Mzk1JnA9ZnMmY2lkPTEmc2lnPTg5YjA1NzkyNTZiZDBmNmY0ODMxZDllMDVjZTdlMTFiYTA0ZGEyMzkzZDVjMDhlMzcxYWMwZTEyM2FjMmRhYjcmdj0w"/><style>
     :root{--bg:#07111f;--panel:#0d243d;--card:#102b47;--line:#2b5274;--head:#12385f;--txt:#eef6ff;--muted:#a8c8e6;--blue:#55b8ff;--violet:#7357ff;--warn:#ffcf5c;--danger:#ff7474}
     *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.56 Arial,Helvetica,sans-serif}
     .header{position:sticky;top:0;z-index:999;background:var(--head);border-bottom:1px solid #315d85;box-shadow:0 6px 20px rgba(0,0,0,.18)}
@@ -18,10 +18,10 @@
     .nav{margin-left:auto;display:flex;align-items:center;gap:18px}.nav a{color:#c7d8e9;text-decoration:none;font-weight:800;white-space:nowrap;padding:8px 3px;border-radius:8px}.nav a:hover,.nav a.active{color:#fff;background:rgba(64,167,255,.13)}
     .lang{display:flex;background:#0b2239;border:1px solid #315d85;border-radius:12px;padding:3px}.lang button{border:0;background:transparent;color:#c7d8e9;padding:8px 11px;border-radius:9px;font-weight:900;cursor:pointer}.lang button.active{background:#2494ff;color:#fff}
     .wrap{max-width:1220px;margin:auto;padding:0 18px}section[id]{scroll-margin-top:98px}
-    .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center;padding:76px 0 48px}.kicker{color:#51b8ff;font-weight:900;letter-spacing:2px;margin:0 0 10px}.hero h1{font-size:58px;line-height:1.02;margin:8px 0 18px}.hero h1 span{background:linear-gradient(90deg,#41c2ff,#8b63ff);-webkit-background-clip:text;color:transparent}.lead{font-size:19px;color:#c8d9e9;max-width:720px}
+    .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:38px;align-items:center;padding:64px 0 44px}.kicker{color:#51b8ff;font-weight:900;letter-spacing:2px;margin:0 0 10px}.hero h1{font-size:58px;line-height:1.02;margin:8px 0 18px}.hero h1 span{background:linear-gradient(90deg,#41c2ff,#8b63ff);-webkit-background-clip:text;color:transparent}.lead{font-size:19px;color:#c8d9e9;max-width:720px}
     .buttons{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 12px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:13px 20px;border:0;border-radius:14px;text-decoration:none;font-weight:900;color:#fff;background:linear-gradient(90deg,#258fff,#7457ff);cursor:pointer;font:inherit}.btn.secondary{background:#102b47;border:1px solid #315d85}.flash-note{color:#9fc2df;font-size:14px}.free-firmware{margin:12px 0 0;padding:12px 16px;border-radius:12px;background:rgba(37,143,255,.10);border:1px solid rgba(85,184,255,.35);color:#dff2ff;font-size:15px}
-    .hero-card,.panel{background:var(--panel);border:1px solid #294d6d;border-radius:22px}.hero-card{padding:26px}.screen-mock{height:270px;border-radius:18px;background:linear-gradient(145deg,#09121c,#0e2236);border:1px solid #274b69;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;position:relative;overflow:hidden}.screen-mock:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(48,160,255,.25),transparent 65%)}.screen-mock .mock-inner{position:relative;z-index:1}.screen-mock img{width:84px;height:84px;object-fit:contain;border-radius:50%;background:#fff;margin-bottom:12px}.screen-mock b{display:block;font-size:25px}.screen-mock span{color:#91b6d3}.coming{margin-top:14px;padding:12px 14px;border-radius:12px;background:#0b2239;color:#a8c8e6;text-align:center;font-weight:800}
-    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 28px}.stat{padding:24px;background:#102b47;border:1px solid #2a5275;border-radius:18px}.stat strong{font-size:22px}.stat span{display:block;color:#9fc2df;margin-top:4px}
+    .hero-card,.panel{background:var(--panel);border:1px solid #294d6d;border-radius:22px}.hero-card{padding:0;overflow:hidden;background:#0d243d}.hero-placeholder{min-height:310px;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;background:#0a1c30}.hero-placeholder img{width:82px;height:82px;object-fit:contain;border-radius:50%;background:white;margin-bottom:12px}.hero-placeholder b{display:block;font-size:24px}.hero-placeholder span{color:#91b6d3}.hero-caption{padding:14px 18px;color:#c9dced;font-weight:800;border-top:1px solid #294d6d}
+    
     .panel{margin:28px 0;padding:30px}.panel h2{text-align:center;font-size:34px;margin:2px 0 24px}.panel-sub{text-align:center;color:#a8c8e6;margin:-12px 0 24px}
     .features,.parts,.guide{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{padding:20px;background:var(--card);border:1px solid #2a5275;border-radius:18px}.card h3{color:var(--blue);margin:0 0 9px}.card p{margin:6px 0;color:#d8e7f4}.card ul{padding-left:20px;margin:8px 0}.card li{margin:5px 0}.buy{color:#58baff;font-weight:900}.buy-soon{display:inline-block;margin-top:10px;color:#91acc4;font-size:14px;border:1px dashed #486c8b;border-radius:10px;padding:7px 10px}
     .diagram{width:100%;display:block;background:#fff;border-radius:16px;max-height:900px;object-fit:contain}.diagram-actions{display:flex;justify-content:center;margin:16px 0 0}.diagram-note{margin-top:14px;color:#aac5dd}.btn.diagram-btn{min-height:54px;padding:14px 26px;border:1px solid #315d85;background:#102b47;box-shadow:inset 0 0 0 1px rgba(255,255,255,.03)}.btn.diagram-btn:hover{background:#143251}.safety{border-color:#7e6321;background:#2a2415}.safety h3{color:var(--warn)}
@@ -29,7 +29,7 @@
     footer{text-align:center;color:#91acc4;padding:42px 20px}.en{display:none}body.enmode .vi{display:none!important}body.enmode .en{display:block}body.enmode span.en{display:inline}body.enmode .nav .en{display:inline}body.enmode .nav .vi{display:none!important}
     .mobile-flash-note{display:none}
     @media(max-width:950px){.features,.parts,.guide{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:48px}}
-    @media(max-width:800px){.bar{flex-wrap:wrap}.brand-logo{width:46px;height:46px}.nav{order:3;width:100%;margin:0;overflow-x:auto;gap:12px;padding-bottom:3px}.nav a{padding:7px 4px}.hero{grid-template-columns:1fr;padding-top:42px}.hero h1{font-size:42px}.stats,.features,.parts,.guide{grid-template-columns:1fr}.panel{padding:20px}.wrap{padding:0 14px}.screen-mock{height:235px}}
+    @media(max-width:800px){.bar{flex-wrap:wrap}.brand-logo{width:46px;height:46px}.nav{order:3;width:100%;margin:0;overflow-x:auto;gap:12px;padding-bottom:3px}.nav a{padding:7px 4px}.hero{grid-template-columns:1fr;padding-top:38px}.hero h1{font-size:42px}.hero-card{display:none}.stats,.features,.parts,.guide{grid-template-columns:1fr}.panel{padding:20px}.wrap{padding:0 14px}.screen-mock{height:235px}}
     @media(max-width:930px),(hover:none) and (pointer:coarse){esp-web-install-button{display:none!important}.mobile-flash-note{display:inline-flex;align-items:center;min-height:52px;padding:0 16px;border-radius:14px;background:#102b47;border:1px solid #315d85;color:#b9cadd;font-weight:800}}
   </style>
 </head>
@@ -52,22 +52,53 @@
 <section class="hero" id="firmware">
   <div>
     <p class="kicker">KÊNH SÁNG TẠO .COM × Creative Channel</p>
-    <div class="vi"><h1>KST Makita Tool<br><span>Xóa lỗi / Mở khóa pin</span></h1><p class="lead">Công cụ chẩn đoán và mở khóa pin Makita LXT 18V chạy trên đúng board diymore ESP32-S3 ES3C28P / ES3N28P, màn hình cảm ứng điện dung 2.8" ILI9341V + FT6336G, 16MB Flash / 8MB PSRAM.</p></div>
-    <div class="en"><h1>KST Makita Tool<br><span>Diagnostic / Unlock</span></h1><p class="lead">Standalone Makita LXT 18V diagnostic/unlock tool for the correct diymore ESP32-S3 ES3C28P / ES3N28P board with 2.8" ILI9341V + FT6336G capacitive touch, 16MB Flash / 8MB PSRAM.</p></div>
-    <div class="buttons">
-      <esp-web-install-button manifest="manifest.json">
-        <button slot="activate" class="btn"><span class="vi">🚀 Nạp firmware</span><span class="en">🚀 Install firmware</span></button>
-        <span slot="unsupported"><span class="vi">Hãy dùng Chrome hoặc Microsoft Edge trên máy tính.</span><span class="en">Please use Chrome or Microsoft Edge on a computer.</span></span>
-      </esp-web-install-button>
-      <div class="mobile-flash-note"><span class="vi">📱 Nạp trực tiếp cần Chrome/Edge trên máy tính.</span><span class="en">📱 Direct flashing requires Chrome/Edge on a computer.</span></div>
-      <a class="btn secondary" href="firmware/firmware.bin" download><span class="vi">⬇ Tải firmware .BIN</span><span class="en">⬇ Download firmware .BIN</span></a>
+
+    <div class="vi">
+      <h1>Nạp firmware<br><span>KST Makita Tool</span></h1>
+      <p class="lead">Dành cho đúng board <b>diymore ESP32-S3 ES3C28P / ES3N28P</b>, màn hình cảm ứng 2.8" ILI9341V + FT6336G, 16MB Flash / 8MB PSRAM.</p>
     </div>
-    <p class="flash-note"><span class="vi">Firmware đã gộp bootloader + bảng phân vùng + ứng dụng. Nạp tại offset <b>0x0</b>.</span><span class="en">Merged firmware includes bootloader + partition table + app. Flash at offset <b>0x0</b>.</span></p>
-    <p class="free-firmware"><span class="vi">🎁 <b>Firmware hoàn toàn miễn phí</b> dành cho anh em Fans Kênh Sáng Tạo.</span><span class="en">🎁 <b>Firmware is completely free</b> for Creative Channel fans.</span></p>
+
+    <div class="en">
+      <h1>Install firmware<br><span>KST Makita Tool</span></h1>
+      <p class="lead">For the correct <b>diymore ESP32-S3 ES3C28P / ES3N28P</b> board with 2.8" ILI9341V + FT6336G capacitive touch, 16MB Flash / 8MB PSRAM.</p>
+    </div>
+
+    <div class="buttons">
+      <div id="desktop-flash-button"></div>
+      <div class="mobile-flash-note">
+        <span class="vi">📱 Nạp trực tiếp cần Chrome/Edge trên máy tính.</span>
+        <span class="en">📱 Direct flashing requires Chrome/Edge on a computer.</span>
+      </div>
+      <a class="btn secondary" href="firmware/firmware.bin" download>
+        <span class="vi">⬇ Tải firmware .BIN</span>
+        <span class="en">⬇ Download firmware .BIN</span>
+      </a>
+    </div>
+
+    <p class="flash-note">
+      <span class="vi">Firmware đã gộp sẵn, nạp tại offset <b>0x0</b>. Không rút cáp trong lúc nạp.</span>
+      <span class="en">Merged firmware, flash at offset <b>0x0</b>. Do not unplug while flashing.</span>
+    </p>
+
+    <p class="free-firmware">
+      <span class="vi">🎁 <b>Firmware hoàn toàn miễn phí</b> dành cho anh em Fans Kênh Sáng Tạo.</span>
+      <span class="en">🎁 <b>Firmware is completely free</b> for Creative Channel fans.</span>
+    </p>
   </div>
+
   <aside class="hero-card">
-    <div class="screen-mock"><div class="mock-inner"><img src="assets/images/kst-logo.png" alt="KST"><b>KST Makita Tool</b><span class="vi">Ảnh sản phẩm sẽ cập nhật sau</span><span class="en">Product photo coming soon</span></div></div>
-    <div class="coming"><span class="vi">📷 Khi anh gửi ảnh sản phẩm, chỉ cần thay phần này.</span><span class="en">📷 Product photo can be added later without changing the firmware package.</span></div>
+    <div class="hero-placeholder">
+      <div>
+        <img src="assets/images/kst-logo.png" alt="KST">
+        <b>KST Makita Tool</b>
+        <span class="vi">Ảnh sản phẩm sẽ cập nhật sau</span>
+        <span class="en">Product photo coming soon</span>
+      </div>
+    </div>
+    <div class="hero-caption">
+      <span class="vi">KST Makita Tool — Xóa lỗi / Mở khóa pin Makita LXT 18V</span>
+      <span class="en">KST Makita Tool — Makita LXT 18V Diagnostic / Unlock</span>
+    </div>
   </aside>
 </section>
 
@@ -108,11 +139,11 @@
 <section class="panel" id="wiring">
   <h2><span class="vi">Sơ đồ đấu nối</span><span class="en">Wiring diagram</span></h2>
   <div class="vi">
-    <img class="diagram" src="docs/wiring_diagram.svg" alt="Sơ đồ đấu nối KST Makita Tool">
+    <img class="diagram" loading="lazy" decoding="async" src="docs/wiring_diagram.svg" alt="Sơ đồ đấu nối KST Makita Tool">
     <div class="diagram-actions"><a class="btn diagram-btn" href="docs/wiring_diagram.svg" target="_blank" rel="noopener">🔎 Mở sơ đồ tiếng Việt toàn màn hình</a></div>
   </div>
   <div class="en">
-    <img class="diagram" src="docs/wiring_diagram_en.svg" alt="KST Makita Tool wiring diagram">
+    <img class="diagram" loading="lazy" decoding="async" src="docs/wiring_diagram_en.svg" alt="KST Makita Tool wiring diagram">
     <div class="diagram-actions"><a class="btn diagram-btn" href="docs/wiring_diagram_en.svg" target="_blank" rel="noopener">🔎 Open English wiring diagram full screen</a></div>
   </div>
   <p class="diagram-note vi"><b>Expansion Pins:</b> DATA → GPIO2, ENABLE → GPIO3, B- → GND. Điện trở 4.7kΩ kéo DATA lên <b>3.3V</b>. Không dùng nhầm đầu I2C.</p>
@@ -147,15 +178,37 @@
   setLang(localStorage.getItem('kst-makita-lang')||'vi');
   if('IntersectionObserver' in window){const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-24% 0px -66% 0px'});document.querySelectorAll('section[id]').forEach(sec=>obs.observe(sec));}
 </script>
+
+
 <script id="kst-esp-web-tools-loader">
 (() => {
-  const isMobile=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
-  if(isMobile) return;
-  const script=document.createElement('script');
-  script.type='module';
-  script.src='https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module';
-  script.onerror=()=>console.warn('ESP Web Tools could not be loaded.');
+  const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
+    || (window.matchMedia && window.matchMedia('(hover:none) and (pointer:coarse)').matches);
+
+  if (isMobile) return;
+
+  const mount = document.getElementById('desktop-flash-button');
+  if (!mount) return;
+
+  mount.innerHTML = `
+    <esp-web-install-button manifest="manifest.json">
+      <button slot="activate" class="btn">
+        <span class="vi">🚀 Nạp firmware</span>
+        <span class="en">🚀 Install firmware</span>
+      </button>
+      <span slot="unsupported">Please use Chrome or Microsoft Edge on a computer.</span>
+      <span slot="not-allowed">USB access is not allowed in this context.</span>
+    </esp-web-install-button>`;
+
+  const script = document.createElement('script');
+  script.type = 'module';
+  script.src = 'https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module';
+  script.onerror = () => {
+    console.warn('ESP Web Tools could not be loaded.');
+    mount.innerHTML = '<span style="color:#a8c8e6;font-weight:700">ESP Web Tools unavailable</span>';
+  };
   document.head.appendChild(script);
 })();
 </script>
+
 </body></html>
