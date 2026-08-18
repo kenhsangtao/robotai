@@ -8,7 +8,7 @@
   <meta name="description" content="KST Makita Tool — công cụ chẩn đoán, xóa lỗi và mở khóa pin Makita LXT 18V trên ESP32-S3.">
   <link rel="icon" type="image/png" href="assets/images/kst-logo.png">
   <link rel="apple-touch-icon" href="assets/images/kst-logo.png">
-  <style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=mQ_NsGxzVVb5Q8cESW_o8aA1ylhFoozNayHx9yUV5aexJmO9cpTgjnXQFnM-rjdbl0SbICX-n5S9omVmjNrjQn48oh3gIxxjA1x8ssAus-DBcvUdQnrD5RdrXZDr7XgMYNHsLxnQXjve-_E9S_xTAZobfpe6WNEbk3Nhyw3qwlNL-FU3Av8GZwLJY3km3HgO2Ep4Hkrj5wgltORfAJy5BJIa-tBpSnFjUoQUp-EIo7gdG8ianVYf_uZ8pbsN0RbOVbwRUXkXsejYpccLKnb5KRyHqb4QevpjygX4dmX6oWuC6n_b_jbcpw48RX6KAUU1cbaoZp8-mQu6XqlopSXWLw" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMDY3YTg4MjA5YWVjYzBkNjk3MTc2NGE0OSZmbj1pbmRleCUyODIwMjYwODE4LTAxMjg1NCUyOS5odG1sJmNkPWF0dGFjaG1lbnQmdHM9NDk2MzkzJnA9ZnMmY2lkPTEmc2lnPWNiNDQyYjQ3ODFlYTYzMTkyZTkwZjkxMTk4YTdhZmUxYmE4MTI2NjhmMjFiYTM3NWU4ODliN2Q3ODJiN2M0MjUmdj0w"/><style>
     :root{--bg:#07111f;--panel:#0d243d;--card:#102b47;--line:#2b5274;--head:#12385f;--txt:#eef6ff;--muted:#a8c8e6;--blue:#55b8ff;--violet:#7357ff;--warn:#ffcf5c;--danger:#ff7474}
     *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.56 Arial,Helvetica,sans-serif}
     .header{position:sticky;top:0;z-index:999;background:var(--head);border-bottom:1px solid #315d85;box-shadow:0 6px 20px rgba(0,0,0,.18)}
@@ -19,7 +19,7 @@
     .lang{display:flex;background:#0b2239;border:1px solid #315d85;border-radius:12px;padding:3px}.lang button{border:0;background:transparent;color:#c7d8e9;padding:8px 11px;border-radius:9px;font-weight:900;cursor:pointer}.lang button.active{background:#2494ff;color:#fff}
     .wrap{max-width:1220px;margin:auto;padding:0 18px}section[id]{scroll-margin-top:98px}
     .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center;padding:76px 0 48px}.kicker{color:#51b8ff;font-weight:900;letter-spacing:2px;margin:0 0 10px}.hero h1{font-size:58px;line-height:1.02;margin:8px 0 18px}.hero h1 span{background:linear-gradient(90deg,#41c2ff,#8b63ff);-webkit-background-clip:text;color:transparent}.lead{font-size:19px;color:#c8d9e9;max-width:720px}
-    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 12px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:13px 20px;border:0;border-radius:14px;text-decoration:none;font-weight:900;color:#fff;background:linear-gradient(90deg,#258fff,#7457ff);cursor:pointer;font:inherit}.btn.secondary{background:#102b47;border:1px solid #315d85}.flash-note{color:#9fc2df;font-size:14px}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 12px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:13px 20px;border:0;border-radius:14px;text-decoration:none;font-weight:900;color:#fff;background:linear-gradient(90deg,#258fff,#7457ff);cursor:pointer;font:inherit}.btn.secondary{background:#102b47;border:1px solid #315d85}.flash-note{color:#9fc2df;font-size:14px}.free-firmware{margin:12px 0 0;padding:12px 16px;border-radius:12px;background:rgba(37,143,255,.10);border:1px solid rgba(85,184,255,.35);color:#dff2ff;font-size:15px}
     .hero-card,.panel{background:var(--panel);border:1px solid #294d6d;border-radius:22px}.hero-card{padding:26px}.screen-mock{height:270px;border-radius:18px;background:linear-gradient(145deg,#09121c,#0e2236);border:1px solid #274b69;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;position:relative;overflow:hidden}.screen-mock:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(48,160,255,.25),transparent 65%)}.screen-mock .mock-inner{position:relative;z-index:1}.screen-mock img{width:84px;height:84px;object-fit:contain;border-radius:50%;background:#fff;margin-bottom:12px}.screen-mock b{display:block;font-size:25px}.screen-mock span{color:#91b6d3}.coming{margin-top:14px;padding:12px 14px;border-radius:12px;background:#0b2239;color:#a8c8e6;text-align:center;font-weight:800}
     .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 28px}.stat{padding:24px;background:#102b47;border:1px solid #2a5275;border-radius:18px}.stat strong{font-size:22px}.stat span{display:block;color:#9fc2df;margin-top:4px}
     .panel{margin:28px 0;padding:30px}.panel h2{text-align:center;font-size:34px;margin:2px 0 24px}.panel-sub{text-align:center;color:#a8c8e6;margin:-12px 0 24px}
@@ -63,18 +63,13 @@
       <a class="btn secondary" href="firmware/firmware.bin" download><span class="vi">⬇ Tải firmware .BIN</span><span class="en">⬇ Download firmware .BIN</span></a>
     </div>
     <p class="flash-note"><span class="vi">Firmware đã gộp bootloader + bảng phân vùng + ứng dụng. Nạp tại offset <b>0x0</b>.</span><span class="en">Merged firmware includes bootloader + partition table + app. Flash at offset <b>0x0</b>.</span></p>
+    <p class="free-firmware"><span class="vi">🎁 <b>Firmware hoàn toàn miễn phí</b> dành cho anh em Fans Kênh Sáng Tạo.</span><span class="en">🎁 <b>Firmware is completely free</b> for Creative Channel fans.</span></p>
   </div>
   <aside class="hero-card">
     <div class="screen-mock"><div class="mock-inner"><img src="assets/images/kst-logo.png" alt="KST"><b>KST Makita Tool</b><span class="vi">Ảnh sản phẩm sẽ cập nhật sau</span><span class="en">Product photo coming soon</span></div></div>
     <div class="coming"><span class="vi">📷 Khi anh gửi ảnh sản phẩm, chỉ cần thay phần này.</span><span class="en">📷 Product photo can be added later without changing the firmware package.</span></div>
   </aside>
 </section>
-
-<div class="stats">
-  <div class="stat"><strong>ESP32-S3</strong><span>16MB Flash / 8MB PSRAM</span></div>
-  <div class="stat"><strong>2.8" 240×320</strong><span>ILI9341V + FT6336G Touch</span></div>
-  <div class="stat"><strong>1-Wire</strong><span><span class="vi">Makita LXT 18V</span><span class="en">Makita LXT 18V packs</span></span></div>
-</div>
 
 <section class="panel" id="features">
   <h2><span class="vi">Tính năng chính</span><span class="en">Main features</span></h2>
