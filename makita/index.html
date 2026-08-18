@@ -8,7 +8,7 @@
   <meta name="description" content="KST Makita Tool — công cụ chẩn đoán, xóa lỗi và mở khóa pin Makita LXT 18V trên ESP32-S3.">
   <link rel="icon" type="image/png" href="assets/images/kst-logo.png">
   <link rel="apple-touch-icon" href="assets/images/kst-logo.png">
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=lAHYk4CIGPzuRCqcNVfeBjEKyNdLK270pZPgVAuYuKItn_CChOX5U16kSCT63gq9liOnK8zh5YfNQfYgZjyNO_2_Oxso-waC3idQTD0B9YLTMOx1JmmA7T4nRVv4qd-gb1NaMYDMpNqV2vGGIlR2B9O6Lofdtitug_CUzhuWWlRijhn0RgbPiG_bPYtLhBEZrIghTAQoITUxifxOUD8CxlGGw1dah36y-ZPos2qSqZgcLoVYC0gx7F-1aok8070S9ia_HLHrnWHjwFbk0dnB6yWJY5iPuEU9gcgojuzOyhI9cOyCwZMnSHo35FsdLv3fI82tkbwb6Kua7HTwl7nxRA" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMDFkMWM4MjBiYmJkMTM0ZmU1NWViYWQ3NiZmbj1pbmRleCUyODIwMjYwODE4LTAzMDcyMSUyOS5odG1sJmNkPWF0dGFjaG1lbnQmdHM9NDk2Mzk1JnA9ZnMmY2lkPTEmc2lnPTg5YjA1NzkyNTZiZDBmNmY0ODMxZDllMDVjZTdlMTFiYTA0ZGEyMzkzZDVjMDhlMzcxYWMwZTEyM2FjMmRhYjcmdj0w"/><style>
+  <style>
     :root{--bg:#07111f;--panel:#0d243d;--card:#102b47;--line:#2b5274;--head:#12385f;--txt:#eef6ff;--muted:#a8c8e6;--blue:#55b8ff;--violet:#7357ff;--warn:#ffcf5c;--danger:#ff7474}
     *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.56 Arial,Helvetica,sans-serif}
     .header{position:sticky;top:0;z-index:999;background:var(--head);border-bottom:1px solid #315d85;box-shadow:0 6px 20px rgba(0,0,0,.18)}
@@ -32,6 +32,47 @@
     @media(max-width:800px){.bar{flex-wrap:wrap}.brand-logo{width:46px;height:46px}.nav{order:3;width:100%;margin:0;overflow-x:auto;gap:12px;padding-bottom:3px}.nav a{padding:7px 4px}.hero{grid-template-columns:1fr;padding-top:38px}.hero h1{font-size:42px}.hero-card{display:none}.stats,.features,.parts,.guide{grid-template-columns:1fr}.panel{padding:20px}.wrap{padding:0 14px}.screen-mock{height:235px}}
     @media(max-width:930px),(hover:none) and (pointer:coarse){esp-web-install-button{display:none!important}.mobile-flash-note{display:inline-flex;align-items:center;min-height:52px;padding:0 16px;border-radius:14px;background:#102b47;border:1px solid #315d85;color:#b9cadd;font-weight:800}}
   </style>
+
+<style id="kst-mobile-no-header">
+  .mobile-lang-lite{display:none}
+
+  @media (max-width: 800px), (hover:none) and (pointer:coarse) {
+    .header{
+      display:none !important;
+      position:static !important;
+    }
+
+    section[id]{
+      scroll-margin-top:12px !important;
+    }
+
+    .hero{
+      padding-top:24px !important;
+    }
+
+    .mobile-lang-lite{
+      display:flex;
+      justify-content:flex-end;
+      gap:4px;
+      margin:0 0 18px;
+    }
+
+    .mobile-lang-lite button{
+      border:1px solid #315d85;
+      background:#0b2239;
+      color:#c7d8e9;
+      padding:8px 12px;
+      border-radius:10px;
+      font-weight:900;
+    }
+
+    .mobile-lang-lite button.active{
+      background:#2494ff;
+      color:#fff;
+    }
+  }
+</style>
+
 </head>
 <body>
 <header class="header">
@@ -50,6 +91,10 @@
 
 <main class="wrap">
 <section class="hero" id="firmware">
+  <div class="mobile-lang-lite">
+    <button class="active" data-mobile-l="vi">VN</button>
+    <button data-mobile-l="en">EN</button>
+  </div>
   <div>
     <p class="kicker">KÊNH SÁNG TẠO .COM × Creative Channel</p>
 
@@ -208,6 +253,29 @@
     mount.innerHTML = '<span style="color:#a8c8e6;font-weight:700">ESP Web Tools unavailable</span>';
   };
   document.head.appendChild(script);
+})();
+</script>
+
+
+<script id="kst-mobile-lang-sync">
+(() => {
+  const mobileButtons = Array.from(document.querySelectorAll('[data-mobile-l]'));
+  if (!mobileButtons.length) return;
+
+  const sync = () => {
+    const en = document.body.classList.contains('enmode');
+    mobileButtons.forEach(b => b.classList.toggle('active', b.dataset.mobileL === (en ? 'en' : 'vi')));
+  };
+
+  mobileButtons.forEach(b => {
+    b.addEventListener('click', () => {
+      const target = document.querySelector('.lang button[data-l="' + b.dataset.mobileL + '"]');
+      if (target) target.click();
+      sync();
+    });
+  });
+
+  sync();
 })();
 </script>
 
