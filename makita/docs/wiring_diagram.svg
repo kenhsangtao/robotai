@@ -24,9 +24,9 @@
 <text x="170" y="188" text-anchor="middle" font-size="10" fill="#a9b7d1">diymore ES3C28P / ES3N28P</text>
 
 <circle cx="280" cy="220" r="3.5" fill="#4fb0ff"/>
-<text x="80" y="224" font-size="13" fill="#e8eef7">GPIO2</text>
+<text x="80" y="224" font-size="13" fill="#e8eef7">GPIO3</text>
 <circle cx="280" cy="260" r="3.5" fill="#4fb0ff"/>
-<text x="80" y="264" font-size="13" fill="#e8eef7">GPIO3</text>
+<text x="80" y="264" font-size="13" fill="#e8eef7">GPIO2</text>
 <circle cx="280" cy="300" r="3.5" fill="#ff9f43"/>
 <text x="80" y="304" font-size="13" fill="#e8eef7">3.3V</text>
 <circle cx="280" cy="340" r="3.5" fill="#7d8fa8"/>
@@ -38,30 +38,30 @@
 <text x="830" y="188" text-anchor="middle" font-size="10" fill="#a9b7d1">Yellow Connector</text>
 
 <circle cx="720" cy="220" r="3.5" fill="#4fb0ff"/>
-<text x="740" y="224" font-size="13" fill="#e8eef7">Pin 2 — DATA</text>
+<text x="740" y="224" font-size="13" fill="#e8eef7">Pin 6 — ENABLE</text>
 <circle cx="720" cy="260" r="3.5" fill="#4fb0ff"/>
-<text x="740" y="264" font-size="13" fill="#e8eef7">Pin 6 — ENABLE</text>
+<text x="740" y="264" font-size="13" fill="#e8eef7">Pin 2 — DATA</text>
 <circle cx="720" cy="340" r="3.5" fill="#7d8fa8"/>
 <text x="740" y="344" font-size="13" fill="#e8eef7">B− (cực âm lớn)</text>
 
-<!-- DATA wire with pull-up resistor -->
+<!-- ENABLE wire -->
 <line x1="280" y1="220" x2="720" y2="220" stroke="#4fb0ff" stroke-width="2.2" fill="none" marker-end="url(#arrowB)"/>
-<circle cx="500" cy="220" r="4" fill="#4fb0ff"/>
+
+<!-- DATA wire with pull-up resistor -->
+<line x1="280" y1="260" x2="720" y2="260" stroke="#4fb0ff" stroke-width="2.2" fill="none" marker-end="url(#arrowB)"/>
+<circle cx="500" cy="260" r="4" fill="#4fb0ff"/>
 
 <!-- resistor zigzag (vertical, from junction up) -->
-<path d="M500,220 L500,205 L492,198 L508,188 L492,178 L508,168 L500,158 L500,145"
+<path d="M500,260 L500,245 L492,238 L508,228 L492,218 L508,208 L500,198 L500,185"
       stroke="#ff9f43" stroke-width="2.2" fill="none" stroke-linejoin="round"/>
-<text x="516" y="180" font-size="13" font-weight="700" fill="#ff9f43">R1</text>
-<text x="516" y="196" font-size="11" fill="#ffcd9a">4.7 kΩ</text>
-<text x="516" y="212" font-size="10" fill="#ffcd9a">(điện trở kéo lên / pull-up)</text>
+<text x="516" y="220" font-size="13" font-weight="700" fill="#ff9f43">R1</text>
+<text x="516" y="236" font-size="11" fill="#ffcd9a">4.7 kΩ</text>
+<text x="516" y="252" font-size="10" fill="#ffcd9a">(điện trở kéo lên / pull-up)</text>
 
 <!-- 3.3V routed wire to resistor top -->
-<path d="M280,300 L360,300 L360,120 L500,120 L500,145"
+<path d="M280,300 L360,300 L360,120 L500,120 L500,185"
       stroke="#ff9f43" stroke-width="2.2" fill="none" marker-end="url(#arrowO)"/>
 <text x="440" y="112" text-anchor="middle" font-size="11" fill="#ffcd9a">3.3V (kéo lên DATA — TUYỆT ĐỐI không dùng 5V)</text>
-
-<!-- ENABLE wire -->
-<line x1="280" y1="260" x2="720" y2="260" stroke="#4fb0ff" stroke-width="2.2" fill="none" marker-end="url(#arrowB)"/>
 
 <!-- GND wire -->
 <line x1="280" y1="340" x2="720" y2="340" stroke="#7d8fa8" stroke-width="2.2" fill="none" marker-end="url(#arrowG)"/>

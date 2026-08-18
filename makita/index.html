@@ -24,7 +24,7 @@
     .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 28px}.stat{padding:24px;background:#102b47;border:1px solid #2a5275;border-radius:18px}.stat strong{font-size:22px}.stat span{display:block;color:#9fc2df;margin-top:4px}
     .panel{margin:28px 0;padding:30px}.panel h2{text-align:center;font-size:34px;margin:2px 0 24px}.panel-sub{text-align:center;color:#a8c8e6;margin:-12px 0 24px}
     .features,.parts,.guide{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{padding:20px;background:var(--card);border:1px solid #2a5275;border-radius:18px}.card h3{color:var(--blue);margin:0 0 9px}.card p{margin:6px 0;color:#d8e7f4}.card ul{padding-left:20px;margin:8px 0}.card li{margin:5px 0}.buy{color:#58baff;font-weight:900}.buy-soon{display:inline-block;margin-top:10px;color:#91acc4;font-size:14px;border:1px dashed #486c8b;border-radius:10px;padding:7px 10px}
-    .diagram{width:100%;display:block;background:#fff;border-radius:16px;max-height:900px;object-fit:contain}.diagram-note{margin-top:14px;color:#aac5dd}.safety{border-color:#7e6321;background:#2a2415}.safety h3{color:var(--warn)}
+    .diagram{width:100%;display:block;background:#fff;border-radius:16px;max-height:900px;object-fit:contain}.diagram-actions{display:flex;justify-content:center;margin:16px 0 0}.diagram-note{margin-top:14px;color:#aac5dd}.btn.diagram-btn{min-height:54px;padding:14px 26px;border:1px solid #315d85;background:#102b47;box-shadow:inset 0 0 0 1px rgba(255,255,255,.03)}.btn.diagram-btn:hover{background:#143251}.safety{border-color:#7e6321;background:#2a2415}.safety h3{color:var(--warn)}
     .video-placeholder{text-align:center;padding:32px;border:1px dashed #486c8b;border-radius:16px;color:#aac5dd}.code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#071725;border:1px solid #294d6d;padding:3px 7px;border-radius:7px;color:#7dccff}
     footer{text-align:center;color:#91acc4;padding:42px 20px}.en{display:none}body.enmode .vi{display:none!important}body.enmode .en{display:block}body.enmode span.en{display:inline}body.enmode .nav .en{display:inline}body.enmode .nav .vi{display:none!important}
     .mobile-flash-note{display:none}
@@ -112,8 +112,14 @@
 
 <section class="panel" id="wiring">
   <h2><span class="vi">Sơ đồ đấu nối</span><span class="en">Wiring diagram</span></h2>
-  <div class="vi"><img class="diagram" src="docs/wiring_diagram.svg" alt="Sơ đồ đấu nối KST Makita Tool"></div>
-  <div class="en"><img class="diagram" src="docs/wiring_diagram_en.svg" alt="KST Makita Tool wiring diagram"></div>
+  <div class="vi">
+    <img class="diagram" src="docs/wiring_diagram.svg" alt="Sơ đồ đấu nối KST Makita Tool">
+    <div class="diagram-actions"><a class="btn diagram-btn" href="docs/wiring_diagram.svg" target="_blank" rel="noopener">🔎 Mở sơ đồ tiếng Việt toàn màn hình</a></div>
+  </div>
+  <div class="en">
+    <img class="diagram" src="docs/wiring_diagram_en.svg" alt="KST Makita Tool wiring diagram">
+    <div class="diagram-actions"><a class="btn diagram-btn" href="docs/wiring_diagram_en.svg" target="_blank" rel="noopener">🔎 Open English wiring diagram full screen</a></div>
+  </div>
   <p class="diagram-note vi"><b>Expansion Pins:</b> DATA → GPIO2, ENABLE → GPIO3, B- → GND. Điện trở 4.7kΩ kéo DATA lên <b>3.3V</b>. Không dùng nhầm đầu I2C.</p>
   <p class="diagram-note en"><b>Expansion Pins:</b> DATA → GPIO2, ENABLE → GPIO3, B- → GND. Pull DATA up to <b>3.3V</b> through 4.7kΩ. Do not use the I2C header.</p>
 </section>
