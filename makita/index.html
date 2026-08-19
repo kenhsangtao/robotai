@@ -166,6 +166,44 @@
   }
 </style>
 
+
+<style id="kst-makita-gallery">
+  .hero-product-photo{
+    width:100%;
+    height:100%;
+    min-height:310px;
+    display:block;
+    object-fit:cover;
+    background:#0a1c30;
+  }
+  .product-gallery{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+  }
+  .product-gallery a{
+    display:block;
+    overflow:hidden;
+    border-radius:16px;
+    border:1px solid #2a5275;
+    background:#0a1c30;
+  }
+  .product-gallery img{
+    width:100%;
+    height:auto;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    display:block;
+    transition:transform .2s ease;
+  }
+  .product-gallery a:hover img{transform:scale(1.015)}
+  .product-gallery .wide{grid-column:1/-1}
+  @media(max-width:800px){
+    .product-gallery{grid-template-columns:1fr}
+    .product-gallery .wide{grid-column:auto}
+  }
+</style>
+
 </head>
 <body>
 <header class="header">
@@ -174,6 +212,7 @@
     <nav class="nav">
       <a href="#firmware">Firmware</a>
       <a href="#features"><span class="vi">Tính năng</span><span class="en">Features</span></a>
+      <a href="#gallery"><span class="vi">Hình ảnh</span><span class="en">Gallery</span></a>
       <a href="#components"><span class="vi">Linh kiện</span><span class="en">Components</span></a>
       <a href="#wiring"><span class="vi">Sơ đồ</span><span class="en">Wiring</span></a>
       <a href="#guide"><span class="vi">Hướng dẫn</span><span class="en">Guide</span></a>
@@ -221,14 +260,7 @@
   </div>
 
   <aside class="hero-card">
-    <div class="hero-placeholder">
-      <div>
-        <img src="assets/images/kst-logo.png" alt="KST">
-        <b>KST Makita Tool</b>
-        <span class="vi">Ảnh sản phẩm sẽ cập nhật sau</span>
-        <span class="en">Product photo coming soon</span>
-      </div>
-    </div>
+    <img class="hero-product-photo" src="assets/images/makita-tool-1.jpg" alt="KST Makita Tool">
     <div class="hero-caption">
       <span class="vi">KST Makita Tool — Xóa lỗi / Mở khóa pin Makita LXT 18V</span>
       <span class="en">KST Makita Tool — Makita LXT 18V Diagnostic / Unlock</span>
@@ -260,7 +292,16 @@
 
     <article class="card"><h3>Ω 4.7 kΩ</h3><p><span class="vi">1 điện trở 4.7kΩ kéo đường DATA lên <b>3.3V</b>.</span><span class="en">One 4.7kΩ resistor used to pull the DATA line up to <b>3.3V</b>.</span></p><p><span class="vi">Mua tại đây: </span><span class="en">Buy here: </span><a class="buy" href="https://s.shopee.vn/6VN9QDJrIa" target="_blank" rel="noopener sponsored"><span class="vi">Mua ngay</span><span class="en">Buy now</span></a></p></article>
 
-    <article class="card"><h3><span class="vi">🧱 Box in 3D</span><span class="en">🧱 3D-printed enclosure</span></h3><p><span class="vi">Vỏ/box in 3D dành riêng cho KST Makita Tool.</span><span class="en">Custom 3D-printed enclosure for the KST Makita Tool.</span></p><span class="buy-soon"><span class="vi">File 3D: sẽ cập nhật sau</span><span class="en">3D file: coming soon</span></span></article>
+    <article class="card">
+      <h3><span class="vi">🧱 Box in 3D</span><span class="en">🧱 3D-printed enclosure</span></h3>
+      <p><span class="vi">Vỏ/box in 3D dành riêng cho KST Makita Tool.</span><span class="en">Custom 3D-printed enclosure for the KST Makita Tool.</span></p>
+      <p>
+        <span class="vi">File in 3D: </span><span class="en">3D print file: </span>
+        <a class="buy" href="https://makerworld.com/en/models/3190807-diy-makita-battery-error-reset-unlock-tool#profileId-3609768" target="_blank" rel="noopener">
+          <span class="vi">Tải miễn phí trên MakerWorld</span><span class="en">Free download on MakerWorld</span>
+        </a>
+      </p>
+    </article>
 
     <article class="card"><h3>🔋 Makita LXT 18V</h3><p>BL1815 / BL1820B / BL1830B / BL1850B <span class="vi">hoặc pack tương thích để kiểm tra.</span><span class="en">or a compatible pack for testing.</span></p></article>
 
@@ -296,9 +337,19 @@
   </div>
 </section>
 
-<section class="panel">
-  <h2><span class="vi">Video & ảnh sản phẩm</span><span class="en">Video & product photos</span></h2>
-  <div class="video-placeholder"><span class="vi">📷🎬 Chưa có ảnh sản phẩm và link video. Khi anh gửi, chỉ cần cập nhật <b>index.html</b>.</span><span class="en">📷🎬 Product photos and video links are not available yet. They can be added later by updating <b>index.html</b>.</span></div>
+<section class="panel" id="gallery">
+  <h2><span class="vi">Hình ảnh KST Makita Tool hoàn thiện</span><span class="en">Finished KST Makita Tool</span></h2>
+  <p class="panel-sub">
+    <span class="vi">Ảnh thực tế bộ tool sau khi hoàn thiện. Bấm vào ảnh để xem kích thước lớn.</span>
+    <span class="en">Real photos of the finished tool. Click any photo to view it full size.</span>
+  </p>
+  <div class="product-gallery">
+    <a href="assets/images/makita-tool-1.jpg" target="_blank"><img loading="lazy" decoding="async" src="assets/images/makita-tool-1.jpg" alt="KST Makita Tool front view"></a>
+    <a href="assets/images/makita-tool-2.jpg" target="_blank"><img loading="lazy" decoding="async" src="assets/images/makita-tool-2.jpg" alt="KST Makita Tool angle view"></a>
+    <a href="assets/images/makita-tool-3.jpg" target="_blank"><img loading="lazy" decoding="async" src="assets/images/makita-tool-3.jpg" alt="KST Makita Tool rear angle"></a>
+    <a href="assets/images/makita-tool-4.jpg" target="_blank"><img loading="lazy" decoding="async" src="assets/images/makita-tool-4.jpg" alt="KST Makita Tool English UI"></a>
+    <a class="wide" href="assets/images/makita-tool-5.jpg" target="_blank"><img loading="lazy" decoding="async" src="assets/images/makita-tool-5.jpg" alt="KST Makita Tool on Makita battery"></a>
+  </div>
 </section>
 </main>
 
