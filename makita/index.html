@@ -204,6 +204,36 @@
   }
 </style>
 
+
+<style id="kst-makita-video">
+  .video-box{
+    max-width:820px;
+    margin:0 auto;
+    text-align:center;
+    padding:8px 0 4px;
+  }
+  .video-box p{
+    color:#c7d8e9;
+    font-size:17px;
+    line-height:1.7;
+    margin:10px 0 18px;
+  }
+  .video-link{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:54px;
+    padding:0 24px;
+    border-radius:14px;
+    text-decoration:none;
+    color:#fff;
+    font-weight:900;
+    background:linear-gradient(135deg,#208fff,#7457ff);
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .video-link:hover{filter:brightness(1.07)}
+</style>
+
 </head>
 <body>
 <header class="header">
@@ -215,6 +245,7 @@
       <a href="#gallery"><span class="vi">Hình ảnh</span><span class="en">Gallery</span></a>
       <a href="#components"><span class="vi">Linh kiện</span><span class="en">Components</span></a>
       <a href="#wiring"><span class="vi">Sơ đồ</span><span class="en">Wiring</span></a>
+      <a href="#video">Video</a>
       <a href="#guide"><span class="vi">Hướng dẫn</span><span class="en">Guide</span></a>
     </nav>
     <div class="lang"><button class="active" data-l="vi">VN</button><button data-l="en">EN</button></div>
@@ -325,10 +356,29 @@
   <p class="diagram-note en"><b>Expansion Pins:</b> DATA → GPIO2, ENABLE → GPIO3, B- → GND. Pull DATA up to <b>3.3V</b> through 4.7kΩ. Do not use the I2C header.</p>
 </section>
 
+
+<section class="panel" id="video">
+  <div class="vi">
+    <h2>Video hướng dẫn chi tiết</h2>
+    <div class="video-box">
+      <p>Xem video đầy đủ cách lắp ráp, đấu nối, sử dụng KST Makita Tool và xử lý pin Makita báo lỗi.</p>
+      <a class="video-link" href="https://youtu.be/o3SL9taOAbc" target="_blank" rel="noopener">▶ Xem video hướng dẫn tiếng Việt</a>
+    </div>
+  </div>
+
+  <div class="en">
+    <h2>Detailed tutorial video</h2>
+    <div class="video-box">
+      <p>Watch the complete build, wiring and usage tutorial for the KST Makita Tool and Makita battery error handling.</p>
+      <a class="video-link" href="https://youtu.be/mSKKcPt2vXo" target="_blank" rel="noopener">▶ Watch the English tutorial</a>
+    </div>
+  </div>
+</section>
+
 <section class="panel" id="guide">
   <h2><span class="vi">Hướng dẫn sử dụng</span><span class="en">Setup & usage guide</span></h2>
   <div class="guide">
-    <article class="card"><h3><span class="vi">1. Nạp firmware</span><span class="en">1. Flash firmware</span></h3><p class="vi">Dùng nút <b>Nạp firmware</b> ở đầu trang trên Chrome/Edge máy tính, hoặc tải <span class="code">firmware.bin</span>. File đã gộp và nạp tại <b>0x0</b>.</p><p class="en">Use the <b>Install firmware</b> button in desktop Chrome/Edge, or download <span class="code">firmware.bin</span>. It is a merged image flashed at <b>0x0</b>.</p></article>
+    <article class="card"><h3><span class="vi">1. Nạp firmware</span><span class="en">1. Flash firmware</span></h3><p class="vi">Dùng nút <b>Nạp firmware</b> ở đầu trang trên Chrome/Edge máy tính, hoặc tải <span class="code">firmware.bin</span>. File đã gộp và nạp tại <b>0x0</b>. Video hướng dẫn chi tiết nằm ở mục <b>Video</b>.</p><p class="en">Use the <b>Install firmware</b> button in desktop Chrome/Edge, or download <span class="code">firmware.bin</span>. It is a merged image flashed at <b>0x0</b>. The detailed tutorial is available in the <b>Video</b> section.</p></article>
     <article class="card"><h3><span class="vi">2. Đấu pack Makita</span><span class="en">2. Connect the Makita pack</span></h3><p class="vi">Dùng đầu <b>Expansion Pins</b>: DATA → GPIO2, ENABLE → GPIO3, B- → GND. Điện trở 4.7kΩ kéo DATA lên 3.3V.</p><p class="en">Use the <b>Expansion Pins</b> header: DATA → GPIO2, ENABLE → GPIO3, B- → GND. Pull DATA up to 3.3V with 4.7kΩ.</p></article>
     <article class="card"><h3><span class="vi">3. Dùng màn cảm ứng</span><span class="en">3. Touchscreen</span></h3><p class="vi">Các nút chính: <b>XÓA LỖI</b>, <b>MỞ KHÓA</b>, <b>LED</b>, <b>ĐỌC PIN</b>. Có nút đổi VN/EN.</p><p class="en">Main buttons: <b>CLEAR ERROR</b>, <b>UNLOCK</b>, <b>LED</b>, <b>READ</b>. VI/EN language toggle is available.</p></article>
     <article class="card"><h3><span class="vi">4. Điều khiển qua Wi-Fi</span><span class="en">4. Wi-Fi control</span></h3><p class="vi">Kết nối <b>KST-MAKITA-TOOL</b>, mật khẩu <b>makita1234</b>, sau đó mở <b>192.168.4.1</b>.</p><p class="en">Connect to <b>KST-MAKITA-TOOL</b>, password <b>makita1234</b>, then open <b>192.168.4.1</b>.</p></article>
