@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1200" viewBox="0 0 1920 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Sơ đồ đấu dây bộ điều khiển mỏ hàn GOOT dùng ESP32-S3 — KST KenhSangTao.COM</title>
+  <desc id="desc">Sơ đồ đấu dây vector chi tiết cho ESP32-S3 DevKitC-1, MAX31855, màn hình ST7789, núm xoay EC11, MOSFET IRLB8721, còi, công tắc giá đỡ, pin Makita 20V, mạch hạ áp DC-DC và mũi hàn GOOT bốn chân gồm hai chân cảm biến SS+/SS− cùng hai chân gia nhiệt MS.</desc>
+  <defs>
+    <style><![CDATA[
+      * { box-sizing: border-box; }
+      text { font-family: Inter, "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 30px; font-weight: 800; fill: #172033; letter-spacing: .2px; }
+      .subtitle { font-size: 14px; font-weight: 500; fill: #64748b; }
+      .card { fill: #ffffff; stroke: #aeb9c7; stroke-width: 2; }
+      .card-head { fill: #e8edf3; }
+      .card-title { font-size: 17px; font-weight: 800; fill: #182234; }
+      .card-sub { font-size: 11px; font-weight: 600; fill: #64748b; }
+      .small { font-size: 11px; font-weight: 650; fill: #344256; }
+      .tiny { font-size: 10px; font-weight: 700; fill: #445166; }
+      .pin-text { font-size: 12px; font-weight: 800; fill: #eef6ff; }
+      .pin-id { font-size: 10px; font-weight: 800; fill: #213047; }
+      .wire-label { font-size: 11px; font-weight: 800; fill: #253247; paint-order: stroke; stroke: #f7f9fc; stroke-width: 5px; stroke-linejoin: round; }
+      .wire-outline { fill: none; stroke: #f7f9fc; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+      .wire { fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-thin { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-thick-outline { fill: none; stroke: #f7f9fc; stroke-width: 13; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-thick { fill: none; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+      .spi { stroke: #e88716; }
+      .gate { stroke: #dc3e3e; }
+      .gate-purple { stroke: #7c3aed; }
+      .drain-blue { stroke: #164b9b; }
+      .power { stroke: #2477d4; }
+      .encoder { stroke: #20945d; }
+      .heater { stroke: #dc3e3e; }
+      .buzzer { stroke: #d83b82; }
+      .stand { stroke: #737d8c; }
+      .battery-pos { stroke: #dc3e3e; }
+      .battery-wire { stroke: #1d252d; }
+      .thermo-a { stroke: #a66712; }
+      .thermo-b { stroke: #0b8b8f; }
+      .ground { stroke: #46515e; }
+      .dot { stroke: #ffffff; stroke-width: 2; }
+      .legend-text { font-size: 11px; font-weight: 700; fill: #344256; }
+    ]]></style>
+    <linearGradient id="metal" x1="0" x2="1">
+      <stop offset="0" stop-color="#c7d0d9"/>
+      <stop offset="0.5" stop-color="#f7fafc"/>
+      <stop offset="1" stop-color="#98a4b2"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#133c66"/>
+      <stop offset="0.55" stop-color="#176b83"/>
+      <stop offset="1" stop-color="#56b0a3"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1200" fill="#f7f9fc"/>
+  <rect x="30" y="24" width="1860" height="64" rx="14" fill="#ffffff" stroke="#dbe2ea"/>
+  <text class="title" x="58" y="55">KST KenhSangTao.COM — Bộ điều khiển mỏ hàn GOOT dùng ESP32-S3</text>
+  <text class="subtitle" x="58" y="76">Sơ đồ đấu dây điểm-điểm hoàn chỉnh • Nguồn trực tiếp từ pin Makita 20V • Dùng chung GND</text>
+  <text class="subtitle" x="1858" y="57" text-anchor="end">BẢN 1.0  |  Nguồn logic 20V → 5V</text>
+
+  <!-- WIRES: white under-strokes keep intersections unambiguous -->
+  <g id="wires">
+    <!-- MAX31855 logic and power -->
+    <path class="wire-outline" d="M430 155 H720 V330 H760"/><path class="wire power" d="M430 155 H720 V330 H760"/>
+    <path class="wire-outline" d="M430 200 H680 V375 H780"/><path class="wire spi" d="M430 200 H680 V375 H780"/>
+    <path class="wire-outline" d="M430 245 H640 V420 H760"/><path class="wire spi" d="M430 245 H640 V420 H760"/>
+    <path class="wire-outline" d="M430 290 H600 V465 H780"/><path class="wire spi" d="M430 290 H600 V465 H780"/>
+    <path class="wire-outline" d="M330 380 V435 H32 V1130"/><path class="wire ground" d="M330 380 V435 H32 V1130"/>
+
+    <!-- Sensor pair: MAX31855 T+/T− maps to GOOT SS+/SS−, separate from MS heater power -->
+    <path class="wire-outline" d="M170 380 V397 H52 V855 C52 870 72 872 72 887 C72 902 92 904 92 919 H252"/>
+    <path class="wire-thin thermo-a" d="M170 380 V397 H52 V855 C52 870 72 872 72 887 C72 902 92 904 92 919 H252"/>
+    <path class="wire-outline" d="M235 380 V417 H68 V867 C68 882 48 884 48 899 C48 914 68 916 68 939 H270"/>
+    <path class="wire-thin thermo-b" d="M235 380 V417 H68 V867 C68 882 48 884 48 899 C48 914 68 916 68 939 H270"/>
+
+    <!-- Display logic and power -->
+    <path class="wire-outline" d="M1700 115 V65 H700 V400 H760 V420"/><path class="wire spi" d="M1700 115 V65 H700 V400 H760 V420"/>
+    <path class="wire-outline" d="M1600 115 V85 H735 V310 H760 V330"/><path class="wire power" d="M1600 115 V85 H735 V310 H760 V330"/>
+    <path class="wire-outline" d="M1460 180 H1245 V330 H1180"/><path class="wire spi" d="M1460 180 H1245 V330 H1180"/>
+    <path class="wire-outline" d="M1460 220 H1280 V375 H1180"/><path class="wire spi" d="M1460 220 H1280 V375 H1180"/>
+    <path class="wire-outline" d="M1460 260 H1315 V420 H1180"/><path class="wire spi" d="M1460 260 H1315 V420 H1180"/>
+    <path class="wire-outline" d="M1460 300 H1350 V465 H1180"/><path class="wire spi" d="M1460 300 H1350 V465 H1180"/>
+    <path class="wire-outline" d="M1460 340 H1385 V510 H1180"/><path class="wire spi" d="M1460 340 H1385 V510 H1180"/>
+    <path class="wire-outline" d="M1820 400 H1872"/><path class="wire power" d="M1820 400 H1872"/>
+
+    <!-- Encoder -->
+    <path class="wire-outline" d="M360 480 H725 V330 H760"/><path class="wire power" d="M360 480 H725 V330 H760"/>
+    <path class="wire-outline" d="M360 510 H780"/><path class="wire encoder" d="M360 510 H780"/>
+    <path class="wire-outline" d="M360 555 H780"/><path class="wire encoder" d="M360 555 H780"/>
+    <path class="wire-outline" d="M360 600 H780"/><path class="wire encoder" d="M360 600 H780"/>
+    <path class="wire-outline" d="M80 620 H32"/><path class="wire encoder" d="M80 620 H32"/>
+
+    <!-- Explicit shared-net junctions at the ESP32 header -->
+    <path class="wire-outline" d="M760 330 H780"/><path class="wire power" d="M760 330 H780"/>
+    <path class="wire-outline" d="M760 420 H780"/><path class="wire spi" d="M760 420 H780"/>
+
+    <!-- Buzzer and stand detector -->
+    <path class="wire-outline" d="M1510 560 H1230 V600 H1180"/><path class="wire buzzer" d="M1510 560 H1230 V600 H1180"/>
+    <path class="wire-outline" d="M1660 620 H1872"/><path class="wire battery-wire" d="M1660 620 H1872"/>
+    <path class="wire-outline" d="M1500 705 H1290 V805 H760 V750 H730 V645 H780"/><path class="wire stand" d="M1500 705 H1290 V805 H760 V750 H730 V645 H780"/>
+    <path class="wire-outline" d="M1710 780 H1872"/><path class="wire stand" d="M1710 780 H1872"/>
+    <path class="wire-outline" d="M1872 400 V1130"/><path class="wire ground" d="M1872 400 V1130"/>
+
+    <!-- MOSFET gate, pulldown, drain and source -->
+    <path class="wire-outline" d="M455 840 H380 V645 H650 V780 H670 M750 780 V815 H820 H1205 V555 H1180"/><path class="wire gate-purple" d="M455 840 H380 V645 H650 V780 H670 M750 780 V815 H820 H1205 V555 H1180"/>
+    <path class="wire-outline" d="M650 780 V800 H660 V810"/><path class="wire gate-purple" d="M650 780 V800 H660 V810"/>
+    <path class="wire-outline" d="M660 870 V1130"/><path class="wire ground" d="M660 870 V1130"/>
+    <path class="wire-outline" d="M575 840 V1130"/><path class="wire ground" d="M575 840 V1130"/>
+    <path class="wire-outline" d="M515 840 V870 H390 V975 H450"/><path class="wire drain-blue" d="M515 840 V870 H390 V975 H450"/>
+
+    <!-- Battery direct-feed split and DC-DC input: positive red, negative black -->
+    <path class="wire-thick-outline" d="M800 950 H755 V875 H1090 V935 H1150"/><path class="wire-thick battery-pos" d="M800 950 H755 V875 H1090 V935 H1150"/>
+    <path class="wire-thick-outline" d="M755 875 V935 H450"/><path class="wire-thick battery-pos" d="M755 875 V935 H450"/>
+    <path class="wire-thick-outline" d="M1060 1000 H1100 V1015 H1150 M1100 1015 V1130"/><path class="wire-thick battery-wire" d="M1060 1000 H1100 V1015 H1150 M1100 1015 V1130"/>
+
+    <!-- Buck 5V output -->
+    <path class="wire-outline" d="M1420 935 H1450 V645 H1180"/><path class="wire power" d="M1420 935 H1450 V645 H1180"/>
+
+    <!-- Buck OUT- ground directly to the ESP32 right GND pin -->
+    <path class="wire-outline" d="M1180 690 H1240 V840 H1470 V1015 H1420"/><path class="wire battery-wire" d="M1180 690 H1240 V840 H1470 V1015 H1420"/>
+
+    <!-- ESP32 left ground pin -->
+    <path class="wire-outline" d="M780 690 H770 V1130"/><path class="wire ground" d="M780 690 H770 V1130"/>
+
+    <!-- One common ground rail -->
+    <path d="M30 1130 H1885" fill="none" stroke="#28323e" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <!-- COMPONENTS -->
+  <!-- MAX31855 -->
+  <g id="max31855">
+    <rect class="card" x="70" y="120" width="360" height="260" rx="16"/>
+    <path class="card-head" d="M86 120 H414 Q430 120 430 136 V166 H70 V136 Q70 120 86 120Z"/>
+    <text class="card-title" x="92" y="147">MAX31855</text>
+    <text class="card-sub" x="222" y="147">KHUẾCH ĐẠI CẶP NHIỆT K</text>
+    <rect x="104" y="184" width="228" height="136" rx="10" fill="#2f8d58" stroke="#17643b" stroke-width="2"/>
+    <rect x="174" y="217" width="88" height="64" rx="5" fill="#20262c" stroke="#0b0f13"/>
+    <circle cx="128" cy="205" r="8" fill="#d9b84d"/><circle cx="307" cy="299" r="8" fill="#d9b84d"/>
+    <text x="218" y="245" text-anchor="middle" font-size="12" font-weight="800" fill="#dce7df">MAX31855</text>
+    <text x="218" y="264" text-anchor="middle" font-size="10" font-weight="700" fill="#9fb5a7">SPI / 3.3V</text>
+    <line x1="332" y1="155" x2="430" y2="155" stroke="#718096" stroke-width="2"/>
+    <line x1="332" y1="200" x2="430" y2="200" stroke="#718096" stroke-width="2"/>
+    <line x1="332" y1="245" x2="430" y2="245" stroke="#718096" stroke-width="2"/>
+    <line x1="332" y1="290" x2="430" y2="290" stroke="#718096" stroke-width="2"/>
+    <text class="pin-id" x="408" y="151" text-anchor="end">VCC</text>
+    <text class="pin-id" x="408" y="196" text-anchor="end">CS</text>
+    <text class="pin-id" x="408" y="241" text-anchor="end">CLK</text>
+    <text class="pin-id" x="408" y="286" text-anchor="end">DO</text>
+    <line x1="170" y1="320" x2="170" y2="380" stroke="#718096" stroke-width="2"/>
+    <line x1="235" y1="320" x2="235" y2="380" stroke="#718096" stroke-width="2"/>
+    <line x1="330" y1="320" x2="330" y2="380" stroke="#718096" stroke-width="2"/>
+    <text class="pin-id" x="170" y="344" text-anchor="middle">T+</text>
+    <text class="pin-id" x="235" y="344" text-anchor="middle">T−</text>
+    <text class="pin-id" x="330" y="344" text-anchor="middle">GND</text>
+  </g>
+
+  <!-- EC11 ENCODER -->
+  <g id="encoder-component">
+    <rect class="card" x="80" y="450" width="280" height="180" rx="16"/>
+    <path class="card-head" d="M96 450 H344 Q360 450 360 466 V494 H80 V466 Q80 450 96 450Z"/>
+    <text class="card-title" x="102" y="478">Núm xoay EC11</text>
+    <circle cx="200" cy="545" r="43" fill="#313943" stroke="#111820" stroke-width="4"/>
+    <circle cx="200" cy="545" r="32" fill="#4c5764" stroke="#667483" stroke-width="3"/>
+    <circle cx="200" cy="545" r="14" fill="#c1c9d2" stroke="#7e8a97" stroke-width="3"/>
+    <line x1="200" y1="513" x2="200" y2="527" stroke="#e9eef3" stroke-width="4" stroke-linecap="round"/>
+    <text class="tiny" x="200" y="612" text-anchor="middle">NÚM XOAY + NÚT NHẤN</text>
+    <line x1="328" y1="480" x2="360" y2="480" stroke="#718096" stroke-width="2"/>
+    <line x1="328" y1="510" x2="360" y2="510" stroke="#718096" stroke-width="2"/>
+    <line x1="328" y1="555" x2="360" y2="555" stroke="#718096" stroke-width="2"/>
+    <line x1="328" y1="600" x2="360" y2="600" stroke="#718096" stroke-width="2"/>
+    <text class="pin-id" x="324" y="484" text-anchor="end">+</text>
+    <text class="pin-id" x="324" y="514" text-anchor="end">CLK</text>
+    <text class="pin-id" x="324" y="559" text-anchor="end">DT</text>
+    <text class="pin-id" x="324" y="604" text-anchor="end">SW</text>
+    <line x1="80" y1="620" x2="112" y2="620" stroke="#718096" stroke-width="2"/>
+    <text class="pin-id" x="116" y="624">GND</text>
+  </g>
+
+  <!-- MOSFET -->
+  <g id="mosfet-component">
+    <rect class="card" x="400" y="660" width="240" height="180" rx="16"/>
+    <path class="card-head" d="M416 660 H624 Q640 660 640 676 V704 H400 V676 Q400 660 416 660Z"/>
+    <text class="card-title" x="422" y="688">IRLB8721 MOSFET</text>
+    <path d="M455 716 H573 Q590 716 590 733 V785 H438 V733 Q438 716 455 716Z" fill="#20252b" stroke="#090c10" stroke-width="3"/>
+    <circle cx="514" cy="740" r="10" fill="#69737e" stroke="#0a0e12" stroke-width="3"/>
+    <rect x="446" y="785" width="18" height="55" fill="url(#metal)" stroke="#7a8794"/>
+    <rect x="506" y="785" width="18" height="55" fill="url(#metal)" stroke="#7a8794"/>
+    <rect x="566" y="785" width="18" height="55" fill="url(#metal)" stroke="#7a8794"/>
+    <text class="tiny" x="455" y="814" text-anchor="middle" transform="rotate(-90 455 814)">Gate</text>
+    <text class="tiny" x="515" y="814" text-anchor="middle" transform="rotate(-90 515 814)">Drain</text>
+    <text class="tiny" x="575" y="814" text-anchor="middle" transform="rotate(-90 575 814)">Source</text>
+    <text class="pin-id" x="455" y="853" text-anchor="middle">G</text>
+    <text class="pin-id" x="515" y="853" text-anchor="middle">D</text>
+    <text class="pin-id" x="575" y="853" text-anchor="middle">S</text>
+  </g>
+
+  <!-- Gate resistors -->
+  <g id="gate-resistors">
+    <rect x="670" y="766" width="80" height="28" rx="6" fill="#f3dfb4" stroke="#9e7b34" stroke-width="2"/>
+    <path d="M680 780 l8 -7 8 14 8 -14 8 14 8 -14 8 14 8 -7" fill="none" stroke="#76571f" stroke-width="2"/>
+    <text class="wire-label" x="710" y="758" text-anchor="middle">220Ω</text>
+    <rect x="646" y="810" width="28" height="60" rx="6" fill="#f3dfb4" stroke="#9e7b34" stroke-width="2"/>
+    <path d="M660 818 l-7 7 14 7 -14 7 14 7 -14 7 7 8" fill="none" stroke="#76571f" stroke-width="2"/>
+    <text class="wire-label" x="682" y="844">10kΩ</text>
+  </g>
+
+  <!-- ESP32-S3 CENTER BOARD -->
+  <g id="esp32">
+    <rect x="790" y="245" width="380" height="510" rx="20" fill="#121922" stroke="#3e4d5e" stroke-width="4"/>
+    <rect x="807" y="270" width="346" height="460" rx="12" fill="#19232e" stroke="#28394b" stroke-width="2"/>
+    <text x="980" y="286" text-anchor="middle" font-size="22" font-weight="850" fill="#f4f8fb">ESP32-S3 DevKitC-1</text>
+    <text x="980" y="307" text-anchor="middle" font-size="11" font-weight="850" fill="#a7e5d1">KST • KenhSangTao.COM</text>
+    <text x="980" y="324" text-anchor="middle" font-size="9" font-weight="700" fill="#8fa3b8">LOGIC 3.3V • BO MẠCH PHÁT TRIỂN USB-C</text>
+    <rect x="886" y="337" width="188" height="151" rx="10" fill="#394655" stroke="#8796a5" stroke-width="2"/>
+    <path d="M902 361 H1058 M902 385 H1058 M902 409 H1058 M902 433 H1058 M902 457 H1058" stroke="#667687" stroke-width="1"/>
+    <text x="980" y="397" text-anchor="middle" font-size="18" font-weight="800" fill="#d8e0e7">ESP32-S3</text>
+    <text x="980" y="422" text-anchor="middle" font-size="11" font-weight="700" fill="#9caaba">Wi-Fi • BLE</text>
+    <rect x="913" y="510" width="134" height="112" rx="8" fill="#0c1117" stroke="#354351"/>
+    <text x="980" y="551" text-anchor="middle" font-size="11" font-weight="800" fill="#a7e5d1">BỘ ĐIỀU KHIỂN</text>
+    <text x="980" y="575" text-anchor="middle" font-size="10" font-weight="700" fill="#8ca0b3">SPI • PWM • UI</text>
+    <text x="980" y="598" text-anchor="middle" font-size="9" font-weight="700" fill="#8ca0b3">ĐIỀU KHIỂN GIA NHIỆT 20V</text>
+    <rect x="928" y="715" width="104" height="40" rx="8" fill="#c9d2db" stroke="#718090" stroke-width="3"/>
+    <rect x="946" y="723" width="68" height="22" rx="6" fill="#26313d"/>
+    <text x="980" y="706" text-anchor="middle" font-size="10" font-weight="800" fill="#9eb0c1">USB-C</text>
+
+    <!-- left header -->
+    <rect x="778" y="311" width="28" height="397" rx="7" fill="#0b0e12" stroke="#596574" stroke-width="2"/>
+    <rect x="1154" y="311" width="28" height="397" rx="7" fill="#0b0e12" stroke="#596574" stroke-width="2"/>
+    <g fill="#d8aa35" stroke="#fff0a7" stroke-width="1">
+      <circle cx="780" cy="330" r="5"/><circle cx="780" cy="375" r="5"/><circle cx="780" cy="420" r="5"/><circle cx="780" cy="465" r="5"/><circle cx="780" cy="510" r="5"/><circle cx="780" cy="555" r="5"/><circle cx="780" cy="600" r="5"/><circle cx="780" cy="645" r="5"/><circle cx="780" cy="690" r="5"/>
+      <circle cx="1180" cy="330" r="5"/><circle cx="1180" cy="375" r="5"/><circle cx="1180" cy="420" r="5"/><circle cx="1180" cy="465" r="5"/><circle cx="1180" cy="510" r="5"/><circle cx="1180" cy="555" r="5"/><circle cx="1180" cy="600" r="5"/><circle cx="1180" cy="645" r="5"/><circle cx="1180" cy="690" r="5"/>
+    </g>
+    <g class="pin-text">
+      <text x="818" y="334">3V3</text><text x="818" y="379">GPIO9</text><text x="818" y="424">GPIO12</text><text x="818" y="469">GPIO13</text><text x="818" y="514">GPIO5</text><text x="818" y="559">GPIO6</text><text x="818" y="604">GPIO7</text><text x="818" y="649">GPIO15</text><text x="818" y="694">GND</text>
+      <text x="1142" y="334" text-anchor="end">GPIO11</text><text x="1142" y="379" text-anchor="end">GPIO10</text><text x="1142" y="424" text-anchor="end">GPIO14</text><text x="1142" y="469" text-anchor="end">GPIO21</text><text x="1142" y="514" text-anchor="end">GPIO47</text><text x="1142" y="559" text-anchor="end">GPIO4</text><text x="1142" y="604" text-anchor="end">GPIO16</text><text x="1142" y="649" text-anchor="end">5V/VIN</text><text x="1142" y="694" text-anchor="end">GND</text>
+    </g>
+  </g>
+
+  <!-- ST7789 DISPLAY -->
+  <g id="display">
+    <rect class="card" x="1460" y="115" width="360" height="340" rx="16"/>
+    <path class="card-head" d="M1476 115 H1804 Q1820 115 1820 131 V161 H1460 V131 Q1460 115 1476 115Z"/>
+    <text class="card-title" x="1484" y="143">Màn hình TFT ST7789</text>
+    <text class="card-sub" x="1768" y="143" text-anchor="end">8 CHÂN • 3.3V</text>
+    <rect x="1535" y="173" width="218" height="196" rx="10" fill="#17202a" stroke="#445363" stroke-width="4"/>
+    <rect x="1553" y="191" width="182" height="160" rx="4" fill="url(#screen)"/>
+    <text x="1644" y="214" text-anchor="middle" font-size="20" font-weight="900" fill="#f5ffff">KST</text>
+    <text x="1644" y="232" text-anchor="middle" font-size="10" font-weight="800" fill="#83ead0">KenhSangTao.COM</text>
+    <text x="1644" y="252" text-anchor="middle" font-size="13" font-weight="800" fill="#e3fbf5">GOOT</text>
+    <text x="1644" y="282" text-anchor="middle" font-size="34" font-weight="850" fill="#ffe58a">350°C</text>
+    <rect x="1582" y="301" width="124" height="8" rx="4" fill="#83ead0" opacity=".9"/>
+    <text x="1644" y="332" text-anchor="middle" font-size="9" font-weight="700" fill="#e3fbf5">ĐANG GIA NHIỆT • SẴN SÀNG</text>
+    <line x1="1460" y1="180" x2="1518" y2="180" stroke="#718096" stroke-width="2"/><text class="pin-id" x="1522" y="184">SDA</text>
+    <line x1="1460" y1="220" x2="1518" y2="220" stroke="#718096" stroke-width="2"/><text class="pin-id" x="1522" y="224">CS</text>
+    <line x1="1460" y1="260" x2="1518" y2="260" stroke="#718096" stroke-width="2"/><text class="pin-id" x="1522" y="264">DC</text>
+    <line x1="1460" y1="300" x2="1518" y2="300" stroke="#718096" stroke-width="2"/><text class="pin-id" x="1522" y="304">RES</text>
+    <line x1="1460" y1="340" x2="1518" y2="340" stroke="#718096" stroke-width="2"/><text class="pin-id" x="1522" y="344">BL</text>
+    <line x1="1600" y1="115" x2="1600" y2="168" stroke="#718096" stroke-width="2"/><text class="pin-id" x="1588" y="169" text-anchor="end">VDD</text>
+    <line x1="1700" y1="115" x2="1700" y2="168" stroke="#718096" stroke-width="2"/><text class="pin-id" x="1712" y="169">SCL</text>
+    <line x1="1764" y1="400" x2="1820" y2="400" stroke="#718096" stroke-width="2"/><text class="pin-id" x="1758" y="404" text-anchor="end">GND</text>
+  </g>
+
+  <!-- ACTIVE BUZZER -->
+  <g id="buzzer-component">
+    <rect class="card" x="1510" y="500" width="290" height="120" rx="16"/>
+    <path class="card-head" d="M1526 500 H1784 Q1800 500 1800 516 V540 H1510 V516 Q1510 500 1526 500Z"/>
+    <text class="card-title" x="1532" y="527">Còi chủ động</text>
+    <circle cx="1656" cy="575" r="32" fill="#1a1f25" stroke="#020407" stroke-width="3"/>
+    <circle cx="1656" cy="575" r="8" fill="#3e4852"/>
+    <text x="1656" y="581" text-anchor="middle" font-size="18" font-weight="900" fill="#d9e0e5">+</text>
+    <line x1="1510" y1="560" x2="1608" y2="560" stroke="#718096" stroke-width="2"/><text class="pin-id" x="1588" y="554">+</text>
+    <line x1="1660" y1="607" x2="1660" y2="620" stroke="#718096" stroke-width="2"/><text class="pin-id" x="1672" y="609">−</text>
+  </g>
+
+  <!-- STAND SWITCH -->
+  <g id="stand-switch">
+    <rect class="card" x="1500" y="660" width="310" height="120" rx="16"/>
+    <path class="card-head" d="M1516 660 H1794 Q1810 660 1810 676 V702 H1500 V676 Q1500 660 1516 660Z"/>
+    <text class="card-title" x="1522" y="688" font-size="15">Công tắc phát hiện giá đỡ</text>
+    <circle cx="1580" cy="735" r="8" fill="#c5ced7" stroke="#5f6b78" stroke-width="2"/>
+    <circle cx="1710" cy="735" r="8" fill="#c5ced7" stroke="#5f6b78" stroke-width="2"/>
+    <line x1="1588" y1="731" x2="1696" y2="706" stroke="#5e6874" stroke-width="7" stroke-linecap="round"/>
+    <rect x="1688" y="699" width="28" height="13" rx="5" fill="#5e6874"/>
+    <path d="M1500 705 H1580 V735" fill="none" stroke="#718096" stroke-width="2"/>
+    <line x1="1710" y1="735" x2="1710" y2="780" stroke="#718096" stroke-width="2"/>
+    <text class="pin-id" x="1530" y="719">chân 1</text><text class="pin-id" x="1722" y="758">chân 2</text>
+  </g>
+
+  <!-- GOOT TIP / CARTRIDGE -->
+  <g id="goot-tip" transform="translate(0 80)">
+    <path d="M90 839 L135 826 L165 834 V872 L135 880 L90 867 Z" fill="#606d79" stroke="#2d3843" stroke-width="3"/>
+    <path d="M25 853 L91 839 V867 L25 861 Z" fill="url(#metal)" stroke="#778491" stroke-width="2"/>
+    <rect x="163" y="822" width="256" height="64" rx="28" fill="url(#metal)" stroke="#65727f" stroke-width="3"/>
+    <rect x="184" y="832" width="190" height="44" rx="20" fill="#e3e8ed" stroke="#9aa5af"/>
+    <path d="M420 826 H447 V886 H420 Z" fill="#26313a" stroke="#10161c" stroke-width="3"/>
+    <rect x="447" y="847" width="24" height="16" rx="4" fill="#c8982d" stroke="#795b1d" stroke-width="2"/>
+    <rect x="447" y="887" width="24" height="16" rx="4" fill="#c8982d" stroke="#795b1d" stroke-width="2"/>
+    <circle cx="252" cy="839" r="6" fill="#a66712" stroke="#fff" stroke-width="2"/>
+    <circle cx="270" cy="859" r="6" fill="#0b8b8f" stroke="#fff" stroke-width="2"/>
+    <path d="M126 890 H356 L390 930 H92 Z" fill="#6b7580" stroke="#333d47" stroke-width="3"/>
+    <rect x="83" y="928" width="320" height="18" rx="8" fill="#363f49"/>
+    <text x="247" y="974" text-anchor="middle" font-size="17" font-weight="850" fill="#1d2a3b">Mũi hàn GOOT — 4 chân</text>
+    <text x="247" y="994" text-anchor="middle" class="card-sub">SS+/SS−: CẢM BIẾN • 2 CHÂN MS: GIA NHIỆT</text>
+    <text class="wire-label" x="265" y="824" text-anchor="middle">cảm biến SS+ / SS−</text>
+    <text class="wire-label" x="462" y="840">MS</text>
+    <text class="wire-label" x="462" y="917">MS</text>
+  </g>
+
+  <!-- MAKITA BATTERY -->
+  <g id="battery">
+    <rect x="800" y="900" width="260" height="160" rx="18" fill="#182127" stroke="#0c1115" stroke-width="4"/>
+    <path d="M827 900 H1018 L1042 925 V1040 H817 V919Z" fill="#171e24"/>
+    <path d="M845 915 H1025 V960 H845Z" fill="#10a5a7" stroke="#087173" stroke-width="2"/>
+    <path d="M872 960 H1015 V1043 H838 V997Z" fill="#202a31"/>
+    <rect x="894" y="875" width="102" height="31" rx="5" fill="#20282e" stroke="#080c0f" stroke-width="3"/>
+    <text x="930" y="994" text-anchor="middle" font-size="19" font-weight="900" fill="#f5f8fa">Pin Makita 20V</text>
+    <text x="930" y="1018" text-anchor="middle" font-size="12" font-weight="750" fill="#9fe2e3">BỘ PIN 18V / 20V</text>
+    <text x="935" y="944" text-anchor="middle" font-size="12" font-weight="900" fill="#f7ffff" letter-spacing="0.4">KENHSANGTAO.COM</text>
+    <line x1="800" y1="950" x2="825" y2="950" stroke="#596774" stroke-width="2"/>
+    <line x1="1034" y1="1000" x2="1060" y2="1000" stroke="#596774" stroke-width="2"/>
+    <text x="821" y="944" font-size="19" font-weight="900" fill="#e94c4c">+</text>
+    <text x="1024" y="1006" font-size="19" font-weight="900" fill="#d7dde2">−</text>
+  </g>
+
+  <!-- DC-DC BUCK -->
+  <g id="buck">
+    <rect class="card" x="1150" y="890" width="270" height="170" rx="16"/>
+    <path class="card-head" d="M1166 890 H1404 Q1420 890 1420 906 V936 H1150 V906 Q1150 890 1166 890Z"/>
+    <text x="1170" y="918" font-size="14" font-weight="800" fill="#182234">Mạch hạ áp DC-DC (20V→5V)</text>
+    <text class="card-sub" x="1285" y="947" text-anchor="middle">20V → 5V • 3A</text>
+    <rect x="1200" y="966" width="170" height="68" rx="10" fill="#268a50" stroke="#176137" stroke-width="2"/>
+    <circle cx="1230" cy="1000" r="19" fill="#25313c" stroke="#111820" stroke-width="3"/>
+    <rect x="1280" y="982" width="65" height="35" rx="5" fill="#20272e"/>
+    <path d="M1289 1000 H1336" stroke="#9aabb8" stroke-width="2"/>
+    <text x="1313" y="1010" text-anchor="middle" font-size="9" font-weight="800" fill="#dbe7df">HẠ ÁP</text>
+    <line x1="1150" y1="935" x2="1194" y2="935" stroke="#718096" stroke-width="2"/><text class="pin-id" x="1197" y="939">IN+</text>
+    <line x1="1150" y1="1015" x2="1194" y2="1015" stroke="#718096" stroke-width="2"/><text class="pin-id" x="1197" y="1019">IN−</text>
+    <line x1="1376" y1="935" x2="1420" y2="935" stroke="#718096" stroke-width="2"/><text class="pin-id" x="1372" y="939" text-anchor="end">OUT+ 5V</text>
+    <line x1="1376" y1="1015" x2="1420" y2="1015" stroke="#718096" stroke-width="2"/>
+    <text class="tiny" x="1285" y="1049" text-anchor="middle">IN− / OUT− NỐI CHUNG GND</text>
+  </g>
+
+  <!-- CONNECTION DOTS -->
+  <g id="connection-dots">
+    <g fill="#2477d4"><circle class="dot" cx="430" cy="155" r="6"/><circle class="dot" cx="760" cy="330" r="7"/><circle class="dot" cx="1600" cy="115" r="6"/><circle class="dot" cx="1820" cy="400" r="6"/><circle class="dot" cx="1420" cy="935" r="6"/><circle class="dot" cx="360" cy="480" r="6"/></g>
+    <g fill="#7c3aed"><circle class="dot" cx="455" cy="840" r="7"/><circle class="dot" cx="650" cy="780" r="7"/><circle class="dot" cx="750" cy="780" r="6"/></g>
+    <g fill="#e88716"><circle class="dot" cx="430" cy="200" r="6"/><circle class="dot" cx="430" cy="245" r="6"/><circle class="dot" cx="430" cy="290" r="6"/><circle class="dot" cx="760" cy="420" r="7"/><circle class="dot" cx="1700" cy="115" r="6"/><circle class="dot" cx="1460" cy="180" r="6"/><circle class="dot" cx="1460" cy="220" r="6"/><circle class="dot" cx="1460" cy="260" r="6"/><circle class="dot" cx="1460" cy="300" r="6"/><circle class="dot" cx="1460" cy="340" r="6"/></g>
+    <g fill="#20945d"><circle class="dot" cx="360" cy="510" r="6"/><circle class="dot" cx="360" cy="555" r="6"/><circle class="dot" cx="360" cy="600" r="6"/><circle class="dot" cx="80" cy="620" r="6"/><circle class="dot" cx="32" cy="620" r="6"/></g>
+    <g fill="#d83b82"><circle class="dot" cx="1510" cy="560" r="6"/></g>
+    <g fill="#1d252d"><circle class="dot" cx="1660" cy="620" r="6"/><circle class="dot" cx="1872" cy="620" r="6"/></g>
+    <g fill="#737d8c"><circle class="dot" cx="1500" cy="705" r="6"/><circle class="dot" cx="1710" cy="780" r="6"/><circle class="dot" cx="1872" cy="780" r="6"/></g>
+    <g fill="#164b9b"><circle class="dot" cx="515" cy="840" r="6"/><circle class="dot" cx="450" cy="975" r="6"/></g>
+    <g fill="#dc3e3e"><circle class="dot" cx="800" cy="950" r="7"/><circle class="dot" cx="755" cy="875" r="7"/><circle class="dot" cx="450" cy="935" r="7"/><circle class="dot" cx="1150" cy="935" r="7"/></g>
+    <g fill="#1d252d"><circle class="dot" cx="1060" cy="1000" r="7"/><circle class="dot" cx="1100" cy="1015" r="7"/><circle class="dot" cx="1150" cy="1015" r="7"/><circle class="dot" cx="1420" cy="1015" r="7"/></g>
+    <circle class="dot" cx="170" cy="380" r="6" fill="#a66712"/><circle class="dot" cx="235" cy="380" r="6" fill="#0b8b8f"/><circle class="dot" cx="330" cy="380" r="6" fill="#46515e"/>
+    <g fill="#28323e"><circle class="dot" cx="32" cy="1130" r="6"/><circle class="dot" cx="575" cy="840" r="6"/><circle class="dot" cx="575" cy="1130" r="6"/><circle class="dot" cx="660" cy="1130" r="6"/><circle class="dot" cx="770" cy="1130" r="6"/><circle class="dot" cx="1100" cy="1130" r="6"/><circle class="dot" cx="1872" cy="400" r="6"/><circle class="dot" cx="1872" cy="1130" r="6"/></g>
+  </g>
+
+  <!-- ENDPOINT / NET LABELS -->
+  <g id="net-labels">
+    <text class="wire-label" x="445" y="149">VCC</text><text class="wire-label" x="753" y="322" text-anchor="end">3V3</text>
+    <text class="wire-label" x="445" y="194">CS</text><text class="wire-label" x="765" y="367" text-anchor="end">GPIO9</text>
+    <text class="wire-label" x="445" y="239">CLK</text><text class="wire-label" x="753" y="412" text-anchor="end">GPIO12</text>
+    <text class="wire-label" x="445" y="284">DO</text><text class="wire-label" x="765" y="457" text-anchor="end">GPIO13</text>
+    <text class="wire-label" x="180" y="391">T+</text><text class="wire-label" x="241" y="411">T−</text>
+    <text class="wire-label" x="164" y="910">SS+</text><text class="wire-label" x="174" y="957">SS−</text>
+    <text class="wire-label" x="342" y="397">GND</text>
+
+    <text class="wire-label" x="1714" y="108">SCL</text>
+    <text class="wire-label" x="1586" y="108" text-anchor="end">VDD</text>
+    <text class="wire-label" x="1446" y="174" text-anchor="end">SDA</text><text class="wire-label" x="1194" y="322">GPIO11</text>
+    <text class="wire-label" x="1446" y="214" text-anchor="end">CS</text><text class="wire-label" x="1194" y="367">GPIO10</text>
+    <text class="wire-label" x="1446" y="254" text-anchor="end">DC</text><text class="wire-label" x="1194" y="412">GPIO14</text>
+    <text class="wire-label" x="1446" y="294" text-anchor="end">RES</text><text class="wire-label" x="1194" y="457">GPIO21</text>
+    <text class="wire-label" x="1446" y="334" text-anchor="end">BL</text><text class="wire-label" x="1194" y="502">GPIO47</text>
+    <text class="wire-label" x="1832" y="394">GND</text>
+
+    <text class="wire-label" x="373" y="474">+</text>
+    <text class="wire-label" x="373" y="504">CLK</text><text class="wire-label" x="765" y="502" text-anchor="end">GPIO5</text>
+    <text class="wire-label" x="373" y="549">DT</text><text class="wire-label" x="765" y="547" text-anchor="end">GPIO6</text>
+    <text class="wire-label" x="373" y="594">SW</text><text class="wire-label" x="765" y="592" text-anchor="end">GPIO7</text>
+    <text class="wire-label" x="68" y="614" text-anchor="end">GND</text>
+
+    <text class="wire-label" x="1496" y="552" text-anchor="end">+</text><text class="wire-label" x="1194" y="592">GPIO16</text>
+    <text class="wire-label" x="1673" y="638">−</text>
+    <text class="wire-label" x="1486" y="698" text-anchor="end">chân 1</text><text class="wire-label" x="765" y="637" text-anchor="end">GPIO15</text>
+    <text class="wire-label" x="1722" y="797">chân 2</text>
+
+    <text class="wire-label" x="468" y="858">Gate</text><text class="wire-label" x="1194" y="547">GPIO4</text>
+    <text class="wire-label" x="528" y="858">Drain</text>
+    <text class="wire-label" x="588" y="858">Source</text>
+
+    <text class="wire-label" x="785" y="942" text-anchor="end">Pin Makita 20V +</text><text class="wire-label" x="1136" y="927" text-anchor="end">IN+</text>
+    <text class="wire-label" x="463" y="928">Pin Makita 20V +</text>
+    <text class="wire-label" x="1073" y="993">Pin Makita 20V −</text><text class="wire-label" x="1136" y="1007" text-anchor="end">IN−</text>
+    <text class="wire-label" x="1432" y="927">OUT+ 5V</text><text class="wire-label" x="1194" y="637">5V/VIN</text>
+    <text class="wire-label" x="1428" y="1005">OUT− GND</text>
+  </g>
+
+  <!-- LEGEND -->
+  <g id="legend">
+    <rect x="1500" y="817" width="350" height="298" rx="16" fill="#ffffff" stroke="#c1cad5" stroke-width="2"/>
+    <text class="card-title" x="1522" y="845">Chú giải màu dây</text>
+    <line x1="1524" y1="867" x2="1574" y2="867" class="wire spi"/><text class="legend-text" x="1590" y="871">Tín hiệu SPI (MAX31855 + màn hình)</text>
+    <line x1="1524" y1="892" x2="1574" y2="892" class="wire heater"/><text class="legend-text" x="1590" y="896">Cực + pin / nguồn gia nhiệt MS</text>
+    <line x1="1524" y1="917" x2="1574" y2="917" class="wire power"/><text class="legend-text" x="1590" y="921">Nguồn 3V3 / 5V</text>
+    <line x1="1524" y1="942" x2="1574" y2="942" class="wire gate-purple"/><text class="legend-text" x="1590" y="946">GPIO4 → 220Ω → Gate / 10kΩ</text>
+    <line x1="1524" y1="967" x2="1574" y2="967" class="wire encoder"/><text class="legend-text" x="1590" y="971">EC11 CLK / DT / SW</text>
+    <line x1="1524" y1="992" x2="1574" y2="992" class="wire buzzer"/><text class="legend-text" x="1590" y="996">Tín hiệu + còi</text>
+    <line x1="1524" y1="1017" x2="1574" y2="1017" class="wire stand"/><text class="legend-text" x="1590" y="1021">Công tắc phát hiện giá đỡ</text>
+    <line x1="1524" y1="1042" x2="1574" y2="1042" class="wire-thick battery-wire"/><text class="legend-text" x="1590" y="1046">Cực − pin / còi − / đường hồi GND</text>
+    <line x1="1524" y1="1067" x2="1547" y2="1067" class="wire-thin thermo-a"/><line x1="1551" y1="1067" x2="1574" y2="1067" class="wire-thin thermo-b"/><text class="legend-text" x="1590" y="1071">Cặp cảm biến GOOT SS+ / SS−</text>
+    <line x1="1524" y1="1092" x2="1574" y2="1092" class="wire drain-blue"/><text class="legend-text" x="1590" y="1096">MOSFET Drain → bộ gia nhiệt MS</text>
+  </g>
+
+  <rect x="720" y="1147" width="480" height="33" rx="16" fill="#28323e"/>
+  <text x="960" y="1170" text-anchor="middle" font-size="16" font-weight="850" fill="#ffffff" letter-spacing="1.2">GND CHUNG • MỘT ĐƯỜNG GND DUY NHẤT</text>
+</svg>

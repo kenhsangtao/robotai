@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071523">
+<title>KST GOOT Soldering Station — Firmware Center</title>
+<meta name="description" content="KST GOOT Soldering Station firmware, wiring diagram, parts list and instructions for ESP32-S3.">
+<link rel="icon" type="image/png" href="assets/images/kst-logo.png">
+<link rel="apple-touch-icon" href="assets/images/kst-logo.png">
+<style>
+:root{
+  --bg:#061321;--panel:#102a45;--panel2:#0c2239;--line:#285173;
+  --text:#f3f7fb;--muted:#a8c8e6;--blue:#42a6ff;--violet:#7a63ff;
+  --warn:#ffd15a;--danger:#ff7b7b;--green:#56db8b
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#061321,#07192a 55%,#061321);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+a{color:#63baff}
+.wrap{max-width:1200px;margin:auto;padding:0 20px}
+.header{position:relative;background:#12385f;border-bottom:1px solid #315d85}
+.bar{max-width:1200px;margin:auto;min-height:76px;padding:10px 20px;display:flex;align-items:center;gap:18px}
+.brand-wrap{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-logo{width:54px;height:54px;object-fit:contain;flex:0 0 auto}
+.brand{font-size:18px;font-weight:800;line-height:1.2;white-space:nowrap}
+.brand small{display:block;margin-top:4px;color:var(--muted);font-size:13px;font-weight:500}
+.nav{margin-left:auto;display:flex;align-items:center;gap:17px}
+.nav a{color:#c7d8e9;text-decoration:none;font-weight:800;white-space:nowrap;padding:7px 2px}
+.nav a:hover,.nav a.active{color:#fff}
+.lang{display:flex;background:#0b2239;border:1px solid #315d85;border-radius:12px;padding:3px;flex:0 0 auto}
+.lang button{border:0;background:transparent;color:#c7d8e9;padding:8px 11px;border-radius:9px;font-weight:900;cursor:pointer}
+.lang button.active{background:#2494ff;color:#fff}
+
+.hero{display:grid;grid-template-columns:1.08fr .92fr;gap:38px;align-items:center;padding:62px 0 44px}
+.kicker{color:#42b3ff;font-weight:900;letter-spacing:2px;font-size:14px}
+.hero h1{font-size:58px;line-height:1.03;margin:18px 0 18px;letter-spacing:-1.8px}
+.hero h1 span{background:linear-gradient(90deg,#43b6ff,#7e61ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:19px;line-height:1.65;color:#d7e5f2;max-width:700px}
+.buttons{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:24px 0 12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 18px;border-radius:14px;border:1px solid #315d85;text-decoration:none;color:#fff;font-weight:900;background:linear-gradient(135deg,#238eff,#7457ff);cursor:pointer}
+.btn.secondary{background:#102b47}
+.flash-note{color:#9fc2df;font-size:14px}
+.free-firmware{margin:14px 0 0;padding:12px 16px;border-radius:12px;background:rgba(37,143,255,.10);border:1px solid rgba(85,184,255,.35);color:#dff2ff;font-size:15px}
+.mobile-flash-note{display:none}
+
+.hero-card,.panel{background:rgba(16,42,69,.96);border:1px solid #294d6d;border-radius:22px}
+.hero-card{overflow:hidden;background:#0d243d}
+.hero-placeholder{min-height:330px;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;background:linear-gradient(145deg,#0b1f34,#12385f)}
+.hero-placeholder img{width:94px;height:94px;object-fit:contain;border-radius:50%;background:white;margin-bottom:14px}
+.hero-placeholder b{display:block;font-size:26px}
+.hero-placeholder span{display:block;color:#a8c8e6;margin-top:8px}
+.hero-caption{padding:15px 18px;color:#dbeaf7;font-weight:800;border-top:1px solid #294d6d}
+
+.panel{padding:32px;margin:28px 0}
+.panel h2{text-align:center;font-size:34px;margin:0 0 12px}
+.panel-sub{text-align:center;color:#a9c5dc;line-height:1.6;margin:0 auto 24px;max-width:850px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:#0b2035;border:1px solid #295374;border-radius:17px;padding:20px}
+.card h3{margin:0 0 12px;color:#53b7ff;font-size:20px}
+.card p,.card li{color:#d5e2ee;line-height:1.65}
+.card ul{margin:8px 0 0;padding-left:20px}
+.code{font-family:Consolas,monospace;background:#071624;padding:2px 7px;border-radius:6px;color:#7ed2ff}
+.diagram{width:100%;display:block;background:white;border-radius:16px;max-height:900px;object-fit:contain}
+.diagram-actions{display:flex;justify-content:center;margin-top:16px}
+.diagram-btn{background:#102b47}
+.safety{border-color:#806520;background:#2a2415}
+.safety h2,.safety h3{color:var(--warn)}
+.video-box{text-align:center;padding:10px 0}
+.video-box p{color:#c7d8e9;font-size:17px;line-height:1.65}
+.placeholder{border:1px dashed #477398;border-radius:16px;padding:26px;text-align:center;color:#a8c8e6;background:#0a1c30}
+.note{color:#a8c8e6;font-size:14px}
+
+.en{display:none}
+body.enmode .vi{display:none!important}
+body.enmode .en{display:block}
+body.enmode span.en{display:inline}
+body.enmode .lang button[data-l="vi"]{background:transparent;color:#c7d8e9}
+body.enmode .lang button[data-l="en"]{background:#2494ff;color:#fff}
+body:not(.enmode) .lang button[data-l="vi"]{background:#2494ff;color:#fff}
+body:not(.enmode) .lang button[data-l="en"]{background:transparent;color:#c7d8e9}
+body:not(.enmode) span.en{display:none}
+
+footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
+
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .hero-card{max-width:760px;width:100%;margin:auto}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:800px){
+  .bar{min-height:auto;padding:10px 12px;flex-wrap:wrap;gap:8px 12px}
+  .brand-logo{width:42px;height:42px}
+  .brand{font-size:15px}.brand small{font-size:11px}
+  .lang{margin-left:auto;order:2}
+  .nav{order:3;width:100%;margin:0;gap:14px;overflow-x:auto;padding:2px 0 3px;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{font-size:14px;flex:0 0 auto}
+  .hero{padding-top:32px;gap:22px}
+  .hero h1{font-size:42px}
+  .lead{font-size:17px}
+  .grid{grid-template-columns:1fr}
+  .panel{padding:22px 16px}
+  .panel h2{font-size:28px}
+  .hero-card{display:none}
+  .mobile-flash-note{display:inline-flex;align-items:center;min-height:48px;padding:0 14px;border-radius:13px;background:#102b47;border:1px solid #315d85;color:#b9cadd;font-weight:700}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="bar">
+    <div class="brand-wrap">
+      <img class="brand-logo" src="assets/images/kst-logo.png" alt="KST logo">
+      <div class="brand">
+        <span class="vi">Trạm Hàn KST GOOT</span><span class="en">KST GOOT Soldering Station</span>
+        <small>Firmware Center</small>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="#firmware">Firmware</a>
+      <a href="#features"><span class="vi">Tính năng</span><span class="en">Features</span></a>
+      <a href="#components"><span class="vi">Linh kiện</span><span class="en">Components</span></a>
+      <a href="#wiring"><span class="vi">Sơ đồ</span><span class="en">Wiring</span></a>
+      <a href="#video">Video</a>
+      <a href="#guide"><span class="vi">Hướng dẫn</span><span class="en">Guide</span></a>
+    </nav>
+
+    <div class="lang">
+      <button data-l="vi">VN</button>
+      <button data-l="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+<section class="hero" id="firmware">
+  <div>
+    <p class="kicker">KÊNH SÁNG TẠO .COM × Creative Channel</p>
+
+    <div class="vi">
+      <h1>Nạp firmware<br><span>Trạm Hàn KST GOOT</span></h1>
+      <p class="lead">Trạm hàn điều khiển nhiệt độ dùng <b>ESP32-S3 N16R8</b>, màn hình ST7789 1.47", MAX31855 và mũi hàn GOOT, chạy bằng pin Makita 18–21V.</p>
+    </div>
+
+    <div class="en">
+      <h1>Install firmware<br><span>KST GOOT Soldering Station</span></h1>
+      <p class="lead">Temperature-controlled soldering station using an <b>ESP32-S3 N16R8</b>, 1.47" ST7789 display, MAX31855 and a GOOT soldering iron, powered by an 18–21V Makita battery.</p>
+    </div>
+
+    <div class="buttons">
+      <div id="desktop-flash-button"></div>
+      <div class="mobile-flash-note">
+        <span class="vi">📱 Nạp trực tiếp cần Chrome/Edge trên máy tính.</span>
+        <span class="en">📱 Direct flashing requires Chrome/Edge on a computer.</span>
+      </div>
+      <a class="btn secondary" href="firmware/goot-kst-v1-full.bin" download>
+        <span class="vi">⬇ Tải firmware .BIN</span>
+        <span class="en">⬇ Download firmware .BIN</span>
+      </a>
+    </div>
+
+    <p class="flash-note">
+      <span class="vi">Firmware đã gộp sẵn bootloader + partition + ứng dụng. Nạp tại offset <b>0x0</b>.</span>
+      <span class="en">Pre-merged firmware contains bootloader + partition table + application. Flash at offset <b>0x0</b>.</span>
+    </p>
+
+    <p class="free-firmware">
+      <span class="vi">🎁 <b>Firmware hoàn toàn miễn phí</b> dành cho anh em Fans Kênh Sáng Tạo.</span>
+      <span class="en">🎁 <b>Firmware is completely free</b> for Creative Channel fans.</span>
+    </p>
+  </div>
+
+  <aside class="hero-card">
+    <div class="hero-placeholder">
+      <div>
+        <img src="assets/images/kst-logo.png" alt="KST">
+        <b><span class="vi">Trạm Hàn KST GOOT</span><span class="en">KST GOOT Soldering Station</span></b>
+        <span class="vi">Ảnh sản phẩm sẽ cập nhật sau</span>
+        <span class="en">Product photos coming soon</span>
+      </div>
+    </div>
+    <div class="hero-caption">
+      <span class="vi">ESP32-S3 · ST7789 1.47" · MAX31855 · GOOT · Makita 18–21V</span>
+      <span class="en">ESP32-S3 · ST7789 1.47" · MAX31855 · GOOT · Makita 18–21V</span>
+    </div>
+  </aside>
+</section>
+
+<section class="panel" id="features">
+  <h2><span class="vi">Tính năng chính</span><span class="en">Main features</span></h2>
+  <div class="grid">
+    <article class="card">
+      <h3>🌡️ <span class="vi">Điều khiển nhiệt</span><span class="en">Temperature control</span></h3>
+      <p class="vi">Xoay encoder để chỉnh nhiệt độ, mỗi nấc ±5°C. Hỗ trợ 8 mức đặt nhanh từ 300 đến 500°C.</p>
+      <p class="en">Rotate the encoder to adjust temperature in ±5°C steps. Eight quick presets from 300 to 500°C.</p>
+    </article>
+    <article class="card">
+      <h3>💤 <span class="vi">Tự ngủ</span><span class="en">Auto sleep</span></h3>
+      <p class="vi">Khi đặt mỏ hàn lên giá đủ lâu, hệ thống tự hạ về 150°C; nhấc mỏ lên sẽ quay lại nhiệt độ đặt trước đó.</p>
+      <p class="en">When the iron stays on its stand long enough, temperature drops to 150°C and returns to the setpoint when lifted.</p>
+    </article>
+    <article class="card">
+      <h3>📶 Wi-Fi Settings</h3>
+      <p class="vi">Board phát Wi-Fi <span class="code">KST-TramHan</span>. Mở <span class="code">192.168.4.1</span> để chỉnh ngôn ngữ, °C/°F, còi, độ sáng, bù nhiệt và thời gian ngủ.</p>
+      <p class="en">The board broadcasts <span class="code">KST-TramHan</span>. Open <span class="code">192.168.4.1</span> to configure language, °C/°F, buzzer, brightness, temperature offset and sleep timeout.</p>
+    </article>
+  </div>
+</section>
+
+<section class="panel" id="components">
+  <h2><span class="vi">Danh sách linh kiện</span><span class="en">Component list</span></h2>
+  <p class="panel-sub">
+    <span class="vi">Link mua linh kiện anh sẽ cập nhật sau. Hiện tại đây là đầy đủ phần cứng của bản v1.</span>
+    <span class="en">Purchase links will be added later. This is the complete v1 hardware list.</span>
+  </p>
+  <div class="grid">
+    <article class="card"><h3>🧠 ESP32-S3 DevKitC-1</h3><p>N16R8 · 16MB Flash · 8MB PSRAM</p></article>
+    <article class="card"><h3>🌡️ MAX31855</h3><p><span class="vi">Module đọc cặp nhiệt K-type, SPI.</span><span class="en">K-type thermocouple amplifier, SPI.</span></p></article>
+    <article class="card"><h3>🖥️ ST7789 1.47"</h3><p>172×320 · SPI TFT</p></article>
+    <article class="card"><h3>🎛️ EC11 Encoder</h3><p><span class="vi">Núm xoay + nút nhấn tích hợp.</span><span class="en">Rotary knob with integrated push button.</span></p></article>
+    <article class="card"><h3>⚡ IRLB8721</h3><p><span class="vi">MOSFET N-channel logic-level TO-220.</span><span class="en">Logic-level N-channel MOSFET, TO-220.</span></p></article>
+    <article class="card"><h3>Ω 220Ω + 10kΩ</h3><p><span class="vi">220Ω nối tiếp Gate + 10kΩ pulldown Gate.</span><span class="en">220Ω gate series + 10kΩ gate pulldown.</span></p></article>
+    <article class="card"><h3>🔊 Buzzer</h3><p><span class="vi">Còi chủ động 2 chân.</span><span class="en">2-pin active buzzer.</span></p></article>
+    <article class="card"><h3>🛑 Micro / Reed Switch</h3><p><span class="vi">Phát hiện mỏ hàn đặt lên giá.</span><span class="en">Detects when the iron rests on its stand.</span></p></article>
+    <article class="card"><h3>🔥 GOOT</h3><p><span class="vi">Heater khoảng 8.2Ω + cặp nhiệt K-type.</span><span class="en">~8.2Ω heater + K-type thermocouple.</span></p></article>
+    <article class="card"><h3>🔋 Makita LXT 18–21V</h3><p><span class="vi">Pin + đế pin tương ứng.</span><span class="en">Battery + matching holder/adapter.</span></p></article>
+    <article class="card"><h3>⬇️ DC-DC Buck</h3><p>7–28V → 5V / 3A</p></article>
+    <article class="card"><h3>🧩 Perfboard</h3><p><span class="vi">Phíp đồng + dây, thiếc, ống co nhiệt.</span><span class="en">Copper-clad perfboard + wire, solder and heat-shrink.</span></p></article>
+  </div>
+</section>
+
+<section class="panel" id="wiring">
+  <h2><span class="vi">Sơ đồ đấu nối</span><span class="en">Wiring diagram</span></h2>
+
+  <div class="vi">
+    <img class="diagram" loading="lazy" decoding="async" src="docs/so-do-dau-noi-vi.svg" alt="Sơ đồ đấu nối Trạm Hàn KST GOOT">
+    <div class="diagram-actions">
+      <a class="btn secondary diagram-btn" href="docs/so-do-dau-noi-vi.svg" target="_blank" rel="noopener">🔎 Mở sơ đồ tiếng Việt toàn màn hình</a>
+    </div>
+  </div>
+
+  <div class="en">
+    <img class="diagram" loading="lazy" decoding="async" src="docs/wiring-diagram-en.svg" alt="KST GOOT soldering station wiring diagram">
+    <div class="diagram-actions">
+      <a class="btn secondary diagram-btn" href="docs/wiring-diagram-en.svg" target="_blank" rel="noopener">🔎 Open English wiring diagram full screen</a>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="video">
+  <h2><span class="vi">Video hướng dẫn</span><span class="en">Tutorial video</span></h2>
+  <div class="placeholder">
+    <span class="vi">🎬 Link video VN sẽ cập nhật sau.</span>
+    <span class="en">🎬 English video link coming soon.</span>
+  </div>
+</section>
+
+<section class="panel" id="guide">
+  <h2><span class="vi">Hướng dẫn sử dụng</span><span class="en">Setup & usage guide</span></h2>
+  <div class="grid">
+    <article class="card">
+      <h3><span class="vi">1. Nạp firmware</span><span class="en">1. Flash firmware</span></h3>
+      <p class="vi">Dùng Chrome hoặc Edge trên máy tính. Bấm <b>Nạp firmware</b>, chọn đúng cổng USB Serial và nạp file đã gộp tại <b>0x0</b>.</p>
+      <p class="en">Use desktop Chrome or Edge. Click <b>Install firmware</b>, select the correct USB Serial port and flash the merged image at <b>0x0</b>.</p>
+    </article>
+    <article class="card">
+      <h3><span class="vi">2. Kết nối Wi-Fi</span><span class="en">2. Connect to Wi-Fi</span></h3>
+      <p class="vi">Kết nối <span class="code">KST-TramHan</span>, mật khẩu <span class="code">kst123456</span>, sau đó mở <span class="code">192.168.4.1</span>.</p>
+      <p class="en">Connect to <span class="code">KST-TramHan</span>, password <span class="code">kst123456</span>, then open <span class="code">192.168.4.1</span>.</p>
+    </article>
+    <article class="card">
+      <h3><span class="vi">3. Điều khiển</span><span class="en">3. Controls</span></h3>
+      <ul>
+        <li><span class="vi">Xoay encoder: ±5°C.</span><span class="en">Rotate encoder: ±5°C.</span></li>
+        <li><span class="vi">Bấm nhanh: chuyển mức 300→330→360→390→420→450→480→500°C.</span><span class="en">Short press: cycle 300→330→360→390→420→450→480→500°C.</span></li>
+        <li><span class="vi">Giữ 3 giây: vào/thoát Settings.</span><span class="en">Hold 3 seconds: enter/exit Settings.</span></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="panel safety">
+  <h2>⚠️ <span class="vi">Lưu ý an toàn quan trọng</span><span class="en">Important safety notice</span></h2>
+  <p class="vi"><b>T+/T− của cặp nhiệt phải đấu đúng chiều.</b> Nếu đấu ngược, nhiệt độ hiển thị có thể giảm/âm trong khi mỏ hàn vẫn nóng lên mất kiểm soát. Khi test lần đầu, nếu số đo không tăng theo nhiệt độ thực tế, hãy ngắt nguồn ngay và đảo lại hai dây cặp nhiệt.</p>
+  <p class="en"><b>The thermocouple T+/T− polarity must be correct.</b> If reversed, the displayed temperature may fall/go negative while the iron continues heating out of control. During the first test, if the reading does not rise with the real tip temperature, disconnect power immediately and swap the thermocouple leads.</p>
+  <p class="vi">Thiết kế v1 cấp nguồn trực tiếp từ pin Makita. Có thể tự thêm cầu chì 5A trên đường dương nếu muốn tăng bảo vệ.</p>
+  <p class="en">The v1 design feeds the Makita battery directly. You may add a 5A fuse on the positive line for extra protection.</p>
+</section>
+
+<section class="panel">
+  <h2><span class="vi">Hình ảnh sản phẩm</span><span class="en">Product photos</span></h2>
+  <div class="placeholder">
+    <span class="vi">📷 Ảnh Trạm Hàn KST GOOT sẽ cập nhật khi anh hoàn thiện sản phẩm.</span>
+    <span class="en">📷 KST GOOT Soldering Station photos will be added when the build is finished.</span>
+  </div>
+</section>
+
+</main>
+
+<footer>Kênh Sáng Tạo .COM × Creative Channel — KST Firmware Center</footer>
+
+<script>
+(() => {
+  const buttons = [...document.querySelectorAll('.lang button')];
+  const setLang = (lang) => {
+    document.body.classList.toggle('enmode', lang === 'en');
+    document.documentElement.lang = lang;
+    localStorage.setItem('kst-goot-lang', lang);
+  };
+  buttons.forEach(b => b.addEventListener('click', () => setLang(b.dataset.l)));
+  setLang(localStorage.getItem('kst-goot-lang') || 'vi');
+
+  const links=[...document.querySelectorAll('.nav a')];
+  if('IntersectionObserver' in window){
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
+        }
+      });
+    },{rootMargin:'-25% 0px -65% 0px'});
+    document.querySelectorAll('section[id]').forEach(sec=>obs.observe(sec));
+  }
+})();
+</script>
+
+<script id="kst-goot-esp-web-tools-loader">
+(() => {
+  const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
+    || (window.matchMedia && window.matchMedia('(hover:none) and (pointer:coarse)').matches);
+  if (isMobile) return;
+
+  const mount = document.getElementById('desktop-flash-button');
+  if (!mount) return;
+
+  mount.innerHTML = `
+    <esp-web-install-button manifest="manifest.json">
+      <button slot="activate" class="btn">
+        <span class="vi">🚀 Nạp firmware</span>
+        <span class="en">🚀 Install firmware</span>
+      </button>
+      <span slot="unsupported">Please use Chrome or Microsoft Edge on a computer.</span>
+      <span slot="not-allowed">USB access is not allowed in this context.</span>
+    </esp-web-install-button>`;
+
+  const script = document.createElement('script');
+  script.type = 'module';
+  script.src = 'https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module';
+  script.onerror = () => {
+    console.warn('ESP Web Tools could not be loaded.');
+    mount.innerHTML = '<span style="color:#a8c8e6;font-weight:700">ESP Web Tools unavailable</span>';
+  };
+  document.head.appendChild(script);
+})();
+</script>
+</body>
+</html>

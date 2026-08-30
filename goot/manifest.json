@@ -1,0 +1,16 @@
+{
+  "name": "KST GOOT Soldering Station",
+  "version": "1.0.0",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [
+        {
+          "path": "firmware/goot-kst-v1-full.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
