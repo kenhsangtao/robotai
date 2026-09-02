@@ -1,4 +1,4 @@
-# KST Soldering Station — v1 (1.47" display)
+# KST Soldering Station — v1.0 (1.47" display)
 
 Temperature-controlled soldering station firmware for a GOOT soldering iron cartridge, built on ESP32-S3, powered by an 18-21V Makita LXT battery.
 
@@ -51,14 +51,14 @@ If the board doesn't enter flashing mode automatically: hold **BOOT**, tap **RES
 
 1. The board boots, showing "KST Soldering Station" + logos, loading to 100%.
 2. The board broadcasts its own WiFi network: SSID **`KST-TramHan`**, password **`kst123456`**.
-3. Connect your phone to that WiFi and open **`192.168.4.1`** in a browser to configure: language, °C/°F unit, beep, screen brightness, temperature offset, sleep timeout.
+3. Connect your phone to that WiFi and open **`192.168.4.1`** in a browser to configure: language, °C/°F unit, beep, screen brightness, temperature offset, sleep mode on/off.
 
 ## Basic usage
 
-- **Rotate the encoder knob**: adjust the setpoint (±5°C per detent).
+- **Rotate the encoder knob**: adjust the setpoint (±5°C per detent); beeps once ~0.4s after you stop turning.
 - **Short press**: cycle through 8 preset temperatures: 300→330→360→390→420→450→480→500°C.
 - **Long press (3s)**: enter/exit the settings menu (rotate to select a row, short-press to change its value).
-- Placing the iron on its stand long enough (per the configured sleep timeout) drops it to 150°C to save power; lifting it restores the previous setpoint.
+- **Placing the iron on its stand** drops it to 50°C immediately + one confirmation beep. **Lifting it** restores the setpoint immediately. This can be disabled entirely in Settings ("Sleep": On/Off).
 
 ## ⚠️ Safety — READ BEFORE USE
 

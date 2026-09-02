@@ -1,4 +1,4 @@
-# Trạm Hàn KST — Bản v1 (màn hình 1.47")
+# Trạm Hàn KST — Bản v1.0 (màn hình 1.47")
 
 Firmware điều khiển nhiệt độ mỏ hàn GOOT bằng ESP32-S3, dùng pin Makita 18-21V làm nguồn.
 
@@ -51,14 +51,14 @@ Nếu board không tự vào chế độ nạp: giữ nút **BOOT**, bấm nhả
 
 1. Board khởi động, màn hình hiện tên "Trạm Hàn KST" + logo, load 100%.
 2. Board tự phát WiFi tên **`KST-TramHan`**, mật khẩu **`kst123456`**.
-3. Điện thoại kết nối vào WiFi đó, mở trình duyệt vào địa chỉ **`192.168.4.1`** để cài đặt: ngôn ngữ, đơn vị °C/°F, còi báo, độ sáng màn hình, bù nhiệt độ, thời gian tự ngủ.
+3. Điện thoại kết nối vào WiFi đó, mở trình duyệt vào địa chỉ **`192.168.4.1`** để cài đặt: ngôn ngữ, đơn vị °C/°F, còi báo, độ sáng màn hình, bù nhiệt độ, bật/tắt chế độ ngủ.
 
 ## Cách dùng cơ bản
 
-- **Xoay núm encoder**: chỉnh nhiệt độ đặt (±5°C mỗi nấc).
+- **Xoay núm encoder**: chỉnh nhiệt độ đặt (±5°C mỗi nấc), kêu 1 tiếng ngắn sau khi ngừng xoay ~0.4s.
 - **Bấm nháy 1 cái**: nhảy nhanh qua 8 mức nhiệt dựng sẵn: 300→330→360→390→420→450→480→500°C.
 - **Giữ 3 giây**: vào/thoát màn hình cài đặt (trong màn cài đặt, xoay để chọn mục, bấm nháy để đổi giá trị).
-- Đặt mỏ hàn lên giá đỡ đủ lâu (theo thời gian cài trong Settings) → tự động hạ về 150°C tiết kiệm điện, nhấc lên là quay lại mức đặt.
+- **Đặt mỏ hàn lên giá đỡ** → ngủ ngay lập tức (hạ về 50°C) + kêu xác nhận. **Nhấc ra** → chạy lại mức đặt ngay. Có thể tắt hẳn tính năng này trong Settings ("Chế độ ngủ": Bật/Tắt).
 
 ## ⚠️ Lưu ý an toàn — ĐỌC KỸ TRƯỚC KHI DÙNG
 

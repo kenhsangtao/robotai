@@ -142,11 +142,13 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
 
     <div class="vi">
       <h1>Nạp firmware<br><span>Trạm Hàn KST GOOT</span></h1>
+      <p class="flash-note"><b>Firmware v1.0</b></p>
       <p class="lead">Trạm hàn điều khiển nhiệt độ dùng <b>ESP32-S3 N16R8</b>, màn hình ST7789 1.47", MAX31855 và mũi hàn GOOT, chạy bằng pin Makita 18–21V.</p>
     </div>
 
     <div class="en">
       <h1>Install firmware<br><span>KST GOOT Soldering Station</span></h1>
+      <p class="flash-note"><b>Firmware v1.0</b></p>
       <p class="lead">Temperature-controlled soldering station using an <b>ESP32-S3 N16R8</b>, 1.47" ST7789 display, MAX31855 and a GOOT soldering iron, powered by an 18–21V Makita battery.</p>
     </div>
 
@@ -194,18 +196,18 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
   <div class="grid">
     <article class="card">
       <h3>🌡️ <span class="vi">Điều khiển nhiệt</span><span class="en">Temperature control</span></h3>
-      <p class="vi">Xoay encoder để chỉnh nhiệt độ, mỗi nấc ±5°C. Hỗ trợ 8 mức đặt nhanh từ 300 đến 500°C.</p>
-      <p class="en">Rotate the encoder to adjust temperature in ±5°C steps. Eight quick presets from 300 to 500°C.</p>
+      <p class="vi">Xoay encoder để chỉnh nhiệt độ, mỗi nấc ±5°C; sau khi ngừng xoay khoảng 0.4 giây, còi kêu 1 tiếng ngắn. Hỗ trợ 8 mức đặt nhanh từ 300 đến 500°C.</p>
+      <p class="en">Rotate the encoder to adjust temperature in ±5°C steps; about 0.4s after you stop turning, the buzzer gives one short beep. Eight quick presets from 300 to 500°C.</p>
     </article>
     <article class="card">
       <h3>💤 <span class="vi">Tự ngủ</span><span class="en">Auto sleep</span></h3>
-      <p class="vi">Khi đặt mỏ hàn lên giá đủ lâu, hệ thống tự hạ về 150°C; nhấc mỏ lên sẽ quay lại nhiệt độ đặt trước đó.</p>
-      <p class="en">When the iron stays on its stand long enough, temperature drops to 150°C and returns to the setpoint when lifted.</p>
+      <p class="vi">Đặt mỏ hàn lên giá đỡ → ngủ ngay lập tức, hạ về 50°C và kêu 1 tiếng xác nhận. Nhấc mỏ ra → chạy lại mức nhiệt đặt ngay. Có thể bật/tắt chế độ ngủ trong Settings.</p>
+      <p class="en">Placing the iron on its stand puts it to sleep immediately at 50°C with one confirmation beep. Lifting it restores the setpoint immediately. Sleep can be enabled or disabled in Settings.</p>
     </article>
     <article class="card">
       <h3>📶 Wi-Fi Settings</h3>
-      <p class="vi">Board phát Wi-Fi <span class="code">KST-TramHan</span>. Mở <span class="code">192.168.4.1</span> để chỉnh ngôn ngữ, °C/°F, còi, độ sáng, bù nhiệt và thời gian ngủ.</p>
-      <p class="en">The board broadcasts <span class="code">KST-TramHan</span>. Open <span class="code">192.168.4.1</span> to configure language, °C/°F, buzzer, brightness, temperature offset and sleep timeout.</p>
+      <p class="vi">Board phát Wi-Fi <span class="code">KST-TramHan</span>. Mở <span class="code">192.168.4.1</span> để chỉnh ngôn ngữ, °C/°F, còi, độ sáng, bù nhiệt và bật/tắt chế độ ngủ.</p>
+      <p class="en">The board broadcasts <span class="code">KST-TramHan</span>. Open <span class="code">192.168.4.1</span> to configure language, °C/°F, buzzer, brightness, temperature offset and sleep mode on/off.</p>
     </article>
   </div>
 </section>
@@ -213,8 +215,8 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
 <section class="panel" id="components">
   <h2><span class="vi">Danh sách linh kiện</span><span class="en">Component list</span></h2>
   <p class="panel-sub">
-    <span class="vi">Link mua linh kiện anh sẽ cập nhật sau. Hiện tại đây là đầy đủ phần cứng của bản v1.</span>
-    <span class="en">Purchase links will be added later. This is the complete v1 hardware list.</span>
+    <span class="vi">Link mua linh kiện anh sẽ cập nhật sau. Hiện tại đây là đầy đủ phần cứng của bản v1.0.</span>
+    <span class="en">Purchase links will be added later. This is the complete v1.0 hardware list.</span>
   </p>
   <div class="grid">
     <article class="card"><h3>🧠 ESP32-S3 DevKitC-1</h3><p>N16R8 · 16MB Flash · 8MB PSRAM</p></article>
@@ -274,9 +276,9 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
     <article class="card">
       <h3><span class="vi">3. Điều khiển</span><span class="en">3. Controls</span></h3>
       <ul>
-        <li><span class="vi">Xoay encoder: ±5°C.</span><span class="en">Rotate encoder: ±5°C.</span></li>
+        <li><span class="vi">Xoay encoder: ±5°C mỗi nấc; sau khi ngừng xoay khoảng 0.4 giây, còi kêu 1 tiếng ngắn.</span><span class="en">Rotate encoder: ±5°C per detent; about 0.4s after you stop turning, the buzzer gives one short beep.</span></li>
         <li><span class="vi">Bấm nhanh: chuyển mức 300→330→360→390→420→450→480→500°C.</span><span class="en">Short press: cycle 300→330→360→390→420→450→480→500°C.</span></li>
-        <li><span class="vi">Giữ 3 giây: vào/thoát Settings.</span><span class="en">Hold 3 seconds: enter/exit Settings.</span></li>
+        <li><span class="vi">Giữ 3 giây: vào/thoát Settings; trong Settings xoay để chọn mục, bấm nhanh để đổi giá trị.</span><span class="en">Hold 3 seconds: enter/exit Settings; rotate to select a row and short-press to change its value.</span></li>
       </ul>
     </article>
   </div>
@@ -286,8 +288,8 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
   <h2>⚠️ <span class="vi">Lưu ý an toàn quan trọng</span><span class="en">Important safety notice</span></h2>
   <p class="vi"><b>T+/T− của cặp nhiệt phải đấu đúng chiều.</b> Nếu đấu ngược, nhiệt độ hiển thị có thể giảm/âm trong khi mỏ hàn vẫn nóng lên mất kiểm soát. Khi test lần đầu, nếu số đo không tăng theo nhiệt độ thực tế, hãy ngắt nguồn ngay và đảo lại hai dây cặp nhiệt.</p>
   <p class="en"><b>The thermocouple T+/T− polarity must be correct.</b> If reversed, the displayed temperature may fall/go negative while the iron continues heating out of control. During the first test, if the reading does not rise with the real tip temperature, disconnect power immediately and swap the thermocouple leads.</p>
-  <p class="vi">Thiết kế v1 cấp nguồn trực tiếp từ pin Makita. Có thể tự thêm cầu chì 5A trên đường dương nếu muốn tăng bảo vệ.</p>
-  <p class="en">The v1 design feeds the Makita battery directly. You may add a 5A fuse on the positive line for extra protection.</p>
+  <p class="vi">Thiết kế v1.0 cấp nguồn trực tiếp từ pin Makita. Có thể tự thêm cầu chì 5A trên đường dương nếu muốn tăng bảo vệ.</p>
+  <p class="en">The v1.0 design feeds the Makita battery directly. You may add a 5A fuse on the positive line for extra protection.</p>
 </section>
 
 <section class="panel">
