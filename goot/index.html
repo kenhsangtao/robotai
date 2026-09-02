@@ -60,6 +60,16 @@ a{color:#63baff}
 .card h3{margin:0 0 12px;color:#53b7ff;font-size:20px}
 .card p,.card li{color:#d5e2ee;line-height:1.65}
 .card ul{margin:8px 0 0;padding-left:20px}
+.parts-list{max-width:900px;margin:0 auto;border:1px solid #295374;border-radius:16px;overflow:hidden;background:#0b2035}
+.part-row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 14px;border-bottom:1px solid #234663}
+.part-row:last-child{border-bottom:0}
+.part-no{color:#7fa9c7;font-weight:800;text-align:right;padding-right:4px}
+.part-name{color:#e8f3fb;line-height:1.45}
+.part-name small{display:block;color:#92b4cf;margin-top:3px;font-size:12px}
+.buy-link{display:inline-flex;align-items:center;justify-content:center;min-width:104px;min-height:36px;padding:0 12px;border-radius:10px;text-decoration:none;background:#1f8ef1;color:#fff;font-weight:800;font-size:13px;white-space:nowrap}
+.buy-link:hover{filter:brightness(1.08)}
+.buy-link.pending{background:#17314a;color:#8faec5;border:1px solid #2c536f;pointer-events:none}
+.parts-note{max-width:900px;margin:14px auto 0;color:#9fc0d9;font-size:13px;line-height:1.6}
 .code{font-family:Consolas,monospace;background:#071624;padding:2px 7px;border-radius:6px;color:#7ed2ff}
 .diagram{width:100%;display:block;background:white;border-radius:16px;max-height:900px;object-fit:contain}
 .diagram-actions{display:flex;justify-content:center;margin-top:16px}
@@ -100,6 +110,9 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
   .hero h1{font-size:42px}
   .lead{font-size:17px}
   .grid{grid-template-columns:1fr}
+  .part-row{grid-template-columns:34px minmax(0,1fr)}
+  .part-row .buy-link{grid-column:2;justify-self:start}
+  .part-no{text-align:left}
   .panel{padding:22px 16px}
   .panel h2{font-size:28px}
   .hero-card{display:none}
@@ -215,23 +228,127 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
 <section class="panel" id="components">
   <h2><span class="vi">Danh sách linh kiện</span><span class="en">Component list</span></h2>
   <p class="panel-sub">
-    <span class="vi">Link mua linh kiện anh sẽ cập nhật sau. Hiện tại đây là đầy đủ phần cứng của bản v1.0.</span>
-    <span class="en">Purchase links will be added later. This is the complete v1.0 hardware list.</span>
+    <span class="vi">Danh sách gọn để anh em dễ đặt đúng linh kiện. Bấm <b>Mua tại đây</b> để mở link.</span>
+    <span class="en">A simple parts list for easy ordering. Click <b>Buy here</b> to open each link.</span>
   </p>
-  <div class="grid">
-    <article class="card"><h3>🧠 ESP32-S3 DevKitC-1</h3><p>N16R8 · 16MB Flash · 8MB PSRAM</p></article>
-    <article class="card"><h3>🌡️ MAX31855</h3><p><span class="vi">Module đọc cặp nhiệt K-type, SPI.</span><span class="en">K-type thermocouple amplifier, SPI.</span></p></article>
-    <article class="card"><h3>🖥️ ST7789 1.47"</h3><p>172×320 · SPI TFT</p></article>
-    <article class="card"><h3>🎛️ EC11 Encoder</h3><p><span class="vi">Núm xoay + nút nhấn tích hợp.</span><span class="en">Rotary knob with integrated push button.</span></p></article>
-    <article class="card"><h3>⚡ IRLB8721</h3><p><span class="vi">MOSFET N-channel logic-level TO-220.</span><span class="en">Logic-level N-channel MOSFET, TO-220.</span></p></article>
-    <article class="card"><h3>Ω 220Ω + 10kΩ</h3><p><span class="vi">220Ω nối tiếp Gate + 10kΩ pulldown Gate.</span><span class="en">220Ω gate series + 10kΩ gate pulldown.</span></p></article>
-    <article class="card"><h3>🔊 Buzzer</h3><p><span class="vi">Còi chủ động 2 chân.</span><span class="en">2-pin active buzzer.</span></p></article>
-    <article class="card"><h3>🛑 Micro / Reed Switch</h3><p><span class="vi">Phát hiện mỏ hàn đặt lên giá.</span><span class="en">Detects when the iron rests on its stand.</span></p></article>
-    <article class="card"><h3>🔥 GOOT</h3><p><span class="vi">Heater khoảng 8.2Ω + cặp nhiệt K-type.</span><span class="en">~8.2Ω heater + K-type thermocouple.</span></p></article>
-    <article class="card"><h3>🔋 Makita LXT 18–21V</h3><p><span class="vi">Pin + đế pin tương ứng.</span><span class="en">Battery + matching holder/adapter.</span></p></article>
-    <article class="card"><h3>⬇️ DC-DC Buck</h3><p>7–28V → 5V / 3A</p></article>
-    <article class="card"><h3>🧩 Perfboard</h3><p><span class="vi">Phíp đồng + dây, thiếc, ống co nhiệt.</span><span class="en">Copper-clad perfboard + wire, solder and heat-shrink.</span></p></article>
+
+  <div class="parts-list">
+    <div class="part-row">
+      <div class="part-no">1.</div>
+      <div class="part-name"><span class="vi">Mũi hàn / Tip hàn GOOT Nhật</span><span class="en">Japanese GOOT soldering tip</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/9V19K2UZrr" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">2.</div>
+      <div class="part-name"><span class="vi">Bộ vỏ tay cầm mỏ hàn GOOT</span><span class="en">GOOT soldering iron handle shell</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/9V19K5TITp" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">3.</div>
+      <div class="part-name"><span class="vi">Bo mạch điều khiển ESP32-S3 DevKitC-1 N16R8</span><span class="en">ESP32-S3 DevKitC-1 N16R8 controller board</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/6fgxwFPnN4" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">4.</div>
+      <div class="part-name"><span class="vi">Màn hình TFT SPI ST7789 1.47" 172×320</span><span class="en">ST7789 1.47" 172×320 SPI TFT display</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/6L47XbOEFn" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">5.</div>
+      <div class="part-name"><span class="vi">Module cảm biến nhiệt độ K-type MAX31855, giao tiếp SPI</span><span class="en">MAX31855 K-type temperature sensor module, SPI</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/2gApCI0nBz" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">6.</div>
+      <div class="part-name"><span class="vi">Module encoder xoay EC11 có nút nhấn</span><span class="en">EC11 rotary encoder module with push button</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/2VrOyeustZ" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">7.</div>
+      <div class="part-name"><span class="vi">MOSFET công suất N-channel IRLB8721</span><span class="en">IRLB8721 N-channel power MOSFET</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/3qMmZJyVq2" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">8.</div>
+      <div class="part-name"><span class="vi">Bộ điện trở — cần 1 × 220Ω và 1 × 10kΩ</span><span class="en">Resistor kit — need 1 × 220Ω and 1 × 10kΩ</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/7AdEXHpFA7" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">9.</div>
+      <div class="part-name"><span class="vi">Còi buzzer chủ động 5V, 2 chân</span><span class="en">5V 2-pin active buzzer</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/LmuOnnST8" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">10.</div>
+      <div class="part-name"><span class="vi">Module hạ áp DC-DC, đầu vào 7–28V → đầu ra 5V/3A</span><span class="en">DC-DC buck converter, 7–28V input → 5V/3A output</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/50YjynDbfN" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">11.</div>
+      <div class="part-name"><span class="vi">Công tắc hành trình có bánh xe — cảm biến mỏ hàn đặt lên giá</span><span class="en">Roller lever limit switch — iron-stand detector</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/4LJ3BVLg9B" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">12.</div>
+      <div class="part-name"><span class="vi">Cặp jack hàng không GX12 4P đực + cái</span><span class="en">GX12 4-pin aviation connector, male + female</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/2LXymgW3WM" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">13.</div>
+      <div class="part-name"><span class="vi">Dây silicon chịu nhiệt 4 lõi, tiết diện 0.3mm</span><span class="en">4-core 0.3mm heat-resistant silicone cable</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/7fZV8bjQdJ" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">14.</div>
+      <div class="part-name"><span class="vi">Bộ tiếp điểm kết nối pin Makita LXT 18V phổ thông</span><span class="en">Makita LXT 18V battery contact terminal</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/20v8OL3ygs" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">15.</div>
+      <div class="part-name"><span class="vi">Công tắc nguồn 12–24V loại nhấn tự khóa</span><span class="en">12–24V push self-locking power switch</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/2gApBgknrc" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">16.</div>
+      <div class="part-name"><span class="vi">Dây jumper Dupont đực–cái</span><span class="en">Male-to-female Dupont jumper wires</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/5AsAAMHjgM" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">17.</div>
+      <div class="part-name"><span class="vi">Tản nhiệt nhôm cho MOSFET IRLB8721 (tùy chọn)</span><span class="en">Aluminum heatsink for IRLB8721 MOSFET (optional)</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/9zxPvHlCSD" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">18.</div>
+      <div class="part-name"><span class="vi">Cầu đấu dây domino 2P</span><span class="en">2-pin screw terminal block</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/4VcTNDnX7g" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">19.</div>
+      <div class="part-name"><span class="vi">Bảng mạch đục lỗ PCB 5×7cm, loại 2 mặt</span><span class="en">5×7cm double-sided perfboard PCB</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/8KpBwmUsjp" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">20.</div>
+      <div class="part-name"><span class="vi">Jack cắm JST XH2.54 — 1 × 8P, 1 × 5P, 1 × 4P</span><span class="en">JST XH2.54 connectors — 1 × 8P, 1 × 5P, 1 × 4P</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/1VyrmWCgtd" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">21.</div>
+      <div class="part-name"><span class="vi">Dây cáp JST XH2.54 — 1 × 8P hai đầu, 1 × 5P hai đầu, 1 × 4P một đầu</span><span class="en">JST XH2.54 cables — 1 × 8P double-ended, 1 × 5P double-ended, 1 × 4P single-ended</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/gPkmxsLNQ" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">22.</div>
+      <div class="part-name"><span class="vi">Dây 4P chịu dòng — gợi ý dùng dây cân bằng pin 3S loại khỏe hơn</span><span class="en">Higher-current 4P cable — recommended 3S balance lead with thicker wire</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/3B75liATEU" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
   </div>
+
+  <p class="parts-note">
+    <span class="vi">Pin Makita LXT 18–21V dùng pin sẵn có. Ngoài ra cần dây điện/thiếc hàn/ống co nhiệt tùy cách ráp.</span>
+    <span class="en">Use any suitable Makita LXT 18–21V battery you already have. Additional hookup wire, solder and heat-shrink may be needed depending on the build.</span>
+  </p>
 </section>
 
 <section class="panel" id="wiring">
