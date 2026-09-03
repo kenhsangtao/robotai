@@ -432,38 +432,6 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
   </div>
 </section>
 
-<section class="panel" id="guide">
-  <h2><span class="vi">Hướng dẫn sử dụng</span><span class="en">Setup & usage guide</span></h2>
-  <div class="grid">
-    <article class="card">
-      <h3><span class="vi">1. Nạp firmware</span><span class="en">1. Flash firmware</span></h3>
-      <p class="vi">Dùng Chrome hoặc Edge trên máy tính. Bấm <b>Nạp firmware</b>, chọn đúng cổng USB Serial và nạp file đã gộp tại <b>0x0</b>. Nếu máy tính không nhận bo hoặc nạp lỗi, hãy <b>giữ nút BOOT → bấm RESET/EN → thả BOOT → thử nạp lại</b>.</p>
-      <p class="en">Use desktop Chrome or Edge. Click <b>Install firmware</b>, select the correct USB Serial port and flash the merged image at <b>0x0</b>. If the board is not detected or flashing fails, <b>hold BOOT → press RESET/EN → release BOOT → try flashing again</b>.</p>
-    </article>
-    <article class="card">
-      <h3><span class="vi">2. Kết nối Wi-Fi</span><span class="en">2. Connect to Wi-Fi</span></h3>
-      <p class="vi">Kết nối <span class="code">KST-TramHan</span>, mật khẩu <span class="code">kst123456</span>, sau đó mở <span class="code">192.168.4.1</span>.</p>
-      <p class="en">Connect to <span class="code">KST-TramHan</span>, password <span class="code">kst123456</span>, then open <span class="code">192.168.4.1</span>.</p>
-    </article>
-    <article class="card">
-      <h3><span class="vi">3. Điều khiển</span><span class="en">3. Controls</span></h3>
-      <ul>
-        <li><span class="vi">Xoay encoder: ±5°C mỗi nấc; sau khi ngừng xoay khoảng 0.4 giây, còi kêu 1 tiếng ngắn.</span><span class="en">Rotate encoder: ±5°C per detent; about 0.4s after you stop turning, the buzzer gives one short beep.</span></li>
-        <li><span class="vi">Bấm nhanh: chuyển mức 300→330→360→390→420→450→480→500°C.</span><span class="en">Short press: cycle 300→330→360→390→420→450→480→500°C.</span></li>
-        <li><span class="vi">Giữ 3 giây: vào/thoát Settings; trong Settings xoay để chọn mục, bấm nhanh để đổi giá trị.</span><span class="en">Hold 3 seconds: enter/exit Settings; rotate to select a row and short-press to change its value.</span></li>
-      </ul>
-    </article>
-  </div>
-</section>
-
-<section class="panel safety">
-  <h2>⚠️ <span class="vi">Lưu ý an toàn quan trọng</span><span class="en">Important safety notice</span></h2>
-  <p class="vi"><b>T+/T− của cặp nhiệt phải đấu đúng chiều.</b> Nếu đấu ngược, nhiệt độ hiển thị có thể giảm/âm trong khi mỏ hàn vẫn nóng lên mất kiểm soát. Khi test lần đầu, nếu số đo không tăng theo nhiệt độ thực tế, hãy ngắt nguồn ngay và đảo lại hai dây cặp nhiệt.</p>
-  <p class="en"><b>The thermocouple T+/T− polarity must be correct.</b> If reversed, the displayed temperature may fall/go negative while the iron continues heating out of control. During the first test, if the reading does not rise with the real tip temperature, disconnect power immediately and swap the thermocouple leads.</p>
-  <p class="vi">Thiết kế v1.0 cấp nguồn trực tiếp từ pin Makita. Có thể tự thêm cầu chì 5A trên đường dương nếu muốn tăng bảo vệ.</p>
-  <p class="en">The v1.0 design feeds the Makita battery directly. You may add a 5A fuse on the positive line for extra protection.</p>
-</section>
-
 <section class="panel" id="photos">
   <h2><span class="vi">Hình ảnh sản phẩm</span><span class="en">Product photos</span></h2>
   <p class="panel-sub">
@@ -518,6 +486,40 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
     </a></article>
   </div>
 </section>
+
+<section class="panel" id="guide">
+  <h2><span class="vi">Hướng dẫn sử dụng</span><span class="en">Setup & usage guide</span></h2>
+  <div class="grid">
+    <article class="card">
+      <h3><span class="vi">1. Nạp firmware</span><span class="en">1. Flash firmware</span></h3>
+      <p class="vi">Dùng Chrome hoặc Edge trên máy tính. Bấm <b>Nạp firmware</b>, chọn đúng cổng USB Serial và nạp file đã gộp tại <b>0x0</b>. Nếu máy tính không nhận bo hoặc nạp lỗi, hãy <b>giữ nút BOOT → bấm RESET/EN → thả BOOT → thử nạp lại</b>.</p>
+      <p class="en">Use desktop Chrome or Edge. Click <b>Install firmware</b>, select the correct USB Serial port and flash the merged image at <b>0x0</b>. If the board is not detected or flashing fails, <b>hold BOOT → press RESET/EN → release BOOT → try flashing again</b>.</p>
+    </article>
+    <article class="card">
+      <h3><span class="vi">2. Kết nối Wi-Fi</span><span class="en">2. Connect to Wi-Fi</span></h3>
+      <p class="vi">Kết nối <span class="code">KST-TramHan</span>, mật khẩu <span class="code">kst123456</span>, sau đó mở <span class="code">192.168.4.1</span>.</p>
+      <p class="en">Connect to <span class="code">KST-TramHan</span>, password <span class="code">kst123456</span>, then open <span class="code">192.168.4.1</span>.</p>
+    </article>
+    <article class="card">
+      <h3><span class="vi">3. Điều khiển</span><span class="en">3. Controls</span></h3>
+      <ul>
+        <li><span class="vi">Xoay encoder: ±5°C mỗi nấc; sau khi ngừng xoay khoảng 0.4 giây, còi kêu 1 tiếng ngắn.</span><span class="en">Rotate encoder: ±5°C per detent; about 0.4s after you stop turning, the buzzer gives one short beep.</span></li>
+        <li><span class="vi">Bấm nhanh: chuyển mức 300→330→360→390→420→450→480→500°C.</span><span class="en">Short press: cycle 300→330→360→390→420→450→480→500°C.</span></li>
+        <li><span class="vi">Giữ 3 giây: vào/thoát Settings; trong Settings xoay để chọn mục, bấm nhanh để đổi giá trị.</span><span class="en">Hold 3 seconds: enter/exit Settings; rotate to select a row and short-press to change its value.</span></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="panel safety">
+  <h2>⚠️ <span class="vi">Lưu ý an toàn quan trọng</span><span class="en">Important safety notice</span></h2>
+  <p class="vi"><b>T+/T− của cặp nhiệt phải đấu đúng chiều.</b> Nếu đấu ngược, nhiệt độ hiển thị có thể giảm/âm trong khi mỏ hàn vẫn nóng lên mất kiểm soát. Khi test lần đầu, nếu số đo không tăng theo nhiệt độ thực tế, hãy ngắt nguồn ngay và đảo lại hai dây cặp nhiệt.</p>
+  <p class="en"><b>The thermocouple T+/T− polarity must be correct.</b> If reversed, the displayed temperature may fall/go negative while the iron continues heating out of control. During the first test, if the reading does not rise with the real tip temperature, disconnect power immediately and swap the thermocouple leads.</p>
+  <p class="vi">Thiết kế v1.0 cấp nguồn trực tiếp từ pin Makita. Có thể tự thêm cầu chì 5A trên đường dương nếu muốn tăng bảo vệ.</p>
+  <p class="en">The v1.0 design feeds the Makita battery directly. You may add a 5A fuse on the positive line for extra protection.</p>
+</section>
+
+
 
 </main>
 
