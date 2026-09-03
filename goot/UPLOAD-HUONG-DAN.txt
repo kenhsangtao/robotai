@@ -1,27 +1,26 @@
-KST GOOT Soldering Station — GitHub Pages upload package
+KST GOOT Soldering Station — UPDATED v1.0
 
-Upload ALL contents of this folder into:
+Upload/replace these files in:
 robotai/goot/
 
-Expected URL:
-https://ai.kenhsangtao.com/goot/
+FILES CHANGED:
+1. index.html
+2. manifest.json
+3. firmware/goot-kst-v1-full.bin
+4. HUONG-DAN-VN.md
+5. INSTRUCTIONS-EN.md
 
-Current package includes:
-- index.html
-- manifest.json
-- firmware/goot-kst-v1-full.bin
-- docs/so-do-dau-noi-vi.svg
-- docs/wiring-diagram-en.svg
-- KST logo
-- original VN/EN guide and BOM files
+Firmware:
+- File: goot-kst-v1-full.bin
+- Size: 923696 bytes
+- SHA-256: 0347594088529a7a13dcf6ed7bc2a23158d643d147bd1c251d5efe82e5434ddc
+- Flash offset: 0x0
 
-Still to add later:
-- Product photos
-- Purchase links for components
-- VN tutorial video link
-- EN tutorial video link
-
-IMPORTANT:
-- Firmware is a merged image and is flashed at offset 0x0.
-- Web flashing is intended for Chrome/Edge on a computer.
-- The mobile page intentionally does not load ESP Web Tools.
+Updated behavior from the new guide:
+- Encoder: +/-5°C per detent; one short beep about 0.4s after rotation stops.
+- Iron placed on stand: immediate sleep at 50°C + confirmation beep.
+- Iron lifted: immediately restores set temperature.
+- Sleep can be enabled/disabled in Settings.
+- Wi-Fi: KST-TramHan
+- Password: kst123456
+- Settings page: 192.168.4.1
