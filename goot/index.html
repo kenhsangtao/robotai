@@ -50,6 +50,7 @@ a{color:#63baff}
 .hero-placeholder img{width:94px;height:94px;object-fit:contain;border-radius:50%;background:white;margin-bottom:14px}
 .hero-placeholder b{display:block;font-size:26px}
 .hero-placeholder span{display:block;color:#a8c8e6;margin-top:8px}
+.hero-product-image{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#081a2c}
 .hero-caption{padding:15px 18px;color:#dbeaf7;font-weight:800;border-top:1px solid #294d6d}
 
 .panel{padding:32px;margin:28px 0}
@@ -60,6 +61,16 @@ a{color:#63baff}
 .card h3{margin:0 0 12px;color:#53b7ff;font-size:20px}
 .card p,.card li{color:#d5e2ee;line-height:1.65}
 .card ul{margin:8px 0 0;padding-left:20px}
+.parts-list{max-width:900px;margin:0 auto;border:1px solid #295374;border-radius:16px;overflow:hidden;background:#0b2035}
+.part-row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 14px;border-bottom:1px solid #234663}
+.part-row:last-child{border-bottom:0}
+.part-no{color:#7fa9c7;font-weight:800;text-align:right;padding-right:4px}
+.part-name{color:#e8f3fb;line-height:1.45}
+.part-name small{display:block;color:#92b4cf;margin-top:3px;font-size:12px}
+.buy-link{display:inline-flex;align-items:center;justify-content:center;min-width:104px;min-height:36px;padding:0 12px;border-radius:10px;text-decoration:none;background:#1f8ef1;color:#fff;font-weight:800;font-size:13px;white-space:nowrap}
+.buy-link:hover{filter:brightness(1.08)}
+.buy-link.pending{background:#17314a;color:#8faec5;border:1px solid #2c536f;pointer-events:none}
+.parts-note{max-width:900px;margin:14px auto 0;color:#9fc0d9;font-size:13px;line-height:1.6}
 .code{font-family:Consolas,monospace;background:#071624;padding:2px 7px;border-radius:6px;color:#7ed2ff}
 .diagram{width:100%;display:block;background:white;border-radius:16px;max-height:900px;object-fit:contain}
 .diagram-actions{display:flex;justify-content:center;margin-top:16px}
@@ -72,14 +83,12 @@ a{color:#63baff}
 .note{color:#a8c8e6;font-size:14px}
 
 .photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:1100px;margin:0 auto}
-.photo-card{background:#0b2035;border:1px solid #295374;border-radius:18px;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}
-.photo-card:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.22)}
+.photo-card{background:#0b2035;border:1px solid #295374;border-radius:17px;overflow:hidden}
 .photo-card a{display:block;text-decoration:none;color:inherit}
 .photo-card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#081a2c}
-.photo-caption{padding:12px 14px 14px}
+.photo-caption{padding:11px 13px 13px}
 .photo-caption b{display:block;color:#eef7ff;font-size:15px;line-height:1.4}
-.photo-caption small{display:block;color:#93b6d3;font-size:12px;margin-top:4px}
-.photo-help{text-align:center;color:#9fc0d9;font-size:13px;margin:14px 0 0}
+.photo-caption small{display:block;color:#93b6d3;font-size:12px;line-height:1.45;margin-top:4px}
 
 .en{display:none}
 body.enmode .vi{display:none!important}
@@ -117,7 +126,7 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
   .part-no{text-align:left}
   .panel{padding:22px 16px}
   .panel h2{font-size:28px}
-  .hero-card{display:none}
+  .hero-card{display:block}
   .mobile-flash-note{display:inline-flex;align-items:center;min-height:48px;padding:0 14px;border-radius:13px;background:#102b47;border:1px solid #315d85;color:#b9cadd;font-weight:700}
 }
 </style>
@@ -136,7 +145,7 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
 
     <nav class="nav">
       <a href="#firmware">Firmware</a>
-      <a href="#features"><span class="vi">Tính năng</span><span class="en">Features</span></a>
+      <a href="#photos"><span class="vi">Hình ảnh</span><span class="en">Photos</span></a>
       <a href="#components"><span class="vi">Linh kiện</span><span class="en">Components</span></a>
       <a href="#wiring"><span class="vi">Sơ đồ</span><span class="en">Wiring</span></a>
       <a href="#video">Video</a>
@@ -191,14 +200,7 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
   </div>
 
   <aside class="hero-card">
-    <div class="hero-placeholder">
-      <div>
-        <img src="assets/images/kst-logo.png" alt="KST">
-        <b><span class="vi">Trạm Hàn KST GOOT</span><span class="en">KST GOOT Soldering Station</span></b>
-        <span class="vi">Ảnh sản phẩm sẽ cập nhật sau</span>
-        <span class="en">Product photos coming soon</span>
-      </div>
-    </div>
+    <img class="hero-product-image" src="assets/images/gallery/01-goot-main.png" alt="KST GOOT Soldering Station" fetchpriority="high">
     <div class="hero-caption">
       <span class="vi">ESP32-S3 · ST7789 1.47" · MAX31855 · GOOT · Makita 18–21V</span>
       <span class="en">ESP32-S3 · ST7789 1.47" · MAX31855 · GOOT · Makita 18–21V</span>
@@ -230,23 +232,127 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
 <section class="panel" id="components">
   <h2><span class="vi">Danh sách linh kiện</span><span class="en">Component list</span></h2>
   <p class="panel-sub">
-    <span class="vi">Link mua linh kiện anh sẽ cập nhật sau. Hiện tại đây là đầy đủ phần cứng của bản v1.0.</span>
-    <span class="en">Purchase links will be added later. This is the complete v1.0 hardware list.</span>
+    <span class="vi">Danh sách gọn để anh em dễ đặt đúng linh kiện. Bấm <b>Mua tại đây</b> để mở link.</span>
+    <span class="en">A simple parts list for easy ordering. Click <b>Buy here</b> to open each link.</span>
   </p>
-  <div class="grid">
-    <article class="card"><h3>🧠 ESP32-S3 DevKitC-1</h3><p>N16R8 · 16MB Flash · 8MB PSRAM</p></article>
-    <article class="card"><h3>🌡️ MAX31855</h3><p><span class="vi">Module đọc cặp nhiệt K-type, SPI.</span><span class="en">K-type thermocouple amplifier, SPI.</span></p></article>
-    <article class="card"><h3>🖥️ ST7789 1.47"</h3><p>172×320 · SPI TFT</p></article>
-    <article class="card"><h3>🎛️ EC11 Encoder</h3><p><span class="vi">Núm xoay + nút nhấn tích hợp.</span><span class="en">Rotary knob with integrated push button.</span></p></article>
-    <article class="card"><h3>⚡ IRLB8721</h3><p><span class="vi">MOSFET N-channel logic-level TO-220.</span><span class="en">Logic-level N-channel MOSFET, TO-220.</span></p></article>
-    <article class="card"><h3>Ω 220Ω + 10kΩ</h3><p><span class="vi">220Ω nối tiếp Gate + 10kΩ pulldown Gate.</span><span class="en">220Ω gate series + 10kΩ gate pulldown.</span></p></article>
-    <article class="card"><h3>🔊 Buzzer</h3><p><span class="vi">Còi chủ động 2 chân.</span><span class="en">2-pin active buzzer.</span></p></article>
-    <article class="card"><h3>🛑 Micro / Reed Switch</h3><p><span class="vi">Phát hiện mỏ hàn đặt lên giá.</span><span class="en">Detects when the iron rests on its stand.</span></p></article>
-    <article class="card"><h3>🔥 GOOT</h3><p><span class="vi">Heater khoảng 8.2Ω + cặp nhiệt K-type.</span><span class="en">~8.2Ω heater + K-type thermocouple.</span></p></article>
-    <article class="card"><h3>🔋 Makita LXT 18–21V</h3><p><span class="vi">Pin + đế pin tương ứng.</span><span class="en">Battery + matching holder/adapter.</span></p></article>
-    <article class="card"><h3>⬇️ DC-DC Buck</h3><p>7–28V → 5V / 3A</p></article>
-    <article class="card"><h3>🧩 Perfboard</h3><p><span class="vi">Phíp đồng + dây, thiếc, ống co nhiệt.</span><span class="en">Copper-clad perfboard + wire, solder and heat-shrink.</span></p></article>
+
+  <div class="parts-list">
+    <div class="part-row">
+      <div class="part-no">1.</div>
+      <div class="part-name"><span class="vi">Mũi hàn / Tip hàn GOOT Nhật</span><span class="en">Japanese GOOT soldering tip</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/9V19K2UZrr" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">2.</div>
+      <div class="part-name"><span class="vi">Bộ vỏ tay cầm mỏ hàn GOOT</span><span class="en">GOOT soldering iron handle shell</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/9V19K5TITp" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">3.</div>
+      <div class="part-name"><span class="vi">Bo mạch điều khiển ESP32-S3 DevKitC-1 N16R8</span><span class="en">ESP32-S3 DevKitC-1 N16R8 controller board</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/6fgxwFPnN4" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">4.</div>
+      <div class="part-name"><span class="vi">Màn hình TFT SPI ST7789 1.47" 172×320</span><span class="en">ST7789 1.47" 172×320 SPI TFT display</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/6L47XbOEFn" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">5.</div>
+      <div class="part-name"><span class="vi">Module cảm biến nhiệt độ K-type MAX31855, giao tiếp SPI</span><span class="en">MAX31855 K-type temperature sensor module, SPI</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/2gApCI0nBz" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">6.</div>
+      <div class="part-name"><span class="vi">Module encoder xoay EC11 có nút nhấn</span><span class="en">EC11 rotary encoder module with push button</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/2VrOyeustZ" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">7.</div>
+      <div class="part-name"><span class="vi">MOSFET công suất N-channel IRLB8721</span><span class="en">IRLB8721 N-channel power MOSFET</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/3qMmZJyVq2" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">8.</div>
+      <div class="part-name"><span class="vi">Bộ điện trở — cần 1 × 220Ω và 1 × 10kΩ</span><span class="en">Resistor kit — need 1 × 220Ω and 1 × 10kΩ</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/7AdEXHpFA7" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">9.</div>
+      <div class="part-name"><span class="vi">Còi buzzer chủ động 5V, 2 chân</span><span class="en">5V 2-pin active buzzer</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/LmuOnnST8" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">10.</div>
+      <div class="part-name"><span class="vi">Module hạ áp DC-DC, đầu vào 7–28V → đầu ra 5V/3A</span><span class="en">DC-DC buck converter, 7–28V input → 5V/3A output</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/50YjynDbfN" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">11.</div>
+      <div class="part-name"><span class="vi">Công tắc hành trình có bánh xe — cảm biến mỏ hàn đặt lên giá</span><span class="en">Roller lever limit switch — iron-stand detector</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/4LJ3BVLg9B" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">12.</div>
+      <div class="part-name"><span class="vi">Cặp jack hàng không GX12 4P đực + cái</span><span class="en">GX12 4-pin aviation connector, male + female</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/2LXymgW3WM" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">13.</div>
+      <div class="part-name"><span class="vi">Dây silicon chịu nhiệt 4 lõi, tiết diện 0.3mm</span><span class="en">4-core 0.3mm heat-resistant silicone cable</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/7fZV8bjQdJ" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">14.</div>
+      <div class="part-name"><span class="vi">Bộ tiếp điểm kết nối pin Makita LXT 18V phổ thông</span><span class="en">Makita LXT 18V battery contact terminal</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/20v8OL3ygs" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">15.</div>
+      <div class="part-name"><span class="vi">Công tắc nguồn 12–24V loại nhấn tự khóa</span><span class="en">12–24V push self-locking power switch</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/2gApBgknrc" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">16.</div>
+      <div class="part-name"><span class="vi">Dây jumper Dupont đực–cái</span><span class="en">Male-to-female Dupont jumper wires</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/5AsAAMHjgM" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">17.</div>
+      <div class="part-name"><span class="vi">Tản nhiệt nhôm cho MOSFET IRLB8721 (tùy chọn)</span><span class="en">Aluminum heatsink for IRLB8721 MOSFET (optional)</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/9zxPvHlCSD" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">18.</div>
+      <div class="part-name"><span class="vi">Cầu đấu dây domino 2P</span><span class="en">2-pin screw terminal block</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/4VcTNDnX7g" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">19.</div>
+      <div class="part-name"><span class="vi">Bảng mạch đục lỗ PCB 5×7cm, loại 2 mặt</span><span class="en">5×7cm double-sided perfboard PCB</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/8KpBwmUsjp" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">20.</div>
+      <div class="part-name"><span class="vi">Jack cắm JST XH2.54 — 1 × 8P, 1 × 5P, 1 × 4P</span><span class="en">JST XH2.54 connectors — 1 × 8P, 1 × 5P, 1 × 4P</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/1VyrmWCgtd" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">21.</div>
+      <div class="part-name"><span class="vi">Dây cáp JST XH2.54 — 1 × 8P hai đầu, 1 × 5P hai đầu, 1 × 4P một đầu</span><span class="en">JST XH2.54 cables — 1 × 8P double-ended, 1 × 5P double-ended, 1 × 4P single-ended</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/gPkmxsLNQ" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
+    <div class="part-row">
+      <div class="part-no">22.</div>
+      <div class="part-name"><span class="vi">Dây 4P chịu dòng — gợi ý dùng dây cân bằng pin 3S loại khỏe hơn</span><span class="en">Higher-current 4P cable — recommended 3S balance lead with thicker wire</span></div>
+      <a class="buy-link" href="https://s.shopee.vn/3B75liATEU" target="_blank" rel="noopener"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a>
+    </div>
   </div>
+
+  <p class="parts-note">
+    <span class="vi">Pin Makita LXT 18–21V dùng pin sẵn có. Ngoài ra cần dây điện/thiếc hàn/ống co nhiệt tùy cách ráp.</span>
+    <span class="en">Use any suitable Makita LXT 18–21V battery you already have. Additional hookup wire, solder and heat-shrink may be needed depending on the build.</span>
+  </p>
 </section>
 
 <section class="panel" id="wiring">
@@ -307,69 +413,59 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
   <p class="en">The v1.0 design feeds the Makita battery directly. You may add a 5A fuse on the positive line for extra protection.</p>
 </section>
 
-<section class="panel">
+<section class="panel" id="photos">
   <h2><span class="vi">Hình ảnh sản phẩm</span><span class="en">Product photos</span></h2>
   <p class="panel-sub">
-    <span class="vi">Ảnh thật của trạm hàn KST GOOT. Ảnh đầu tiên là ảnh chính hiển thị đầu tiên trên web. Bấm vào ảnh để xem kích thước đầy đủ.</span>
-    <span class="en">Real photos of the KST GOOT soldering station. The first image is the main featured photo. Click any image to open the full-size version.</span>
+    <span class="vi">Ảnh thực tế của Trạm Hàn KST GOOT. Bấm vào ảnh để xem kích thước lớn.</span>
+    <span class="en">Real photos of the KST GOOT Soldering Station. Click an image to view it full size.</span>
   </p>
+
   <div class="photo-grid">
-    <article class="photo-card">
-      <a href="assets/images/gallery/01-goot-front.png" target="_blank" rel="noopener">
-        <img loading="lazy" decoding="async" src="assets/images/gallery/01-goot-front.png" alt="KST GOOT soldering station front view">
-        <div class="photo-caption"><b><span class="vi">Ảnh chính — mặt trước</span><span class="en">Main photo — front view</span></b><small><span class="vi">Ảnh sáng hơn để làm ảnh đại diện trên web</span><span class="en">Brightened version used as the main website image</span></small></div>
-      </a>
-    </article>
-    <article class="photo-card">
-      <a href="assets/images/gallery/02-goot-angle.png" target="_blank" rel="noopener">
-        <img loading="lazy" decoding="async" src="assets/images/gallery/02-goot-angle.png" alt="KST GOOT soldering station angle view">
-        <div class="photo-caption"><b><span class="vi">Góc chụp 3/4</span><span class="en">Three-quarter angle</span></b><small><span class="vi">Toàn bộ trạm hàn khi lắp hoàn chỉnh</span><span class="en">Finished assembled soldering station</span></small></div>
-      </a>
-    </article>
-    <article class="photo-card">
-      <a href="assets/images/gallery/03-goot-side.png" target="_blank" rel="noopener">
-        <img loading="lazy" decoding="async" src="assets/images/gallery/03-goot-side.png" alt="KST GOOT soldering station side view">
-        <div class="photo-caption"><b><span class="vi">Góc nghiêng bên hông</span><span class="en">Side perspective</span></b><small><span class="vi">Thấy rõ khe thoát nhiệt và bố cục tổng thể</span><span class="en">Shows the vent slots and overall housing shape</span></small></div>
-      </a>
-    </article>
-    <article class="photo-card">
-      <a href="assets/images/gallery/04-goot-open-front.png" target="_blank" rel="noopener">
-        <img loading="lazy" decoding="async" src="assets/images/gallery/04-goot-open-front.png" alt="KST GOOT soldering station opened front">
-        <div class="photo-caption"><b><span class="vi">Mở nắp phía trước</span><span class="en">Front lid opened</span></b><small><span class="vi">Cách bố trí linh kiện bên trong</span><span class="en">Internal layout from the front</span></small></div>
-      </a>
-    </article>
-    <article class="photo-card">
-      <a href="assets/images/gallery/05-goot-open-inside.png" target="_blank" rel="noopener">
-        <img loading="lazy" decoding="async" src="assets/images/gallery/05-goot-open-inside.png" alt="KST GOOT soldering station internal view">
-        <div class="photo-caption"><b><span class="vi">Cận cảnh bên trong</span><span class="en">Close internal view</span></b><small><span class="vi">Dây nối, bo mạch và công tắc nguồn</span><span class="en">Shows wiring, controller board and power switch</span></small></div>
-      </a>
-    </article>
-    <article class="photo-card">
-      <a href="assets/images/gallery/06-components-front.png" target="_blank" rel="noopener">
-        <img loading="lazy" decoding="async" src="assets/images/gallery/06-components-front.png" alt="KST GOOT component set front side">
-        <div class="photo-caption"><b><span class="vi">Bộ linh kiện — mặt trên</span><span class="en">Component set — top side</span></b><small><span class="vi">Bo chính, encoder, màn hình và mũi hàn</span><span class="en">Main board, encoder, display and soldering tip</span></small></div>
-      </a>
-    </article>
-    <article class="photo-card">
-      <a href="assets/images/gallery/07-components-back.png" target="_blank" rel="noopener">
-        <img loading="lazy" decoding="async" src="assets/images/gallery/07-components-back.png" alt="KST GOOT component set back side">
-        <div class="photo-caption"><b><span class="vi">Bộ linh kiện — mặt dưới</span><span class="en">Component set — underside</span></b><small><span class="vi">Mặt hàn phía sau của bo lắp ráp</span><span class="en">Rear solder side of the assembled perfboard</span></small></div>
-      </a>
-    </article>
-    <article class="photo-card">
-      <a href="assets/images/gallery/08-board-in-hand.png" target="_blank" rel="noopener">
-        <img loading="lazy" decoding="async" src="assets/images/gallery/08-board-in-hand.png" alt="ESP32-S3 board in hand for KST GOOT station">
-        <div class="photo-caption"><b><span class="vi">Bo ESP32-S3 cầm tay</span><span class="en">ESP32-S3 board in hand</span></b><small><span class="vi">Nhìn rõ bố cục lắp trên PCB đục lỗ</span><span class="en">Close-up of the perfboard-mounted ESP32-S3 build</span></small></div>
-      </a>
-    </article>
-    <article class="photo-card">
-      <a href="assets/images/gallery/09-board-back.jpg" target="_blank" rel="noopener">
-        <img loading="lazy" decoding="async" src="assets/images/gallery/09-board-back.jpg" alt="Perfboard solder side close-up">
-        <div class="photo-caption"><b><span class="vi">Mặt sau bo mạch</span><span class="en">Back of the perfboard</span></b><small><span class="vi">Đi dây và các điện trở trên mặt hàn</span><span class="en">Wiring layout and resistors on the solder side</span></small></div>
-      </a>
-    </article>
+    <article class="photo-card"><a href="assets/images/gallery/01-goot-main.png" target="_blank" rel="noopener">
+      <img loading="lazy" decoding="async" src="assets/images/gallery/01-goot-main.png" alt="KST GOOT main product photo">
+      <div class="photo-caption"><b><span class="vi">Trạm hàn hoàn thiện</span><span class="en">Finished soldering station</span></b><small><span class="vi">Ảnh chính đã chỉnh sáng</span><span class="en">Brightened main product photo</span></small></div>
+    </a></article>
+
+    <article class="photo-card"><a href="assets/images/gallery/02-goot-front.png" target="_blank" rel="noopener">
+      <img loading="lazy" decoding="async" src="assets/images/gallery/02-goot-front.png" alt="KST GOOT front view">
+      <div class="photo-caption"><b><span class="vi">Mặt trước</span><span class="en">Front view</span></b><small><span class="vi">Màn hình, jack GX12 và encoder</span><span class="en">Display, GX12 connector and encoder</span></small></div>
+    </a></article>
+
+    <article class="photo-card"><a href="assets/images/gallery/03-goot-side.png" target="_blank" rel="noopener">
+      <img loading="lazy" decoding="async" src="assets/images/gallery/03-goot-side.png" alt="KST GOOT side view">
+      <div class="photo-caption"><b><span class="vi">Góc nghiêng bên hông</span><span class="en">Side perspective</span></b><small><span class="vi">Thấy rõ khe thoát nhiệt và giá mỏ hàn</span><span class="en">Vent slots and soldering-iron holder</span></small></div>
+    </a></article>
+
+    <article class="photo-card"><a href="assets/images/gallery/04-open-front.png" target="_blank" rel="noopener">
+      <img loading="lazy" decoding="async" src="assets/images/gallery/04-open-front.png" alt="KST GOOT opened enclosure">
+      <div class="photo-caption"><b><span class="vi">Mở nắp vỏ</span><span class="en">Opened enclosure</span></b><small><span class="vi">Bố trí bo mạch và dây bên trong</span><span class="en">Internal board and wiring layout</span></small></div>
+    </a></article>
+
+    <article class="photo-card"><a href="assets/images/gallery/05-open-inside.png" target="_blank" rel="noopener">
+      <img loading="lazy" decoding="async" src="assets/images/gallery/05-open-inside.png" alt="KST GOOT internal electronics">
+      <div class="photo-caption"><b><span class="vi">Cận cảnh bên trong</span><span class="en">Internal close-up</span></b><small><span class="vi">ESP32-S3, dây JST và công tắc nguồn</span><span class="en">ESP32-S3, JST wiring and power switch</span></small></div>
+    </a></article>
+
+    <article class="photo-card"><a href="assets/images/gallery/06-parts-top.png" target="_blank" rel="noopener">
+      <img loading="lazy" decoding="async" src="assets/images/gallery/06-parts-top.png" alt="KST GOOT components top view">
+      <div class="photo-caption"><b><span class="vi">Bộ linh kiện — mặt trên</span><span class="en">Component set — top side</span></b><small><span class="vi">Bo chính, encoder, màn hình và mỏ hàn</span><span class="en">Main board, encoder, display and soldering iron</span></small></div>
+    </a></article>
+
+    <article class="photo-card"><a href="assets/images/gallery/07-parts-bottom.png" target="_blank" rel="noopener">
+      <img loading="lazy" decoding="async" src="assets/images/gallery/07-parts-bottom.png" alt="KST GOOT components underside">
+      <div class="photo-caption"><b><span class="vi">Bộ linh kiện — mặt dưới</span><span class="en">Component set — underside</span></b><small><span class="vi">Đi dây trên PCB đục lỗ</span><span class="en">Perfboard wiring layout</span></small></div>
+    </a></article>
+
+    <article class="photo-card"><a href="assets/images/gallery/08-board-hand.png" target="_blank" rel="noopener">
+      <img loading="lazy" decoding="async" src="assets/images/gallery/08-board-hand.png" alt="ESP32-S3 controller board in hand">
+      <div class="photo-caption"><b><span class="vi">Bo điều khiển ESP32-S3</span><span class="en">ESP32-S3 controller board</span></b><small><span class="vi">Ảnh cận cảnh mặt linh kiện</span><span class="en">Close-up of the component side</span></small></div>
+    </a></article>
+
+    <article class="photo-card"><a href="assets/images/gallery/09-board-back.png" target="_blank" rel="noopener">
+      <img loading="lazy" decoding="async" src="assets/images/gallery/09-board-back.png" alt="Perfboard solder side">
+      <div class="photo-caption"><b><span class="vi">Mặt sau PCB</span><span class="en">PCB solder side</span></b><small><span class="vi">Dây nối và điện trở trên mặt hàn</span><span class="en">Wiring and resistors on the solder side</span></small></div>
+    </a></article>
   </div>
-  <p class="photo-help"><span class="vi">Tip: nếu ảnh chưa hiện sau khi upload lên GitHub Pages, kiểm tra lại thư mục <span class="code">assets/images/gallery</span> đã được tải lên đủ chưa.</span><span class="en">Tip: if an image does not appear after uploading to GitHub Pages, make sure the <span class="code">assets/images/gallery</span> folder was uploaded completely.</span></p>
 </section>
 
 </main>
