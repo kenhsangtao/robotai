@@ -43,6 +43,7 @@ a{color:#63baff}
 .flash-note{color:#9fc2df;font-size:14px}
 .free-firmware{margin:14px 0 0;padding:12px 16px;border-radius:12px;background:rgba(37,143,255,.10);border:1px solid rgba(85,184,255,.35);color:#dff2ff;font-size:15px}
 .personal-use{margin:12px 0 0;padding:13px 16px;border-radius:12px;background:rgba(255,180,48,.10);border:1px solid rgba(255,199,79,.45);color:#ffe6a6;font-size:14px;line-height:1.55}
+.board-note{margin:12px 0 0;padding:13px 16px;border-radius:12px;background:rgba(86,219,139,.09);border:1px solid rgba(86,219,139,.38);color:#d7ffe6;font-size:14px;line-height:1.55}
 .mobile-flash-note{display:none}
 
 .hero-card,.panel{background:rgba(16,42,69,.96);border:1px solid #294d6d;border-radius:22px}
@@ -153,10 +154,10 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
 
     <nav class="nav">
       <a href="#firmware">Firmware</a>
-      <a href="#photos"><span class="vi">Hình ảnh</span><span class="en">Photos</span></a>
       <a href="#components"><span class="vi">Linh kiện</span><span class="en">Components</span></a>
       <a href="#wiring"><span class="vi">Sơ đồ</span><span class="en">Wiring</span></a>
       <a href="#video"><span class="vi">Video / 3D</span><span class="en">Video / 3D</span></a>
+      <a href="#photos"><span class="vi">Hình ảnh</span><span class="en">Photos</span></a>
       <a href="#guide"><span class="vi">Hướng dẫn</span><span class="en">Guide</span></a>
     </nav>
 
@@ -208,6 +209,11 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
     <p class="free-firmware">
       <span class="vi">🎁 <b>Firmware hoàn toàn miễn phí</b> dành cho anh em Fans Kênh Sáng Tạo.</span>
       <span class="en">🎁 <b>Firmware is completely free</b> for Creative Channel fans.</span>
+    </p>
+
+    <p class="board-note">
+      <span class="vi">✅ <b>Firmware dành cho đúng bo ESP32-S3 DevKitC-1 N16R8.</b> Vui lòng kiểm tra đúng phiên bản bo trước khi nạp.</span>
+      <span class="en">✅ <b>This firmware is intended for the ESP32-S3 DevKitC-1 N16R8.</b> Please make sure you are using the correct board version before flashing.</span>
     </p>
 
     <p class="personal-use">
@@ -431,8 +437,8 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
   <div class="grid">
     <article class="card">
       <h3><span class="vi">1. Nạp firmware</span><span class="en">1. Flash firmware</span></h3>
-      <p class="vi">Dùng Chrome hoặc Edge trên máy tính. Bấm <b>Nạp firmware</b>, chọn đúng cổng USB Serial và nạp file đã gộp tại <b>0x0</b>.</p>
-      <p class="en">Use desktop Chrome or Edge. Click <b>Install firmware</b>, select the correct USB Serial port and flash the merged image at <b>0x0</b>.</p>
+      <p class="vi">Dùng Chrome hoặc Edge trên máy tính. Bấm <b>Nạp firmware</b>, chọn đúng cổng USB Serial và nạp file đã gộp tại <b>0x0</b>. Nếu máy tính không nhận bo hoặc nạp lỗi, hãy <b>giữ nút BOOT → bấm RESET/EN → thả BOOT → thử nạp lại</b>.</p>
+      <p class="en">Use desktop Chrome or Edge. Click <b>Install firmware</b>, select the correct USB Serial port and flash the merged image at <b>0x0</b>. If the board is not detected or flashing fails, <b>hold BOOT → press RESET/EN → release BOOT → try flashing again</b>.</p>
     </article>
     <article class="card">
       <h3><span class="vi">2. Kết nối Wi-Fi</span><span class="en">2. Connect to Wi-Fi</span></h3>
