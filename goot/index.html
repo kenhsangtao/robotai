@@ -79,6 +79,13 @@ a{color:#63baff}
 .safety{border-color:#806520;background:#2a2415}
 .safety h2,.safety h3{color:var(--warn)}
 .video-box{text-align:center;padding:10px 0}
+.video-wrap{max-width:900px;margin:0 auto}
+.video-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid #295374;background:#071624}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.resource-box{max-width:900px;margin:18px auto 0;padding:18px;border:1px solid #295374;border-radius:16px;background:#0b2035;text-align:center}
+.resource-box p{margin:0 0 14px;color:#c7d8e9;line-height:1.6}
+.resource-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
 .video-box p{color:#c7d8e9;font-size:17px;line-height:1.65}
 .placeholder{border:1px dashed #477398;border-radius:16px;padding:26px;text-align:center;color:#a8c8e6;background:#0a1c30}
 .note{color:#a8c8e6;font-size:14px}
@@ -149,7 +156,7 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
       <a href="#photos"><span class="vi">Hình ảnh</span><span class="en">Photos</span></a>
       <a href="#components"><span class="vi">Linh kiện</span><span class="en">Components</span></a>
       <a href="#wiring"><span class="vi">Sơ đồ</span><span class="en">Wiring</span></a>
-      <a href="#video">Video</a>
+      <a href="#video"><span class="vi">Video / 3D</span><span class="en">Video / 3D</span></a>
       <a href="#guide"><span class="vi">Hướng dẫn</span><span class="en">Guide</span></a>
     </nav>
 
@@ -186,6 +193,10 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
       <a class="btn secondary" href="firmware/goot-kst-v1-full.bin" download>
         <span class="vi">⬇ Tải firmware .BIN</span>
         <span class="en">⬇ Download firmware .BIN</span>
+      </a>
+      <a class="btn secondary" href="https://makerworld.com/en/models/3255627-diy-goot-soldering-station-with-esp32-s3#profileId-3690114" target="_blank" rel="noopener">
+        <span class="vi">🧊 File vỏ in 3D</span>
+        <span class="en">🧊 3D enclosure files</span>
       </a>
     </div>
 
@@ -380,10 +391,38 @@ footer{padding:36px 20px 44px;text-align:center;color:#8fb1cd}
 </section>
 
 <section class="panel" id="video">
-  <h2><span class="vi">Video hướng dẫn</span><span class="en">Tutorial video</span></h2>
-  <div class="placeholder">
-    <span class="vi">🎬 Link video VN sẽ cập nhật sau.</span>
-    <span class="en">🎬 English video link coming soon.</span>
+  <h2><span class="vi">Video hướng dẫn & file in 3D</span><span class="en">Tutorial video & 3D files</span></h2>
+  <p class="panel-sub">
+    <span class="vi">Xem video hướng dẫn đầy đủ và tải miễn phí file vỏ in 3D của Trạm Hàn KST GOOT.</span>
+    <span class="en">Watch the complete tutorial and download the free 3D-printable enclosure for the KST GOOT Soldering Station.</span>
+  </p>
+
+  <div class="video-wrap">
+    <div class="vi">
+      <div class="video-frame">
+        <iframe loading="lazy" src="https://www.youtube.com/embed/88-pXx4rEhE" title="Trạm Hàn KST GOOT - Video Tiếng Việt" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="resource-box">
+        <p><b>🎬 Video Tiếng Việt</b><br>https://youtu.be/88-pXx4rEhE</p>
+        <div class="resource-actions">
+          <a class="btn secondary" href="https://youtu.be/88-pXx4rEhE" target="_blank" rel="noopener">▶ Xem trên YouTube</a>
+          <a class="btn secondary" href="https://makerworld.com/en/models/3255627-diy-goot-soldering-station-with-esp32-s3#profileId-3690114" target="_blank" rel="noopener">🧊 Tải miễn phí trên MakerWorld</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="en">
+      <div class="video-frame">
+        <iframe loading="lazy" src="https://www.youtube.com/embed/HQLEGyu-QDM" title="KST GOOT Soldering Station - English Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="resource-box">
+        <p><b>🎬 English Tutorial</b><br>https://youtu.be/HQLEGyu-QDM</p>
+        <div class="resource-actions">
+          <a class="btn secondary" href="https://youtu.be/HQLEGyu-QDM" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+          <a class="btn secondary" href="https://makerworld.com/en/models/3255627-diy-goot-soldering-station-with-esp32-s3#profileId-3690114" target="_blank" rel="noopener">🧊 Free download on MakerWorld</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
