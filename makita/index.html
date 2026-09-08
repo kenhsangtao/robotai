@@ -20,6 +20,16 @@
     .wrap{max-width:1220px;margin:auto;padding:0 18px}section[id]{scroll-margin-top:98px}
     .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:38px;align-items:center;padding:64px 0 44px}.kicker{color:#51b8ff;font-weight:900;letter-spacing:2px;margin:0 0 10px}.hero h1{font-size:58px;line-height:1.02;margin:8px 0 18px}.hero h1 span{background:linear-gradient(90deg,#41c2ff,#8b63ff);-webkit-background-clip:text;color:transparent}.lead{font-size:19px;color:#c8d9e9;max-width:720px}
     .buttons{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 12px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:13px 20px;border:0;border-radius:14px;text-decoration:none;font-weight:900;color:#fff;background:linear-gradient(90deg,#258fff,#7457ff);cursor:pointer;font:inherit}.btn.secondary{background:#102b47;border:1px solid #315d85}.flash-note{color:#9fc2df;font-size:14px}.free-firmware{margin:12px 0 0;padding:12px 16px;border-radius:12px;background:rgba(37,143,255,.10);border:1px solid rgba(85,184,255,.35);color:#dff2ff;font-size:15px}
+    .source-credit{margin:12px 0 0;padding:12px 16px;border-radius:12px;background:rgba(86,219,139,.08);border:1px solid rgba(86,219,139,.32);color:#d9f7e5;font-size:14px;line-height:1.6}
+    .source-credit a{color:#78ccff;font-weight:900}
+    .license-wrap{max-width:1000px;margin:0 auto}
+    .license-card{background:#0b2035;border:1px solid #2a5275;border-radius:18px;padding:20px;color:#d8e7f4}
+    .license-card p{margin:7px 0}
+    .license-card a{color:#69c4ff;font-weight:850}
+    .license-details{margin-top:16px;background:#071725;border:1px solid #294d6d;border-radius:14px;padding:14px 16px}
+    .license-details summary{cursor:pointer;font-weight:900;color:#8fd2ff}
+    .license-details pre{white-space:pre-wrap;word-break:break-word;color:#dce9f5;font-size:13px;line-height:1.55;margin:14px 0 0}
+
     .hero-card,.panel{background:var(--panel);border:1px solid #294d6d;border-radius:22px}.hero-card{padding:0;overflow:hidden;background:#0d243d}.hero-placeholder{min-height:310px;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;background:#0a1c30}.hero-placeholder img{width:82px;height:82px;object-fit:contain;border-radius:50%;background:white;margin-bottom:12px}.hero-placeholder b{display:block;font-size:24px}.hero-placeholder span{color:#91b6d3}.hero-caption{padding:14px 18px;color:#c9dced;font-weight:800;border-top:1px solid #294d6d}
     
     .panel{margin:28px 0;padding:30px}.panel h2{text-align:center;font-size:34px;margin:2px 0 24px}.panel-sub{text-align:center;color:#a8c8e6;margin:-12px 0 24px}
@@ -246,6 +256,7 @@
       <a href="#components"><span class="vi">Linh kiện</span><span class="en">Components</span></a>
       <a href="#wiring"><span class="vi">Sơ đồ</span><span class="en">Wiring</span></a>
       <a href="#video">Video</a>
+      <a href="#license"><span class="vi">Nguồn mở</span><span class="en">Credits</span></a>
       <a href="#guide"><span class="vi">Hướng dẫn</span><span class="en">Guide</span></a>
     </nav>
     <div class="lang"><button class="active" data-l="vi">VN</button><button data-l="en">EN</button></div>
@@ -287,6 +298,11 @@
     <p class="free-firmware">
       <span class="vi">🎁 <b>Firmware hoàn toàn miễn phí</b> dành cho anh em Fans Kênh Sáng Tạo.</span>
       <span class="en">🎁 <b>Firmware is completely free</b> for Creative Channel fans.</span>
+    </p>
+
+    <p class="source-credit">
+      <span class="vi">🌐 <b>Ghi công mã nguồn mở:</b> KST Makita Tool được phát triển dựa một phần trên mã nguồn/nghiên cứu từ dự án <b>Open Battery Information</b> của <b>Martin Jansson</b>. Phần mã nguồn gốc được sử dụng theo <b>MIT License</b> và giữ nguyên thông báo bản quyền của tác giả. <a href="https://github.com/mnh-jansson/open-battery-information" target="_blank" rel="noopener">Xem dự án gốc trên GitHub</a>.</span>
+      <span class="en">🌐 <b>Open-source credit:</b> KST Makita Tool is developed in part from code/research from <b>Open Battery Information</b> by <b>Martin Jansson</b>. Upstream portions are used under the <b>MIT License</b> with the original copyright notice preserved. <a href="https://github.com/mnh-jansson/open-battery-information" target="_blank" rel="noopener">View the original project on GitHub</a>.</span>
     </p>
   </div>
 
@@ -371,6 +387,49 @@
     <div class="video-box">
       <p>Watch the complete build, wiring and usage tutorial for the KST Makita Tool and Makita battery error handling.</p>
       <a class="video-link" href="https://youtu.be/mSKKcPt2vXo" target="_blank" rel="noopener">▶ Watch the English tutorial</a>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="license">
+  <h2><span class="vi">Nguồn mở & giấy phép</span><span class="en">Open-source credits & license</span></h2>
+  <div class="license-wrap">
+    <div class="license-card">
+      <div class="vi">
+        <p><b>KST Makita Tool</b> được phát triển dựa một phần trên mã nguồn và nghiên cứu từ dự án mã nguồn mở <b>Open Battery Information</b> của <b>Martin Jansson</b>.</p>
+        <p><b>Dự án gốc:</b> <a href="https://github.com/mnh-jansson/open-battery-information" target="_blank" rel="noopener">https://github.com/mnh-jansson/open-battery-information</a></p>
+        <p>Dự án gốc được phát hành theo <b>MIT License</b>. Các phần mã nguồn có nguồn gốc từ Open Battery Information tiếp tục tuân theo các điều khoản của MIT License và giữ nguyên thông báo bản quyền của tác giả gốc.</p>
+        <p>KST Makita Tool là bản tùy biến/phát triển độc lập của Kênh Sáng Tạo .COM / Creative Channel. Việc ghi công này không có nghĩa Martin Jansson hoặc Open Battery Information bảo trợ hay chịu trách nhiệm cho bản KST.</p>
+      </div>
+      <div class="en">
+        <p><b>KST Makita Tool</b> is developed in part from code and research from the open-source <b>Open Battery Information</b> project by <b>Martin Jansson</b>.</p>
+        <p><b>Original project:</b> <a href="https://github.com/mnh-jansson/open-battery-information" target="_blank" rel="noopener">https://github.com/mnh-jansson/open-battery-information</a></p>
+        <p>The upstream project is released under the <b>MIT License</b>. Portions originating from Open Battery Information remain subject to the MIT terms and retain the original copyright notice.</p>
+        <p>KST Makita Tool is an independent customization/development by Kênh Sáng Tạo .COM / Creative Channel. This attribution does not imply endorsement or responsibility by Martin Jansson or Open Battery Information.</p>
+      </div>
+
+      <details class="license-details">
+        <summary><span class="vi">Xem toàn bộ MIT License của Open Battery Information</span><span class="en">View the full MIT License for Open Battery Information</span></summary>
+        <pre>Copyright (c) 2024 Martin Jansson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+      </details>
     </div>
   </div>
 </section>

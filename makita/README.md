@@ -14,6 +14,58 @@ on both the touchscreen UI and the WiFi web control page.
 
 ---
 
+## Nguồn mở & giấy phép / Open-source attribution & license
+
+### 🇻🇳 Tiếng Việt
+
+**KST Makita Tool** được phát triển dựa một phần trên mã nguồn và nghiên cứu từ dự án mã nguồn mở **Open Battery Information** của **Martin Jansson**.
+
+- Dự án gốc: https://github.com/mnh-jansson/open-battery-information
+- Tác giả gốc: **Martin Jansson**
+- Giấy phép dự án gốc: **MIT License**
+
+Các phần mã nguồn có nguồn gốc từ Open Battery Information tiếp tục tuân theo MIT License và giữ nguyên thông báo bản quyền của tác giả gốc.
+
+KST Makita Tool là bản tùy biến/phát triển độc lập của **Kênh Sáng Tạo .COM / Creative Channel**. Việc ghi công này không có nghĩa Martin Jansson hoặc Open Battery Information bảo trợ hay chịu trách nhiệm cho bản KST.
+
+### 🇬🇧 English
+
+**KST Makita Tool** is developed in part from code and research from the open-source **Open Battery Information** project by **Martin Jansson**.
+
+- Original project: https://github.com/mnh-jansson/open-battery-information
+- Original author: **Martin Jansson**
+- Upstream license: **MIT License**
+
+Portions originating from Open Battery Information remain subject to the MIT License and retain the original copyright notice.
+
+KST Makita Tool is an independent customization/development by **Kênh Sáng Tạo .COM / Creative Channel**. This attribution does not imply endorsement or responsibility by Martin Jansson or Open Battery Information.
+
+### MIT License — Open Battery Information
+
+```text
+Copyright (c) 2024 Martin Jansson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
 ## 🇻🇳 Tiếng Việt
 
 ### Giới thiệu
