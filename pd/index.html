@@ -9,7 +9,7 @@
 <meta content="KST PD Bench Supply dùng ESP32-C3, USB-C PD 5/9/12/15/20V, INA226, OLED SSD1306, Wi-Fi và nạp firmware trực tiếp trên web." name="description"/>
 <link href="assets/images/kst-logo.png" rel="icon" type="image/png"/>
 <link href="assets/images/kst-logo.png" rel="apple-touch-icon"/>
-<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=ikqINsH7B0aFRG6BikRzOcKsb-iJUY4pId_vmwPvRR75Hch_WgS4UcRdNBJYsP5oxnx07lO20V7Vx9oU_K3_RBXzOaGzWCAeeiROocL6VE7ZS0-jiMKH8ScaI6yzAutQVkxcKBdne3RP0wXuQQzsmTBPXHS6jDJEBPzUGOhxSc2KoGnChFAkyVm0TPeF_sXxkI2sYd8w7jDHhEs-WQTZqvtshYw552_O3Y1uERhtFLDE1cPuAwjeTuHeRVynbRc6pZy6tT97xY2VQIoiodAfUJ0-mh5Nt_dB5czenyylpU8vg6QBLgu91jHTf-GSPZtZVCC8mkioIvn01f-AgC_TVg" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMDQ1MGM4MWY0YjczNzkzMjZjMDhhZjQxOSZmbj1LU1QtUEQtaW5kZXgtTElOSy1MSU5ILUtJRU4tRklYRUQuaHRtbCZjZD1hdHRhY2htZW50JnRzPTQ5NzA0OSZwPWZzJmNpZD0xJnNpZz04NWI4NzYwY2Q0Y2M1NGFhZWQzY2NhZTFhMDYwMWQzYzc3NDlmMjIyYjM3OGJkNTEwMjEyMTAyMjBlZDdkZTg4JnY9MA"/><style>
+<style>
     :root{
       --bg:#07111f;--panel:#0d243d;--card:#102b47;--line:#2b5274;--head:#12385f;
       --txt:#eef6ff;--muted:#a8c8e6;--blue:#55b8ff;--violet:#7357ff;--warn:#ffcf5c;
@@ -70,20 +70,16 @@
     @media(max-width:930px),(hover:none) and (pointer:coarse){
       esp-web-install-button{display:none!important}.mobile-flash-note{display:inline-flex;align-items:center;min-height:52px;padding:0 16px;border-radius:14px;background:#102b47;border:1px solid #315d85;color:#b9cadd;font-weight:800}
     }
-  </style>
+  
+.board-warning{margin-top:12px;padding:13px 16px;border-radius:12px;background:#2a2415;border:1px solid #7e6321;color:#ffe7a6;font-size:14px;line-height:1.55}
+.board-warning b{color:#ffd86b}
+</style>
 </head>
 <body>
 <header class="header">
 <div class="bar">
 <div class="brand-wrap"><img alt="KST" class="brand-logo" src="assets/images/kst-logo.png"/><div class="brand">KST PD Bench Supply<small>Firmware Center</small></div></div>
-<nav class="nav">
-<a href="#firmware">Firmware</a>
-<a href="#photos"><span class="vi">Hình ảnh</span><span class="en">Photos</span></a>
-<a href="#features"><span class="vi">Tính năng</span><span class="en">Features</span></a>
-<a href="#components"><span class="vi">Linh kiện</span><span class="en">Components</span></a>
-<a href="#wiring"><span class="vi">Sơ đồ</span><span class="en">Wiring</span></a>
-<a href="#guide"><span class="vi">Hướng dẫn</span><span class="en">Guide</span></a>
-</nav>
+<nav class="nav"><a href="#firmware">Firmware</a><a href="#photos"><span class="vi">Hình ảnh</span><span class="en">Photos</span></a><a href="#components"><span class="vi">Linh kiện</span><span class="en">Components</span></a><a href="#wiring"><span class="vi">Sơ đồ</span><span class="en">Wiring</span></a><a href="#pinout"><span class="vi">Chân ESP32</span><span class="en">Pinout</span></a><a href="#wifi">Wi-Fi</a><a href="#guide"><span class="vi">Hướng dẫn</span><span class="en">Guide</span></a><a href="#troubleshooting"><span class="vi">Sự cố</span><span class="en">Troubleshoot</span></a></nav>
 <div class="lang"><button class="active" data-l="vi">VN</button><button data-l="en">EN</button></div>
 </div>
 </header>
@@ -108,7 +104,7 @@
 <a class="btn secondary" download="" href="firmware/KST_PD_Bench_Supply_firmware.bin"><span class="vi">⬇ Tải firmware .BIN</span><span class="en">⬇ Download firmware .BIN</span></a>
 </div>
 <p class="flash-note"><span class="vi">Firmware đã gộp sẵn thành <b>1 file duy nhất</b>, nạp tại offset <b>0x0</b>. Không rút cáp trong lúc nạp.</span><span class="en">The firmware is a <b>single merged image</b>, flashed at offset <b>0x0</b>. Do not unplug during flashing.</span></p>
-<p class="free-firmware"><span class="vi">🎁 <b>Firmware hoàn toàn miễn phí</b> dành cho anh em Fans Kênh Sáng Tạo.</span><span class="en">🎁 <b>Firmware is completely free</b> for Creative Channel fans.</span></p>
+<p class="free-firmware"><span class="vi">🎁 <b>Firmware hoàn toàn miễn phí</b> dành cho anh em Fans Kênh Sáng Tạo.</span><span class="en">🎁 <b>Firmware is completely free</b> for Creative Channel fans.</span></p><div class="board-warning">⚠️ <span class="vi"><b>Firmware này dành cho ESP32-C3 SuperMini.</b> Không nạp cho ESP32-S3 hoặc board khác nếu chưa kiểm tra tương thích.</span><span class="en"><b>This firmware is for the ESP32-C3 SuperMini.</b> Do not flash it to an ESP32-S3 or another board unless compatibility has been verified.</span></div>
 </div>
 <aside class="hero-card">
 <img alt="KST PD Bench Supply" class="hero-photo" src="assets/images/pd-bench-supply-main.jpg"/>
@@ -146,23 +142,22 @@
 <div class="parts">
 <article class="card"><h3><span class="num">1</span>ESP32-C3 SuperMini</h3><p class="vi">Bộ điều khiển chính, Wi-Fi AP và giao diện web.</p><p class="en">Main controller, Wi-Fi AP and web interface.</p><a class="buy-link" href="https://s.shopee.vn/BTna5af4x" rel="noopener sponsored" target="_blank"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a></article>
 <article class="card"><h3><span class="num">2</span><span class="vi">Mạch kích USB-C PD CMTPD</span><span class="en">CMTPD USB-C PD trigger board</span></h3><p>5 → 9 → 12 → 15 → 20V</p><a class="buy-link" href="https://s.shopee.vn/3LQpM4ye49" rel="noopener sponsored" target="_blank"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a></article>
-<article class="card"><h3><span class="num">3</span><span class="vi">Module cảm biến dòng INA226</span><span class="en">INA226 current / voltage / power monitor module</span></h3><p>I2C · 0x40 · <span class="vi">thay shunt</span><span class="en">shunt changed to</span> R010 0.01 ohm</p><a class="buy-link" href="https://s.shopee.vn/50Z3L1PzD0" rel="noopener sponsored" target="_blank"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a></article>
+<article class="card"><h3><span class="num">3</span><span class="vi">Module cảm biến dòng INA226</span><span class="en">INA226 current / voltage / power monitor module</span></h3><p class="vi">Thay trở shunt của INA226 từ <b>R100 0.1Ω → R010 0.01Ω</b> để mở rộng dải đo dòng từ khoảng 0.8A lên khoảng 8A, đủ cho nguồn 100W ở 20V.</p><p class="en">Replace the INA226 shunt from <b>R100 0.1Ω → R010 0.01Ω</b> to increase the current measurement range from about 0.8A to around 8A, enough for a 100W supply at 20V.</p><a class="buy-link" href="https://s.shopee.vn/50Z3L1PzD0" rel="noopener sponsored" target="_blank"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a></article>
 <article class="card"><h3><span class="num">4</span><span class="vi">Màn hình OLED 0.96" SSD1306 I2C</span><span class="en">0.96" SSD1306 I2C OLED display</span></h3><p>I2C · 128×64 · 4 pin · 0x3C · <span class="vi">bản hiển thị vàng/xanh</span><span class="en">yellow/blue display version</span></p><a class="buy-link" href="https://s.shopee.vn/2gB8YuLpfy" rel="noopener sponsored" target="_blank"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a></article>
 <article class="card"><h3><span class="num">5</span><span class="vi">Module hạ áp / buck-boost 5V</span><span class="en">5V buck/buck-boost module</span></h3><p class="vi">Nuôi ESP32 từ đường nguồn PD, đầu ra chốt 5V ổn định.</p><p class="en">Provides a stable 5V rail for the ESP32 from the PD output.</p><a class="buy-link" href="https://s.shopee.vn/9fKstVSiyV" rel="noopener sponsored" target="_blank"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a></article>
 <article class="card"><h3><span class="num">6</span><span class="vi">MOSFET N-channel 2N7000 TO-92</span><span class="en">2N7000 N-channel MOSFET TO-92</span></h3><p>N-channel TO-92 · Q1 <span class="vi">giả lập nút KEY</span><span class="en">simulates the KEY button</span></p><a class="buy-link" href="https://s.shopee.vn/1LfkyG1zNA" rel="noopener sponsored" target="_blank"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a></article>
 <article class="card"><h3><span class="num">7</span><span class="vi">Bộ điện trở — cần 100 ohm + 100k ohm</span><span class="en">Resistor kit — 100 ohm + 100k ohm required</span></h3><p class="vi">100 ohm nối tiếp gate Q1, 100k ohm kéo gate xuống GND.</p><p class="en">100 ohm gate series resistor and 100k ohm gate pulldown.</p><a class="buy-link" href="https://s.shopee.vn/7AdEXHpFA7" rel="noopener sponsored" target="_blank"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a></article>
 <article class="card"><h3><span class="num">8</span><span class="vi">Nút nhấn</span><span class="en">Push button</span></h3><p>GPIO4 → GND</p></article>
 <article class="card"><h3><span class="num">9</span><span class="vi">Còi buzzer chủ động 5V, 2 chân</span><span class="en">5V 2-pin active buzzer</span></h3><p>GPIO21</p><a class="buy-link" href="https://s.shopee.vn/LmuOnnST8" rel="noopener sponsored" target="_blank"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a></article>
-<article class="card"><h3><span class="num">10</span><span class="vi">Tụ 1000uF + 100nF</span><span class="en">1000uF + 100nF capacitors</span></h3><p class="vi">Lọc nguồn 5V sát ESP32.</p><p class="en">5V rail filtering close to the ESP32.</p></article>
+<article class="card"><h3><span class="num">10</span><span class="vi">1 × tụ hóa 1000uF + 2 × tụ gốm 104 (100nF)</span><span class="en">1 × 1000uF electrolytic + 2 × 104 ceramic capacitors (100nF)</span></h3><p class="vi">Dùng để lọc và ổn định đường nguồn 5V cấp cho ESP32-C3.</p><p class="en">Used to filter and stabilize the 5V rail powering the ESP32-C3.</p></article>
 <article class="card"><h3><span class="num">11</span><span class="vi">Cọc nguồn OUT + / −</span><span class="en">OUT + / − binding posts</span></h3><p class="vi">Đầu ra tải sau INA226.</p><p class="en">Load output after the INA226.</p></article>
 <article class="card"><h3><span class="num">12</span><span class="vi">Phíp đục lỗ + dây nguồn</span><span class="en">Perfboard + power wire</span></h3><p class="vi">Nên dùng dây nguồn tối thiểu khoảng 20AWG cho nhánh công suất.</p><p class="en">Use roughly 20AWG or heavier for the power path.</p></article>
 <article class="card">
 <h3><span class="num">13</span><span class="vi">2 × quạt làm mát DC 5V 32mm</span><span class="en">2 × 32mm 5V DC cooling fans</span></h3>
 <p class="vi">Hai quạt tròn 5V, đường kính khoảng 32mm, dùng để thông gió và làm mát linh kiện bên trong vỏ.</p>
 <p class="en">Two 5V round fans, approximately 32mm in diameter, used to ventilate the enclosure and cool the internal electronics.</p>
-
 <a class="buy-link" href="https://s.shopee.vn/7ptEhONDEC" rel="noopener sponsored" target="_blank"><span class="vi">Mua tại đây</span><span class="en">Buy here</span></a></article>
-</div>
+<article class="card"><h3><span class="num">14</span><span class="vi">Nguồn USB-C PD 100W trở lên</span><span class="en">100W+ USB-C PD power source</span></h3><p class="vi">Dùng adapter hoặc sạc dự phòng USB-C PD hỗ trợ các mức 5V / 9V / 12V / 15V / 20V.</p><p class="en">Use a USB-C PD wall charger or power bank that supports 5V / 9V / 12V / 15V / 20V.</p></article></div>
 </section>
 <section class="panel" id="wiring">
 <h2><span class="vi">Sơ đồ đấu nối</span><span class="en">Wiring diagram</span></h2>
@@ -226,7 +221,7 @@
 <article class="card"><h3><span class="vi">Không thấy OLED / INA226</span><span class="en">OLED / INA226 not detected</span></h3><p class="vi">Kiểm tra 3.3V, GND, SDA GPIO2, SCL GPIO3. OLED mặc định 0x3C; INA226 mặc định 0x40.</p><p class="en">Check 3.3V, GND, SDA GPIO2 and SCL GPIO3. OLED defaults to 0x3C; INA226 defaults to 0x40.</p></article>
 <article class="card"><h3><span class="vi">Bấm một lần nhảy nhiều nấc</span><span class="en">One press skips multiple levels</span></h3><p class="vi">Kiểm tra dây và mối hàn nút GPIO4 → GND. Firmware đã có chống dội nút.</p><p class="en">Check the GPIO4 → GND button wire and solder joints. Firmware already includes button debouncing.</p></article>
 <article class="card"><h3><span class="vi">Không lên 15V / 20V</span><span class="en">Cannot reach 15V / 20V</span></h3><p class="vi">Kiểm tra nguồn PD, cáp USB-C và mạch kích. Dự án đã từng gặp board CMTPD lỗi riêng ở hai nấc cao.</p><p class="en">Check the PD source, USB-C cable and trigger board. A CMTPD board with a hardware fault specifically at the top two steps was encountered during this build.</p></article>
-</div>
+<article class="card"><h3><span class="vi">Không nạp được firmware / không thấy cổng</span><span class="en">Firmware won't flash / port not detected</span></h3><p class="vi">Thử cáp USB có truyền dữ liệu và đổi cổng USB. Nếu vẫn không nạp được, giữ BOOT, nhấn RESET/RST một lần, thả RESET rồi thả BOOT để đưa ESP32-C3 vào chế độ nạp.</p><p class="en">Use a data-capable USB cable and try another USB port. If flashing still fails, hold BOOT, tap RESET/RST once, release RESET, then release BOOT to enter download mode.</p></article></div>
 </section>
 </main>
 <footer>© 2026 Kênh Sáng Tạo .COM × Creative Channel · KST PD Bench Supply</footer>
