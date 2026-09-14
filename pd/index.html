@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#12385f">
+  <title>KST PD Bench Supply — Firmware Center</title>
+  <meta name="description" content="KST PD Bench Supply dùng ESP32-C3, USB-C PD 5/9/12/15/20V, INA226, OLED SSD1306, Wi-Fi và nạp firmware trực tiếp trên web.">
+  <link rel="icon" type="image/png" href="assets/images/kst-logo.png">
+  <link rel="apple-touch-icon" href="assets/images/kst-logo.png">
+  <style>
+    :root{
+      --bg:#07111f;--panel:#0d243d;--card:#102b47;--line:#2b5274;--head:#12385f;
+      --txt:#eef6ff;--muted:#a8c8e6;--blue:#55b8ff;--violet:#7357ff;--warn:#ffcf5c;
+      --good:#66e49b;--danger:#ff7d7d
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.58 Arial,Helvetica,sans-serif}
+    a{color:inherit}
+    .header{position:relative;background:var(--head);border-bottom:1px solid #315d85}
+    .bar{max-width:1220px;margin:auto;min-height:76px;display:flex;align-items:center;gap:18px;padding:10px 18px}
+    .brand-wrap{display:flex;align-items:center;gap:12px;min-width:0}
+    .brand-logo{width:54px;height:54px;object-fit:contain;border-radius:50%;background:#fff;flex:0 0 auto}
+    .brand{font-size:18px;font-weight:850;white-space:nowrap}.brand small{display:block;color:var(--muted);font-weight:500;font-size:13px}
+    .nav{margin-left:auto;display:flex;align-items:center;gap:17px}.nav a{color:#c7d8e9;text-decoration:none;font-weight:800;white-space:nowrap;padding:7px 3px}
+    .nav a:hover,.nav a.active{color:#fff}
+    .lang{display:flex;flex:none;background:#0b2239;border:1px solid #315d85;border-radius:12px;padding:3px}
+    .lang button{border:0;background:transparent;color:#c7d8e9;padding:8px 11px;border-radius:9px;font-weight:900;cursor:pointer}
+    .lang button.active{background:#2494ff;color:#fff}
+    .wrap{max-width:1220px;margin:auto;padding:0 18px}section[id]{scroll-margin-top:20px}
+    .hero{display:grid;grid-template-columns:1.03fr .97fr;gap:36px;align-items:center;padding:58px 0 42px}
+    .kicker{color:#51b8ff;font-weight:900;letter-spacing:2px;margin:0 0 10px}
+    .hero h1{font-size:56px;line-height:1.03;margin:8px 0 18px}
+    .hero h1 span{background:linear-gradient(90deg,#41c2ff,#8b63ff);-webkit-background-clip:text;color:transparent}
+    .lead{font-size:18px;color:#c8d9e9;max-width:720px}
+    .specs{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0 4px}.spec{padding:7px 12px;border:1px solid #315d85;border-radius:999px;background:#0b2035;color:#cfe5f7;font-weight:800;font-size:13px}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:13px 20px;border:0;border-radius:14px;text-decoration:none;font-weight:900;color:#fff;background:linear-gradient(90deg,#258fff,#7457ff);cursor:pointer;font:inherit}
+    .btn.secondary{background:#102b47;border:1px solid #315d85}.btn:hover{filter:brightness(1.06)}
+    .flash-note{color:#9fc2df;font-size:14px}.free-firmware{margin:12px 0 0;padding:12px 16px;border-radius:12px;background:rgba(37,143,255,.10);border:1px solid rgba(85,184,255,.35);color:#dff2ff;font-size:15px}
+    .mobile-flash-note{display:none}
+    .hero-card,.panel{background:var(--panel);border:1px solid #294d6d;border-radius:22px}
+    .hero-card{padding:0;overflow:hidden}.hero-photo{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#0a1c30}
+    .hero-caption{padding:14px 18px;color:#c9dced;font-weight:800;border-top:1px solid #294d6d}
+    .panel{margin:28px 0;padding:30px}.panel h2{text-align:center;font-size:34px;margin:2px 0 24px}.panel-sub{text-align:center;color:#a8c8e6;margin:-12px auto 24px;max-width:850px}
+    .features,.parts,.guide,.pin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{padding:20px;background:var(--card);border:1px solid #2a5275;border-radius:18px}.card h3{color:var(--blue);margin:0 0 9px;font-size:18px}.card p{margin:6px 0;color:#d8e7f4}.card ul{margin:8px 0;padding-left:20px}.card li{margin:5px 0}
+    .num{display:inline-flex;min-width:27px;height:27px;align-items:center;justify-content:center;border-radius:8px;background:#153657;color:#83d1ff;font-weight:900;margin-right:8px}
+    .safety{border-color:#7e6321;background:#2a2415}.safety h3{color:var(--warn)}
+    .good{border-color:#25684a;background:#102c25}.good h3{color:var(--good)}
+    .diagram{width:100%;display:block;background:#fff;border-radius:16px;max-height:900px;object-fit:contain}
+    .diagram-actions{display:flex;justify-content:center;margin:16px 0 0}.btn.diagram-btn{min-height:54px;padding:14px 26px;border:1px solid #315d85;background:#102b47}
+    .diagram-note{margin-top:14px;color:#aac5dd;text-align:center}
+    .gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.gallery a{display:block;overflow:hidden;border-radius:16px;border:1px solid #2a5275;background:#0a1c30}.gallery img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;transition:transform .2s ease}.gallery a:hover img{transform:scale(1.015)}.gallery .wide{grid-column:1/-1}
+    .levels{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}.level{text-align:center;padding:16px 8px;border-radius:14px;border:1px solid #315d85;background:#0b2035;font-size:22px;font-weight:900;color:#7dccff}.level small{display:block;color:#9fc2df;font-size:11px;margin-top:3px}
+    .wifi-box{padding:20px;border-radius:18px;background:#081b2d;border:1px solid #2a5275}.wifi-box code{font:700 15px/1.6 Consolas,monospace;color:#7dccff}
+    table{width:100%;border-collapse:collapse}.table-wrap{overflow:auto;border:1px solid #2a5275;border-radius:16px}.table-wrap th,.table-wrap td{padding:12px 14px;border-bottom:1px solid #203f5b;text-align:left;vertical-align:top}.table-wrap th{background:#0b2035;color:#83d1ff}.table-wrap tr:last-child td{border-bottom:0}.mono{font-family:Consolas,ui-monospace,monospace}
+    .en{display:none}body.enmode .vi{display:none!important}body.enmode .en{display:block}body.enmode span.en{display:inline}body.enmode .nav .en{display:inline}
+    footer{text-align:center;color:#91acc4;padding:42px 20px}
+    @media(max-width:980px){.features,.parts,.guide,.pin-grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:47px}.nav{gap:11px}}
+    @media(max-width:800px){
+      .bar{flex-wrap:wrap;gap:8px 12px;padding:10px 12px}.brand-logo{width:42px;height:42px}.brand{font-size:15px}.brand small{font-size:11px}
+      .lang{margin-left:auto;order:2}.nav{order:3;width:100%;margin:0;overflow-x:auto;gap:14px;padding:2px 0 3px;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}.nav a{font-size:14px;flex:0 0 auto}
+      .hero{grid-template-columns:1fr;padding-top:36px}.hero h1{font-size:41px}.hero-card{display:block}.features,.parts,.guide,.pin-grid{grid-template-columns:1fr}.panel{padding:20px}.wrap{padding:0 14px}
+      .gallery{grid-template-columns:1fr}.gallery .wide{grid-column:auto}.levels{grid-template-columns:repeat(5,1fr);gap:5px}.level{font-size:16px;padding:12px 3px}
+    }
+    @media(max-width:930px),(hover:none) and (pointer:coarse){
+      esp-web-install-button{display:none!important}.mobile-flash-note{display:inline-flex;align-items:center;min-height:52px;padding:0 16px;border-radius:14px;background:#102b47;border:1px solid #315d85;color:#b9cadd;font-weight:800}
+    }
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="bar">
+    <div class="brand-wrap"><img class="brand-logo" src="assets/images/kst-logo.png" alt="KST"><div class="brand">KST PD Bench Supply<small>Firmware Center</small></div></div>
+    <nav class="nav">
+      <a href="#firmware">Firmware</a>
+      <a href="#photos"><span class="vi">Hình ảnh</span><span class="en">Photos</span></a>
+      <a href="#features"><span class="vi">Tính năng</span><span class="en">Features</span></a>
+      <a href="#components"><span class="vi">Linh kiện</span><span class="en">Components</span></a>
+      <a href="#wiring"><span class="vi">Sơ đồ</span><span class="en">Wiring</span></a>
+      <a href="#guide"><span class="vi">Hướng dẫn</span><span class="en">Guide</span></a>
+    </nav>
+    <div class="lang"><button class="active" data-l="vi">VN</button><button data-l="en">EN</button></div>
+  </div>
+</header>
+
+<main class="wrap">
+<section class="hero" id="firmware">
+  <div>
+    <p class="kicker">KÊNH SÁNG TẠO .COM × Creative Channel</p>
+    <div class="vi">
+      <h1>Nạp firmware<br><span>KST PD Bench Supply</span></h1>
+      <p class="lead">Bộ nguồn bàn DIY dùng <b>ESP32-C3 SuperMini</b>, lấy nguồn từ USB-C PD và chuyển nhanh giữa 5 mức <b>5 / 9 / 12 / 15 / 20V</b>. INA226 đo điện áp, dòng và công suất; OLED hiển thị trực tiếp; có nút vật lý, còi và trang điều khiển Wi-Fi.</p>
+    </div>
+    <div class="en">
+      <h1>Install firmware<br><span>KST PD Bench Supply</span></h1>
+      <p class="lead">A DIY bench supply built around an <b>ESP32-C3 SuperMini</b>, powered from USB-C PD and cycling through <b>5 / 9 / 12 / 15 / 20V</b>. INA226 measures voltage, current and power; an OLED shows live readings; control is available from the physical button and Wi-Fi page.</p>
+    </div>
+    <div class="specs">
+      <span class="spec">ESP32-C3 SuperMini</span><span class="spec">USB-C PD ≤ 100W</span><span class="spec">INA226 + R010</span><span class="spec">OLED SSD1306 0.96"</span>
+    </div>
+    <div class="buttons">
+      <div id="desktop-flash-button"></div>
+      <div class="mobile-flash-note"><span class="vi">📱 Nạp trực tiếp cần Chrome/Edge trên máy tính.</span><span class="en">📱 Direct flashing requires desktop Chrome/Edge.</span></div>
+      <a class="btn secondary" href="firmware/KST_PD_Bench_Supply_firmware.bin" download><span class="vi">⬇ Tải firmware .BIN</span><span class="en">⬇ Download firmware .BIN</span></a>
+    </div>
+    <p class="flash-note"><span class="vi">Firmware đã gộp sẵn thành <b>1 file duy nhất</b>, nạp tại offset <b>0x0</b>. Không rút cáp trong lúc nạp.</span><span class="en">The firmware is a <b>single merged image</b>, flashed at offset <b>0x0</b>. Do not unplug during flashing.</span></p>
+    <p class="free-firmware"><span class="vi">🎁 <b>Firmware hoàn toàn miễn phí</b> dành cho anh em Fans Kênh Sáng Tạo.</span><span class="en">🎁 <b>Firmware is completely free</b> for Creative Channel fans.</span></p>
+  </div>
+  <aside class="hero-card">
+    <img class="hero-photo" src="assets/images/pd-bench-supply-main.jpg" alt="KST PD Bench Supply">
+    <div class="hero-caption"><span class="vi">KST PD Bench Supply — nguồn bàn 5–20V từ USB-C PD</span><span class="en">KST PD Bench Supply — 5–20V bench supply powered by USB-C PD</span></div>
+  </aside>
+</section>
+
+<section class="panel" id="photos">
+  <h2><span class="vi">Hình ảnh sản phẩm hoàn thiện</span><span class="en">Finished project photos</span></h2>
+  <p class="panel-sub"><span class="vi">Ảnh thực tế bộ nguồn, bố trí linh kiện và phần mạch bên trong.</span><span class="en">Real photos of the finished supply, component layout and internal electronics.</span></p>
+  <div class="gallery">
+    <a href="assets/images/pd-bench-supply-main.jpg" target="_blank"><img src="assets/images/pd-bench-supply-main.jpg" alt="KST PD Bench Supply front view"></a>
+    <a href="assets/images/pd-bench-supply-view-2.jpg" target="_blank"><img loading="lazy" src="assets/images/pd-bench-supply-view-2.jpg" alt="KST PD Bench Supply alternate view"></a>
+    <a href="assets/images/pd-bench-supply-inside-1.jpg" target="_blank"><img loading="lazy" src="assets/images/pd-bench-supply-inside-1.jpg" alt="KST PD Bench Supply internal electronics"></a>
+    <a href="assets/images/pd-bench-supply-inside-2.jpg" target="_blank"><img loading="lazy" src="assets/images/pd-bench-supply-inside-2.jpg" alt="KST PD Bench Supply internal wiring"></a>
+    <a class="wide" href="assets/images/pd-bench-supply-inside-3.jpg" target="_blank"><img loading="lazy" src="assets/images/pd-bench-supply-inside-3.jpg" alt="KST PD Bench Supply OLED and internal board"></a>
+  </div>
+</section>
+
+<section class="panel" id="features">
+  <h2><span class="vi">Tính năng chính</span><span class="en">Main features</span></h2>
+  <div class="features">
+    <article class="card"><h3>⚡ 5 mức điện áp PD</h3><p class="vi">Mạch kích CMTPD tự quay vòng <b>5 → 9 → 12 → 15 → 20V</b>. Mỗi xung vào nút KEY tiến đúng một nấc.</p><p class="en">The CMTPD trigger cycles through <b>5 → 9 → 12 → 15 → 20V</b>. Each KEY pulse advances one step.</p></article>
+    <article class="card"><h3>📟 INA226 + OLED</h3><p class="vi">Đo điện áp, dòng và công suất theo thời gian thực. INA226 dùng shunt <b>R010 = 0.01 ohm</b>.</p><p class="en">Live voltage, current and power sensing. INA226 uses an <b>R010 = 0.01 ohm</b> shunt.</p></article>
+    <article class="card"><h3>🎛 Nút điều khiển</h3><p class="vi">Nhấn ngắn: đổi sang nấc kế tiếp. Nhấn giữ khoảng <b>0.8 giây</b>: tự chạy về mức thấp nhất.</p><p class="en">Short press: next step. Hold for about <b>0.8 seconds</b>: automatically return to the lowest level.</p></article>
+    <article class="card"><h3>🌐 Wi-Fi</h3><p class="vi">ESP32-C3 tự phát mạng <b>KST-PD-Supply</b>, không mật khẩu. Truy cập <b>192.168.4.1</b> để xem V/A/W và đổi mức.</p><p class="en">ESP32-C3 creates the open <b>KST-PD-Supply</b> network. Browse to <b>192.168.4.1</b> for V/A/W monitoring and level control.</p></article>
+    <article class="card"><h3>🔔 Còi báo</h3><p class="vi">Còi chủ động báo khi cấp nguồn và sau mỗi lần chuyển nấc điện áp.</p><p class="en">An active buzzer confirms power-up and each voltage-level change.</p></article>
+    <article class="card"><h3>🔌 Nguồn USB-C PD</h3><p class="vi">Thiết kế hướng tới nguồn PD tối đa khoảng <b>100W / 20V 5A</b>, tùy khả năng củ sạc hoặc power bank.</p><p class="en">Designed around PD sources up to about <b>100W / 20V 5A</b>, depending on the charger or power bank.</p></article>
+  </div>
+  <div class="levels">
+    <div class="level">5V<small>LOW</small></div><div class="level">9V<small>PD</small></div><div class="level">12V<small>PD</small></div><div class="level">15V<small>PD</small></div><div class="level">20V<small>MAX</small></div>
+  </div>
+</section>
+
+<section class="panel" id="components">
+  <h2><span class="vi">📦 Danh sách linh kiện</span><span class="en">📦 Bill of materials</span></h2>
+  <p class="panel-sub"><span class="vi">Danh sách hiện tại chưa gắn link mua hàng; khi có link chỉ cần cập nhật index.html.</span><span class="en">Purchase links are not added yet; they can be inserted later by updating index.html only.</span></p>
+  <div class="parts">
+    <article class="card"><h3><span class="num">1</span>ESP32-C3 SuperMini</h3><p class="vi">Bộ điều khiển chính, Wi-Fi AP và giao diện web.</p><p class="en">Main controller, Wi-Fi AP and web interface.</p></article>
+    <article class="card"><h3><span class="num">2</span><span class="vi">Mạch kích USB-C PD CMTPD</span><span class="en">CMTPD USB-C PD trigger board</span></h3><p>5 → 9 → 12 → 15 → 20V</p></article>
+    <article class="card"><h3><span class="num">3</span><span class="vi">Module INA226</span><span class="en">INA226 module</span></h3><p>I2C · 0x40 · <span class="vi">thay shunt</span><span class="en">shunt changed to</span> R010 0.01 ohm</p></article>
+    <article class="card"><h3><span class="num">4</span>OLED 0.96" SSD1306</h3><p>I2C · 128×64 · 0x3C</p></article>
+    <article class="card"><h3><span class="num">5</span><span class="vi">Module hạ áp / buck-boost 5V</span><span class="en">5V buck/buck-boost module</span></h3><p class="vi">Nuôi ESP32 từ đường nguồn PD, đầu ra chốt 5V ổn định.</p><p class="en">Provides a stable 5V rail for the ESP32 from the PD output.</p></article>
+    <article class="card"><h3><span class="num">6</span>MOSFET 2N7000</h3><p>N-channel TO-92 · Q1 <span class="vi">giả lập nút KEY</span><span class="en">simulates the KEY button</span></p></article>
+    <article class="card"><h3><span class="num">7</span><span class="vi">Điện trở 100 ohm + 100k ohm</span><span class="en">100 ohm + 100k ohm resistors</span></h3><p class="vi">100 ohm nối tiếp gate Q1, 100k ohm kéo gate xuống GND.</p><p class="en">100 ohm gate series resistor and 100k ohm gate pulldown.</p></article>
+    <article class="card"><h3><span class="num">8</span><span class="vi">Nút nhấn</span><span class="en">Push button</span></h3><p>GPIO4 → GND</p></article>
+    <article class="card"><h3><span class="num">9</span><span class="vi">Còi chủ động 5V</span><span class="en">5V active buzzer</span></h3><p>GPIO21</p></article>
+    <article class="card"><h3><span class="num">10</span><span class="vi">Tụ 1000uF + 100nF</span><span class="en">1000uF + 100nF capacitors</span></h3><p class="vi">Lọc nguồn 5V sát ESP32.</p><p class="en">5V rail filtering close to the ESP32.</p></article>
+    <article class="card"><h3><span class="num">11</span><span class="vi">Cọc nguồn OUT + / −</span><span class="en">OUT + / − binding posts</span></h3><p class="vi">Đầu ra tải sau INA226.</p><p class="en">Load output after the INA226.</p></article>
+    <article class="card"><h3><span class="num">12</span><span class="vi">Phíp đục lỗ + dây nguồn</span><span class="en">Perfboard + power wire</span></h3><p class="vi">Nên dùng dây nguồn tối thiểu khoảng 20AWG cho nhánh công suất.</p><p class="en">Use roughly 20AWG or heavier for the power path.</p></article>
+  </div>
+</section>
+
+<section class="panel" id="wiring">
+  <h2><span class="vi">Sơ đồ đấu nối</span><span class="en">Wiring diagram</span></h2>
+  <div class="vi">
+    <img class="diagram" loading="lazy" src="docs/so-do-dau-noi.svg" alt="Sơ đồ đấu nối KST PD Bench Supply">
+    <div class="diagram-actions"><a class="btn diagram-btn" href="docs/so-do-dau-noi.svg" target="_blank" rel="noopener">🔎 Mở sơ đồ tiếng Việt toàn màn hình</a></div>
+  </div>
+  <div class="en">
+    <img class="diagram" loading="lazy" src="docs/wiring-diagram-en.svg" alt="KST PD Bench Supply wiring diagram">
+    <div class="diagram-actions"><a class="btn diagram-btn" href="docs/wiring-diagram-en.svg" target="_blank" rel="noopener">🔎 Open English wiring diagram full screen</a></div>
+  </div>
+  <p class="diagram-note"><span class="vi">⚠️ Tất cả module phải dùng <b>GND chung</b>. Đường công suất nên đi dây đủ lớn cho dòng tải.</span><span class="en">⚠️ All modules must share a <b>common GND</b>. Use adequately sized wire for the power path.</span></p>
+</section>
+
+<section class="panel" id="pinout">
+  <h2><span class="vi">Chân ESP32-C3 SuperMini</span><span class="en">ESP32-C3 SuperMini pinout</span></h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>GPIO</th><th><span class="vi">Kết nối</span><span class="en">Connection</span></th><th><span class="vi">Ghi chú</span><span class="en">Notes</span></th></tr></thead>
+    <tbody>
+      <tr><td class="mono">2</td><td>I2C SDA</td><td><span class="vi">OLED + INA226</span><span class="en">OLED + INA226</span></td></tr>
+      <tr><td class="mono">3</td><td>I2C SCL</td><td><span class="vi">OLED + INA226</span><span class="en">OLED + INA226</span></td></tr>
+      <tr><td class="mono">4</td><td><span class="vi">Nút nhấn</span><span class="en">Push button</span></td><td>INPUT_PULLUP → GND</td></tr>
+      <tr><td class="mono">6</td><td>Q1 gate</td><td>100 ohm → 2N7000 → KEY</td></tr>
+      <tr><td class="mono">7</td><td>Q2 gate</td><td><span class="vi">Không dùng ở bản hiện tại, USE_GATE_BASE=false</span><span class="en">Unused in the current build, USE_GATE_BASE=false</span></td></tr>
+      <tr><td class="mono">8</td><td>LED</td><td><span class="vi">LED onboard, tùy board</span><span class="en">Onboard LED, board-dependent</span></td></tr>
+      <tr><td class="mono">21</td><td><span class="vi">Còi</span><span class="en">Buzzer</span></td><td><span class="vi">Còi chủ động</span><span class="en">Active buzzer</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="panel" id="behavior">
+  <h2><span class="vi">Cách hoạt động</span><span class="en">How it works</span></h2>
+  <div class="guide">
+    <article class="card"><h3><span class="vi">1. Đổi nấc điện áp</span><span class="en">1. Change voltage level</span></h3><p class="vi">ESP32 tạo xung khoảng <b>150ms</b> qua 2N7000 để giả lập một lần bấm KEY trên mạch kích PD.</p><p class="en">The ESP32 creates an approximately <b>150ms</b> pulse through the 2N7000 to simulate one KEY press on the PD trigger.</p></article>
+    <article class="card"><h3><span class="vi">2. Xác nhận mức thật</span><span class="en">2. Confirm actual voltage</span></h3><p class="vi">Sau khi chuyển nấc, firmware đọc INA226 và chờ điện áp ổn định rồi mới cập nhật OLED.</p><p class="en">After a step change, firmware reads the INA226 and waits for the voltage to settle before updating the OLED.</p></article>
+    <article class="card"><h3><span class="vi">3. Về mức thấp nhất</span><span class="en">3. Return to lowest level</span></h3><p class="vi">Nhấn giữ nút vật lý khoảng 0.8 giây. Firmware phát nhiều xung cho tới khi INA226 xác nhận đã về mức thấp nhất.</p><p class="en">Hold the physical button for about 0.8 seconds. Firmware pulses repeatedly until INA226 confirms the lowest level.</p></article>
+  </div>
+</section>
+
+<section class="panel" id="wifi">
+  <h2><span class="vi">Điều khiển qua Wi-Fi</span><span class="en">Wi-Fi control</span></h2>
+  <div class="wifi-box">
+    <p><span class="vi">Tên mạng:</span><span class="en">Network:</span> <code>KST-PD-Supply</code></p>
+    <p><span class="vi">Mật khẩu:</span><span class="en">Password:</span> <code><span class="vi">Không có — mạng mở</span><span class="en">None — open network</span></code></p>
+    <p><span class="vi">Địa chỉ:</span><span class="en">Address:</span> <code>192.168.4.1</code></p>
+    <p style="margin-top:12px;color:#bcd2e4"><span class="vi">Trang web hiển thị V / A / W theo thời gian thực và có nút đổi sang nấc điện áp tiếp theo. Muốn tự động về mức thấp nhất, dùng nút vật lý và nhấn giữ.</span><span class="en">The web page shows live V / A / W values and provides a button for the next voltage step. To return automatically to the lowest level, hold the physical button.</span></p>
+  </div>
+</section>
+
+<section class="panel" id="guide">
+  <h2><span class="vi">Hướng dẫn sử dụng</span><span class="en">Setup & usage guide</span></h2>
+  <div class="guide">
+    <article class="card good"><h3><span class="vi">1. Nạp firmware</span><span class="en">1. Flash firmware</span></h3><p class="vi">Dùng Chrome/Edge trên máy tính, bấm <b>Nạp firmware</b> ở đầu trang và chọn đúng ESP32-C3. Hoặc tải file BIN và nạp tại <b>0x0</b>.</p><p class="en">Use desktop Chrome/Edge, click <b>Install firmware</b> at the top and select the ESP32-C3. Or download the BIN and flash it at <b>0x0</b>.</p></article>
+    <article class="card"><h3><span class="vi">2. Kiểm tra nguồn 5V</span><span class="en">2. Check the 5V rail</span></h3><p class="vi">Nếu dùng nấc 5V, module cấp nguồn cho ESP32 phải giữ được 5V ổn định khi đầu vào cũng ở khoảng 5V.</p><p class="en">If the 5V step is enabled, the ESP32 supply module must still maintain a stable 5V rail when its input is also around 5V.</p></article>
+    <article class="card"><h3><span class="vi">3. Đấu I2C</span><span class="en">3. Wire I2C</span></h3><p>OLED 0x3C + INA226 0x40 → SDA GPIO2 / SCL GPIO3.</p></article>
+    <article class="card"><h3><span class="vi">4. Đổi điện áp</span><span class="en">4. Change voltage</span></h3><p class="vi">Nhấn ngắn để đổi nấc. Nhấn giữ ~0.8 giây để về nấc thấp nhất.</p><p class="en">Short press for the next step. Hold ~0.8 seconds to return to the lowest step.</p></article>
+    <article class="card"><h3><span class="vi">5. Dùng Wi-Fi</span><span class="en">5. Use Wi-Fi</span></h3><p class="vi">Kết nối KST-PD-Supply rồi mở 192.168.4.1.</p><p class="en">Join KST-PD-Supply and open 192.168.4.1.</p></article>
+    <article class="card safety"><h3><span class="vi">⚠️ An toàn công suất</span><span class="en">⚠️ Power safety</span></h3><p class="vi">Công suất và dòng tối đa thực tế phụ thuộc củ sạc/power bank, cáp USB-C, mạch kích và dây bên trong. Không vượt khả năng của từng linh kiện.</p><p class="en">Actual current and power limits depend on the charger/power bank, USB-C cable, trigger board and internal wiring. Do not exceed the rating of any component.</p></article>
+  </div>
+</section>
+
+<section class="panel" id="troubleshooting">
+  <h2><span class="vi">Xử lý sự cố</span><span class="en">Troubleshooting</span></h2>
+  <div class="guide">
+    <article class="card"><h3><span class="vi">Không thấy OLED / INA226</span><span class="en">OLED / INA226 not detected</span></h3><p class="vi">Kiểm tra 3.3V, GND, SDA GPIO2, SCL GPIO3. OLED mặc định 0x3C; INA226 mặc định 0x40.</p><p class="en">Check 3.3V, GND, SDA GPIO2 and SCL GPIO3. OLED defaults to 0x3C; INA226 defaults to 0x40.</p></article>
+    <article class="card"><h3><span class="vi">Bấm một lần nhảy nhiều nấc</span><span class="en">One press skips multiple levels</span></h3><p class="vi">Kiểm tra dây và mối hàn nút GPIO4 → GND. Firmware đã có chống dội nút.</p><p class="en">Check the GPIO4 → GND button wire and solder joints. Firmware already includes button debouncing.</p></article>
+    <article class="card"><h3><span class="vi">Không lên 15V / 20V</span><span class="en">Cannot reach 15V / 20V</span></h3><p class="vi">Kiểm tra nguồn PD, cáp USB-C và mạch kích. Dự án đã từng gặp board CMTPD lỗi riêng ở hai nấc cao.</p><p class="en">Check the PD source, USB-C cable and trigger board. A CMTPD board with a hardware fault specifically at the top two steps was encountered during this build.</p></article>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Kênh Sáng Tạo .COM × Creative Channel · KST PD Bench Supply</footer>
+
+<script>
+  const buttons=[...document.querySelectorAll('.lang button')];
+  const navLinks=[...document.querySelectorAll('.nav a')];
+  function setLang(l){
+    document.body.classList.toggle('enmode',l==='en');
+    document.documentElement.lang=l;
+    buttons.forEach(b=>b.classList.toggle('active',b.dataset.l===l));
+    try{localStorage.setItem('kst-pd-lang',l)}catch(e){}
+  }
+  buttons.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
+  let saved='vi';try{saved=localStorage.getItem('kst-pd-lang')||'vi'}catch(e){}
+  setLang(saved);
+  if('IntersectionObserver' in window){
+    const obs=new IntersectionObserver(entries=>entries.forEach(e=>{
+      if(e.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}
+    }),{rootMargin:'-24% 0px -66% 0px'});
+    document.querySelectorAll('section[id]').forEach(sec=>obs.observe(sec));
+  }
+</script>
+
+<script id="kst-esp-web-tools-loader">
+(() => {
+  const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
+    || (window.matchMedia && window.matchMedia('(hover:none) and (pointer:coarse)').matches);
+  if (isMobile) return;
+  const mount = document.getElementById('desktop-flash-button');
+  if (!mount) return;
+  mount.innerHTML = `
+    <esp-web-install-button manifest="manifest.json">
+      <button slot="activate" class="btn">
+        <span class="vi">🚀 Nạp firmware</span>
+        <span class="en">🚀 Install firmware</span>
+      </button>
+      <span slot="unsupported">Please use Chrome or Microsoft Edge on a computer.</span>
+      <span slot="not-allowed">USB access is not allowed in this context.</span>
+    </esp-web-install-button>`;
+  const script = document.createElement('script');
+  script.type = 'module';
+  script.src = 'https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module';
+  script.onerror = () => {
+    mount.innerHTML = '<span style="color:#a8c8e6;font-weight:700">ESP Web Tools unavailable</span>';
+  };
+  document.head.appendChild(script);
+})();
+</script>
+</body>
+</html>

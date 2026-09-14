@@ -1,0 +1,16 @@
+{
+  "name": "KST PD Bench Supply",
+  "version": "1.0.0",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32-C3",
+      "parts": [
+        {
+          "path": "firmware/KST_PD_Bench_Supply_firmware.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

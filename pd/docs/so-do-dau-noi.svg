@@ -1,0 +1,448 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1900 1340" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="gWhite" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdfdff"/><stop offset="1" stop-color="#e4e4ea"/>
+    </linearGradient>
+    <linearGradient id="gPCBk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b2b30"/><stop offset="1" stop-color="#161619"/>
+    </linearGradient>
+    <linearGradient id="gPCBb" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3f83c4"/><stop offset="1" stop-color="#255a8c"/>
+    </linearGradient>
+    <linearGradient id="gMetal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2f2f4"/><stop offset="0.5" stop-color="#c9c9cf"/><stop offset="1" stop-color="#a7a7ae"/>
+    </linearGradient>
+    <linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e7c66a"/><stop offset="1" stop-color="#b58f2c"/>
+    </linearGradient>
+    <radialGradient id="gGlass" cx="0.4" cy="0.35" r="0.9">
+      <stop offset="0" stop-color="#12303a"/><stop offset="1" stop-color="#060d12"/>
+    </radialGradient>
+    <style>
+      .pw  { stroke:#d62728; stroke-width:4;   fill:none; stroke-linecap:round; stroke-linejoin:round; }
+      .v5  { stroke:#f08a1d; stroke-width:4;   fill:none; stroke-linecap:round; stroke-linejoin:round; }
+      .v3  { stroke:#d6469b; stroke-width:3;   fill:none; stroke-linecap:round; stroke-linejoin:round; }
+      .sda { stroke:#1f77b4; stroke-width:3;   fill:none; stroke-linecap:round; stroke-linejoin:round; }
+      .scl { stroke:#8c56c4; stroke-width:3;   fill:none; stroke-linecap:round; stroke-linejoin:round; }
+      .gp  { stroke:#2aa32a; stroke-width:3;   fill:none; stroke-linecap:round; stroke-linejoin:round; }
+      .gnd { stroke:#111;    stroke-width:3.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+      .bus { stroke:#111;    stroke-width:7;   fill:none; stroke-linecap:round; }
+      .sil { font-size:11px; fill:#cfe3f2; }
+      .silw{ font-size:12px; fill:#ffffff; font-weight:bold; }
+      .cap { font-size:12.5px; fill:#222; font-weight:bold; }
+      .h   { font-size:14px; font-weight:bold; fill:#1a1a1a; }
+      .note{ font-size:12.5px; fill:#222; }
+      .tag { font-size:12px; fill:#1a1a1a; font-weight:bold; }
+      .pinlab{ font-size:10.5px; fill:#333; }
+      .pinw { font-size:12.5px; fill:#ffffff; font-weight:bold; }
+    </style>
+  </defs>
+
+  <rect width="1900" height="1340" fill="#ffffff"/>
+
+  <text x="40" y="40" font-size="23" font-weight="bold"><tspan fill="#12508f">KST</tspan> — BỘ NGUỒN BÀN PD 5 / 9 / 12 / 15 / 20V · Sơ đồ đấu nối (mô phỏng 2D)</text>
+  <text x="40" y="63" class="cap" fill="#555"><tspan fill="#12508f" font-weight="bold">KenhSangTao.COM</tspan>  ·  Nguồn PD 100W (củ sạc HOẶC sạc dự phòng) · Mạch kích CMTPD (tự quay vòng) · ESP32-C3 Super Mini · INA226 (shunt R010) · OLED 0.96" · SY8205 buck-boost · 1× 2N7000 (Q1)</text>
+
+  <!-- ===== LEGEND ===== -->
+  <g transform="translate(40,80)">
+    <line class="pw"  x1="0"   y1="10" x2="34" y2="10"/><text x="40"  y="14" class="cap">Công suất 5–20V</text>
+    <line class="v5"  x1="185" y1="10" x2="219" y2="10"/><text x="225" y="14" class="cap">Nguồn 5V (nuôi ESP32)</text>
+    <line class="v3"  x1="400" y1="10" x2="434" y2="10"/><text x="440" y="14" class="cap">3V3</text>
+    <line class="sda" x1="490" y1="10" x2="524" y2="10"/><text x="530" y="14" class="cap">I2C SDA</text>
+    <line class="scl" x1="610" y1="10" x2="644" y2="10"/><text x="650" y="14" class="cap">I2C SCL</text>
+    <line class="gp"  x1="730" y1="10" x2="764" y2="10"/><text x="770" y="14" class="cap">GPIO điều khiển</text>
+    <line class="bus" x1="915" y1="10" x2="949" y2="10"/><text x="955" y="14" class="cap">GND chung</text>
+  </g>
+
+  <!-- ================= GND BUS ================= -->
+  <line class="bus" x1="250" y1="932" x2="1740" y2="932"/>
+  <text x="168" y="928" class="h">GND</text>
+  <line class="gnd" x1="214" y1="932" x2="250" y2="932"/>
+  <g stroke="#111" stroke-width="4" fill="none">
+    <line x1="1746" y1="932" x2="1772" y2="932"/><line x1="1750" y1="939" x2="1768" y2="939"/><line x1="1754" y1="945" x2="1762" y2="945"/>
+  </g>
+
+  <!-- ============================================================= -->
+  <!-- ==================== LINH KIỆN (mô phỏng) =================== -->
+  <!-- ============================================================= -->
+
+  <!-- Nguon vao: cu sac HOAC sac du phong PD 100W -->
+  <g transform="translate(50,236)">
+    <rect x="0" y="0" width="150" height="104" rx="16" fill="url(#gWhite)" stroke="#c3c3c9"/>
+    <rect x="-16" y="34" width="18" height="10" rx="2" fill="#b9b9bf"/>
+    <rect x="-16" y="60" width="18" height="10" rx="2" fill="#b9b9bf"/>
+    <rect x="120" y="38" width="40" height="28" rx="7" fill="#26262b"/>
+    <rect x="128" y="48" width="24" height="8" rx="4" fill="#0b0b0d"/>
+    <text x="75" y="46" text-anchor="middle" font-size="15" font-weight="bold" fill="#2b2b2b">PD 100W</text>
+    <text x="75" y="66" text-anchor="middle" font-size="10" fill="#777">USB-C · 20V/5A</text>
+    <text x="75" y="96" text-anchor="middle" class="tag">Củ sạc</text>
+  </g>
+
+  <text x="122" y="360" text-anchor="middle" font-size="12" font-weight="bold" fill="#b06a00">— HOẶC —</text>
+
+  <g transform="translate(44,372)">
+    <rect x="0" y="0" width="164" height="92" rx="14" fill="url(#gPCBk)" stroke="#000"/>
+    <rect x="146" y="32" width="30" height="26" rx="6" fill="#26262b"/>
+    <rect x="154" y="42" width="16" height="7" rx="3.5" fill="#0b0b0d"/>
+    <rect x="16" y="16" width="50" height="30" rx="4" fill="#0b1712" stroke="#2c4a3a"/>
+    <text x="41" y="38" text-anchor="middle" font-size="15" fill="#4fe08a" font-family="Consolas, monospace" font-weight="bold">100</text>
+    <g fill="#4fe08a"><rect x="78" y="20" width="8" height="22"/><rect x="90" y="20" width="8" height="22"/><rect x="102" y="20" width="8" height="22"/><rect x="114" y="20" width="8" height="22" fill="#2a4a3a"/></g>
+    <text x="82" y="66" text-anchor="middle" font-size="12" font-weight="bold" fill="#e2ecf4">PD 100W</text>
+    <text x="82" y="83" text-anchor="middle" font-size="10.5" fill="#a6bccb">Sạc dự phòng</text>
+  </g>
+
+  <!-- Mach kich PD (CMTPD) -->
+  <g transform="translate(270,206)">
+    <rect x="0" y="0" width="284" height="230" rx="12" fill="url(#gPCBk)" stroke="#000"/>
+    <circle cx="16" cy="16" r="7" fill="#0c0c0c" stroke="#3a3a3a"/><circle cx="268" cy="16" r="7" fill="#0c0c0c" stroke="#3a3a3a"/>
+    <circle cx="16" cy="214" r="7" fill="#0c0c0c" stroke="#3a3a3a"/><circle cx="268" cy="214" r="7" fill="#0c0c0c" stroke="#3a3a3a"/>
+    <!-- USB-C female -->
+    <rect x="-18" y="86" width="36" height="58" rx="7" fill="url(#gMetal)" stroke="#7f7f7f"/>
+    <rect x="-8" y="104" width="20" height="22" rx="11" fill="#101012"/>
+    <text x="24" y="78" font-size="12" font-weight="bold" fill="#eaf3fb">USB-C</text>
+    <!-- PD IC -->
+    <rect x="92" y="72" width="60" height="44" rx="4" fill="#2c2c31" stroke="#4a4a4a"/>
+    <text x="122" y="99" text-anchor="middle" font-size="11" fill="#adadb3">PD IC</text>
+    <!-- button -->
+    <circle cx="150" cy="164" r="17" fill="#3a3a3d" stroke="#565659"/><circle cx="150" cy="164" r="8" fill="#5c5c60"/>
+    <text x="150" y="196" text-anchor="middle" font-size="11" font-weight="bold" fill="#d2d2d8">nút KEY</text>
+    <!-- LED row -->
+    <g text-anchor="middle" font-size="11" font-weight="bold" fill="#c6e4f7">
+      <circle cx="150" cy="44" r="4" fill="#79e6a4"/><text x="150" y="30">5V</text>
+      <circle cx="174" cy="44" r="4" fill="#444"/><text x="174" y="30">9V</text>
+      <circle cx="198" cy="44" r="4" fill="#444"/><text x="198" y="30">12V</text>
+      <circle cx="222" cy="44" r="4" fill="#444"/><text x="222" y="30">15V</text>
+      <circle cx="246" cy="44" r="4" fill="#444"/><text x="246" y="30">20V</text>
+    </g>
+    <!-- output pads -->
+    <circle cx="262" cy="96"  r="11" fill="#c97b3c" stroke="#7a4a24"/><text x="243" y="101" text-anchor="end" font-size="13" font-weight="bold" fill="#ff9ecb">OUT+</text>
+    <circle cx="262" cy="140" r="11" fill="#c97b3c" stroke="#7a4a24"/><text x="243" y="145" text-anchor="end" font-size="13" font-weight="bold" fill="#eaeaec">OUT−</text>
+    <!-- breakout select pads -->
+    <circle cx="158" cy="226" r="8" fill="url(#gGold)"/>
+    <circle cx="104" cy="226" r="8" fill="url(#gGold)"/>
+    <!-- S1 / F1 / F2 -->
+    <g text-anchor="end" font-size="12" font-weight="bold" fill="#ff9ec6">
+      <circle cx="48" cy="150" r="6" fill="#57575a"/><text x="36" y="154">S1</text>
+      <circle cx="48" cy="170" r="6" fill="#57575a"/><text x="36" y="174">F1</text>
+      <circle cx="48" cy="190" r="6" fill="#57575a"/><text x="36" y="194">F2</text>
+    </g>
+    <text x="66" y="172" font-size="12" font-weight="bold" fill="#ffd24d">← ĐỂ HỞ</text>
+    <text x="150" y="60" text-anchor="middle" font-size="13" font-weight="bold" fill="#abccdf">CMTPD · PD TRIGGER</text>
+  </g>
+  <text x="410" y="450" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a7a1a">2 chân nút KEY</text>
+  <text x="312" y="504" text-anchor="middle" class="tag">Mạch kích PD</text>
+
+  <!-- INA226 (8 chan: IN+ IN- VBS ALE SCL SDA GND VCC) -->
+  <g transform="translate(636,206)">
+    <rect x="0" y="0" width="236" height="200" rx="10" fill="url(#gPCBb)" stroke="#1c4568"/>
+    <!-- 4 lo bat vit tren -->
+    <circle cx="34" cy="28" r="9" fill="#0e2a40" stroke="#8fb0c6"/><circle cx="90" cy="28" r="9" fill="#0e2a40" stroke="#8fb0c6"/>
+    <circle cx="150" cy="28" r="9" fill="#0e2a40" stroke="#8fb0c6"/><circle cx="206" cy="28" r="9" fill="#0e2a40" stroke="#8fb0c6"/>
+    <!-- pad dong lon (di day cong suat qua day) -->
+    <circle cx="34"  cy="78" r="12" fill="#0e2a40" stroke="#c97b3c" stroke-width="3"/><text x="34" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">IN+</text>
+    <circle cx="206" cy="78" r="12" fill="#0e2a40" stroke="#c97b3c" stroke-width="3"/><text x="206" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">IN−</text>
+    <text x="34"  y="106" text-anchor="middle" font-size="10" fill="#c2dbec">← từ (A)</text>
+    <text x="206" y="106" text-anchor="middle" font-size="10" fill="#c2dbec">→ ra tải</text>
+    <!-- shunt R010 -->
+    <rect x="98" y="62" width="46" height="28" rx="2" fill="#1b1b1e" stroke="#555"/>
+    <text x="121" y="81" text-anchor="middle" font-size="12" font-weight="bold" fill="#e7c866">R010</text>
+    <rect x="58" y="118" width="26" height="20" rx="3" fill="#161618" stroke="#444"/>
+    <!-- header 8 chan -->
+    <g fill="url(#gGold)">
+      <rect x="12" y="180" width="10" height="16"/><rect x="38" y="180" width="10" height="16"/><rect x="64" y="180" width="10" height="16"/><rect x="90" y="180" width="10" height="16"/>
+      <rect x="116" y="180" width="10" height="16"/><rect x="142" y="180" width="10" height="16"/><rect x="168" y="180" width="10" height="16"/><rect x="194" y="180" width="10" height="16"/>
+    </g>
+    <g font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">
+      <text x="17" y="174">IN+</text><text x="43" y="174">IN−</text><text x="69" y="174">VBS</text><text x="95" y="174">ALE</text>
+      <text x="121" y="174">SCL</text><text x="147" y="174">SDA</text><text x="173" y="174">GND</text><text x="199" y="174">VCC</text>
+    </g>
+    <text x="118" y="156" text-anchor="middle" class="silw">INA226</text>
+  </g>
+  <text x="754" y="196" text-anchor="middle" class="tag">INA226 — đo V / A / W  (shunt R010 = 0,01Ω)</text>
+
+  <!-- Coc ra + Tai -->
+  <g transform="translate(966,214)">
+    <rect x="0" y="0" width="70" height="150" rx="8" fill="#d7d7db" stroke="#a9a9ad"/>
+    <circle cx="35" cy="44"  r="16" fill="#d62728" stroke="#7a1414" stroke-width="3"/><circle cx="35" cy="44" r="5" fill="#3a0a0a"/>
+    <circle cx="35" cy="112" r="16" fill="#1c1c1c" stroke="#000" stroke-width="3"/><circle cx="35" cy="112" r="5" fill="#555"/>
+    <text x="35" y="20" text-anchor="middle" font-size="10" fill="#333">CỌC RA</text>
+    <text x="58" y="48"  font-size="11" fill="#a11" font-weight="bold">+</text>
+    <text x="58" y="116" font-size="11" fill="#111" font-weight="bold">−</text>
+  </g>
+  <g transform="translate(1110,206)">
+    <circle cx="60" cy="60" r="52" fill="#fdf6d8" stroke="#c9b978"/>
+    <path d="M42,84 q18,-40 36,0" fill="none" stroke="#c98b2c" stroke-width="3"/>
+    <path d="M60,44 v18 M50,54 l20,0" stroke="#c98b2c" stroke-width="2.5" fill="none"/>
+    <rect x="44" y="108" width="32" height="20" rx="3" fill="#9a9a9a"/>
+    <text x="60" y="150" text-anchor="middle" class="tag">TẢI</text>
+    <text x="60" y="168" text-anchor="middle" font-size="10" fill="#666">(thiết bị cắm vào)</text>
+  </g>
+
+  <!-- SY8205 buck-boost -->
+  <g transform="translate(300,548)">
+    <rect x="0" y="0" width="232" height="164" rx="10" fill="url(#gPCBk)" stroke="#000"/>
+    <rect x="120" y="44" width="80" height="80" rx="10" fill="#101012" stroke="#3a3a3a"/>
+    <text x="160" y="90" text-anchor="middle" font-size="12" fill="#9a9a9f">6R8</text>
+    <rect x="24" y="58" width="34" height="26" rx="3" fill="#161618" stroke="#444"/>
+    <!-- pad nubs -->
+    <circle cx="70"  cy="6"   r="6" fill="url(#gGold)"/><text x="84" y="14"  font-size="11" font-weight="bold" fill="#dfeaf6">IN+</text>
+    <circle cx="150" cy="158" r="6" fill="url(#gGold)"/><text x="150" y="148" text-anchor="middle" font-size="11" font-weight="bold" fill="#dfeaf6">IN−</text>
+    <circle cx="226" cy="52"  r="6" fill="url(#gGold)"/><text x="214" y="44" text-anchor="end" font-size="11" font-weight="bold" fill="#ff9ecb">OUT+ 5V</text>
+    <circle cx="70"  cy="158" r="6" fill="url(#gGold)"/><text x="70" y="148" text-anchor="middle" font-size="11" font-weight="bold" fill="#dfeaf6">OUT−</text>
+    <rect x="66" y="94" width="42" height="18" rx="2" fill="#c7a13a"/><text x="87" y="128" text-anchor="middle" font-size="10" font-weight="bold" fill="#f0d68a">JMP 5V</text>
+    <text x="116" y="24" text-anchor="middle" class="silw">SY8205</text>
+  </g>
+  <text x="416" y="740" text-anchor="middle" class="tag">Buck-boost (chốt 5V)</text>
+
+  <!-- tu loc nguon: 1000uF (hoa) // 100nF (104), noi giua +5V va GND ngay chan ESP32 -->
+  <ellipse cx="807" cy="574" rx="13" ry="11" fill="#79add9" stroke="#3f6f9c"/>
+  <text x="807" y="578" text-anchor="middle" font-size="9" fill="#0d2f4a" font-weight="bold">104</text>
+  <rect x="831" y="550" width="24" height="56" rx="5" fill="#20407a" stroke="#0f2044"/>
+  <rect x="831" y="550" width="7"  height="56" rx="3" fill="#9fb6df"/>
+  <text x="843" y="546" text-anchor="middle" font-size="9" fill="#a11" font-weight="bold">+</text>
+  <text x="783" y="578" text-anchor="end" class="cap">100nF</text>
+  <text x="843" y="626" text-anchor="middle" class="cap">1000µF</text>
+  <text x="815" y="644" text-anchor="middle" font-size="10" fill="#555">(lọc nguồn 5V cho ESP32)</text>
+
+  <!-- ESP32-C3 Super Mini -->
+  <g transform="translate(900,470)">
+    <rect x="0" y="0" width="300" height="384" rx="12" fill="url(#gPCBk)" stroke="#000"/>
+    <!-- USB-C -->
+    <rect x="118" y="-14" width="64" height="24" rx="6" fill="url(#gMetal)" stroke="#7f7f7f"/>
+    <rect x="132" y="-8" width="36" height="10" rx="5" fill="#111"/>
+    <!-- antenna -->
+    <path d="M20,14 h44 v10 h-44 v10 h44 v10 h-44" fill="none" stroke="#d8d8dc" stroke-width="3"/>
+    <!-- shield can + thuong hieu KST -->
+    <rect x="104" y="120" width="100" height="150" rx="6" fill="#c9c9cf" stroke="#9a9aa0"/>
+    <text x="154" y="150" text-anchor="middle" font-size="10" fill="#5a5a5a" font-weight="bold">ESP32-C3</text>
+    <text x="154" y="208" text-anchor="middle" font-size="34" fill="#12508f" font-weight="bold" font-family="Arial, Helvetica, sans-serif">KST</text>
+    <text x="154" y="234" text-anchor="middle" font-size="11" fill="#333" font-weight="bold" font-family="Arial, Helvetica, sans-serif">KenhSangTao.COM</text>
+    <!-- little buttons + led -->
+    <rect x="40" y="300" width="20" height="16" rx="2" fill="#2b2b2f"/><rect x="240" y="300" width="20" height="16" rx="2" fill="#2b2b2f"/>
+    <circle cx="154" cy="308" r="6" fill="#3a3a3d"/>
+    <!-- pads left -->
+    <g fill="url(#gGold)"><rect x="-8" y="63" width="10" height="14"/><rect x="-8" y="113" width="10" height="14"/><rect x="-8" y="203" width="10" height="14"/></g>
+    <g class="pinw"><text x="14" y="75">5V</text><text x="14" y="125">GND</text><text x="14" y="215">GPIO6 → Q1</text></g>
+    <!-- pads right -->
+    <g fill="url(#gGold)"><rect x="298" y="58" width="10" height="14"/><rect x="298" y="108" width="10" height="14"/><rect x="298" y="153" width="10" height="14"/><rect x="298" y="218" width="10" height="14"/><rect x="298" y="283" width="10" height="14"/><rect x="298" y="333" width="10" height="14"/></g>
+    <g class="pinw" text-anchor="end"><text x="288" y="69">3V3</text><text x="288" y="119">GPIO2 · SDA</text><text x="288" y="164">GPIO3 · SCL</text><text x="288" y="229">GPIO4 · NÚT</text><text x="288" y="294">GPIO8</text><text x="288" y="344">GPIO21 → Còi</text></g>
+  </g>
+  <text x="1050" y="874" text-anchor="middle" class="tag">ESP32-C3 Super Mini</text>
+
+  <!-- OLED -->
+  <g transform="translate(1330,500)">
+    <rect x="0" y="0" width="252" height="170" rx="10" fill="url(#gPCBk)" stroke="#000"/>
+    <rect x="36" y="14" width="200" height="118" rx="4" fill="url(#gGlass)" stroke="#0a1a22"/>
+    <text x="60" y="58"  font-size="26" fill="#39d6ff" font-family="Consolas,monospace">12.0V</text>
+    <text x="60" y="92"  font-size="14" fill="#39d6ff" font-family="Consolas,monospace">1.234 A   14.8 W</text>
+    <text x="60" y="118" font-size="11" fill="#2aa0c0" font-family="Consolas,monospace">set 12V   OK</text>
+    <!-- pins left -->
+    <g fill="url(#gGold)"><rect x="-8" y="34" width="10" height="14"/><rect x="-8" y="64" width="10" height="14"/><rect x="-8" y="94" width="10" height="14"/><rect x="-8" y="126" width="10" height="14"/></g>
+    <g class="pinw"><text x="12" y="45">VCC</text><text x="12" y="75">GND</text><text x="12" y="105">SDA</text><text x="12" y="137">SCL</text></g>
+    <text x="150" y="156" text-anchor="middle" class="silw">OLED 0.96"  I2C SSD1306</text>
+  </g>
+
+  <!-- Q1 (2N7000 TO-92) -->
+  <g transform="translate(600,724)">
+    <path d="M0,12 a12,12 0 0 1 12,-12 h30 a12,12 0 0 1 12,12 v52 h-54 z" fill="#242427"/>
+    <text x="27" y="24" text-anchor="middle" font-size="8" fill="#9a9aa0">2N7000</text>
+    <text x="11" y="52" text-anchor="middle" font-size="12" font-weight="bold" fill="#f0f0f3">S</text>
+    <text x="27" y="52" text-anchor="middle" font-size="12" font-weight="bold" fill="#f0f0f3">G</text>
+    <text x="43" y="52" text-anchor="middle" font-size="12" font-weight="bold" fill="#f0f0f3">D</text>
+    <line x1="12" y1="64" x2="12" y2="96"  stroke="#8a8a8a" stroke-width="3"/>
+    <line x1="27" y1="64" x2="27" y2="102" stroke="#8a8a8a" stroke-width="3"/>
+    <line x1="42" y1="64" x2="42" y2="96"  stroke="#8a8a8a" stroke-width="3"/>
+  </g>
+  <text x="627" y="712" text-anchor="middle" class="tag">Q1  (2N7000)</text>
+
+  <!-- dien tro 100R (gate Q1) -->
+  <g transform="translate(672,846)">
+    <line x1="-16" y1="7" x2="0" y2="7" stroke="#8a8a8a" stroke-width="2.5"/>
+    <line x1="46" y1="7" x2="62" y2="7" stroke="#8a8a8a" stroke-width="2.5"/>
+    <rect x="0" y="0" width="46" height="14" rx="3" fill="#e7d6a8" stroke="#b7a06a"/>
+    <rect x="8" y="0" width="4" height="14" fill="#6b4a2a"/><rect x="18" y="0" width="4" height="14" fill="#111"/><rect x="28" y="0" width="4" height="14" fill="#6b4a2a"/>
+    <text x="23" y="-6" text-anchor="middle" class="cap">100Ω</text>
+  </g>
+
+  <!-- dien tro 100k (pulldown gate Q1) -->
+  <g transform="translate(620,858)">
+    <line x1="7" y1="-14" x2="7" y2="0" stroke="#8a8a8a" stroke-width="2.5"/>
+    <line x1="7" y1="46" x2="7" y2="60" stroke="#8a8a8a" stroke-width="2.5"/>
+    <rect x="0" y="0" width="14" height="46" rx="3" fill="#e7d6a8" stroke="#b7a06a"/>
+    <rect x="0" y="8" width="14" height="4" fill="#6b4a2a"/><rect x="0" y="18" width="14" height="4" fill="#111"/><rect x="0" y="28" width="14" height="4" fill="#d8b23a"/>
+    <text x="24" y="26" class="cap">100k</text>
+  </g>
+
+  <!-- Nut nhan -->
+  <g transform="translate(1380,700)">
+    <circle cx="45" cy="45" r="40" fill="url(#gMetal)" stroke="#8a8a8a"/>
+    <circle cx="45" cy="45" r="24" fill="#2b2b2f"/><circle cx="45" cy="45" r="14" fill="#45454a"/>
+    <rect x="18" y="86" width="10" height="14" fill="url(#gGold)"/><rect x="62" y="86" width="10" height="14" fill="url(#gGold)"/>
+    <text x="45" y="118" text-anchor="middle" class="tag">NÚT NHẤN</text>
+    <text x="45" y="134" text-anchor="middle" font-size="9.5" fill="#555">ngắn=đổi mức · giữ=về min</text>
+  </g>
+
+  <!-- Coi chip 2 chan (co driver, cam thang GPIO, khong can transistor) -->
+  <g transform="translate(1240,788)">
+    <circle cx="30" cy="28" r="27" fill="#1f1f22" stroke="#000" stroke-width="2"/>
+    <circle cx="30" cy="28" r="19" fill="#302f33" stroke="#4a4a4e"/>
+    <circle cx="30" cy="18" r="2" fill="#0a0a0c"/><circle cx="22" cy="33" r="2" fill="#0a0a0c"/><circle cx="38" cy="33" r="2" fill="#0a0a0c"/>
+    <line x1="16" y1="55" x2="16" y2="70" stroke="#c9a227" stroke-width="3"/>
+    <line x1="44" y1="55" x2="44" y2="70" stroke="#8a8a8a" stroke-width="3"/>
+    <text x="16" y="86" text-anchor="middle" font-size="11" font-weight="bold" fill="#a11">+</text>
+    <text x="44" y="86" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">−</text>
+  </g>
+  <text x="1270" y="902" text-anchor="middle" class="tag">Còi chip (2 chân)</text>
+  <text x="1270" y="916" text-anchor="middle" font-size="9.5" fill="#555">tít lúc cấp nguồn + mỗi lần đổi mức</text>
+
+  <!-- ============================================================= -->
+  <!-- ============================ DÂY NỐI ======================== -->
+  <!-- ============================================================= -->
+
+  <!-- Nguon (cu sac / sac du phong) -> Mach kich USB-C -->
+  <path d="M202,288 C230,288 234,312 252,316" stroke="#777" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M212,417 C242,417 244,336 252,330" stroke="#8a8a8a" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <!-- PD OUT+ -> nút (A) -> INA IN+ -->
+  <path class="pw" d="M532,302 H670 V286"/>
+  <circle cx="600" cy="302" r="4.5" class="gnd" fill="#111"/>
+  <text x="600" y="292" text-anchor="middle" class="cap">(A) 5–20V</text>
+  <!-- (A) -> SY8205 IN+ -->
+  <path class="pw" d="M600,302 V520 H370 V554"/>
+
+  <!-- INA IN- -> cọc OUT+ -->
+  <path class="pw" d="M842,286 V284 H966 M1002,258 H1090 L1110,266"/>
+  <text x="905" y="276" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#b31414">IN− → CỌC OUT+ (ra tải)</text>
+  <!-- VBS noi IN- (day han tren board, do ap phia tai) -->
+  <path class="pw" d="M705,398 C700,332 828,300 842,296" stroke-dasharray="6 4"/>
+  <text x="772" y="330" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffd24d">VBS ↔ IN−</text>
+
+  <!-- Cọc OUT- -> tải & GND (đi vòng phải, tránh ESP32) -->
+  <path class="gnd" d="M1001,326 H1110"/>
+  <path class="gnd" d="M1001,326 V410 H1216 V932"/>
+  <circle cx="1001" cy="326" r="4.5" fill="#111"/>
+  <circle cx="1216" cy="932" r="4.5" fill="#111"/>
+  <!-- PD OUT- -> GND -->
+  <path class="gnd" d="M532,346 H588 V932"/>
+  <circle cx="588" cy="932" r="4.5" fill="#111"/>
+
+  <!-- SY8205 OUT+ -> ESP32 5V -->
+  <path class="v5" d="M532,600 H720 V540 H892"/>
+  <!-- tu loc noi vao +5V -->
+  <circle cx="807" cy="540" r="4" fill="#f08a1d"/><circle cx="843" cy="540" r="4" fill="#f08a1d"/>
+  <path class="v5" d="M807,540 V563"/>
+  <path class="v5" d="M843,540 V550"/>
+  <!-- tu loc noi xuong GND -->
+  <path class="gnd" d="M807,585 H790 V932"/>
+  <path class="gnd" d="M843,606 H790"/>
+  <circle cx="790" cy="932" r="4.5" fill="#111"/>
+  <!-- SY8205 IN- / OUT- -> GND -->
+  <path class="gnd" d="M370,714 V932"/><circle cx="370" cy="932" r="4.5" fill="#111"/>
+  <path class="gnd" d="M450,714 V760 H430 V932"/><circle cx="430" cy="932" r="4.5" fill="#111"/>
+
+  <!-- ESP32 GND -> bus -->
+  <path class="gnd" d="M892,590 H864 V932"/><circle cx="864" cy="932" r="4.5" fill="#111"/>
+
+  <!-- 3V3 lane (tu chan VCC) -->
+  <path class="v3" d="M835,402 V452 H1286"/>
+  <path class="v3" d="M1210,452 V535 H1198"/>
+  <path class="v3" d="M1286,452 V540 H1322"/>
+  <circle cx="1210" cy="452" r="4" fill="#d6469b"/>
+  <text x="1000" y="447" class="pinlab">3V3</text>
+  <!-- SDA lane -->
+  <path class="sda" d="M783,402 V438 H1300"/>
+  <path class="sda" d="M1224,438 V585 H1198"/>
+  <path class="sda" d="M1300,438 V600 H1322"/>
+  <circle cx="1224" cy="438" r="4" fill="#1f77b4"/>
+  <text x="1000" y="433" class="pinlab">SDA</text>
+  <!-- SCL lane -->
+  <path class="scl" d="M757,402 V424 H1312"/>
+  <path class="scl" d="M1238,424 V630 H1198"/>
+  <path class="scl" d="M1312,424 V632 H1322"/>
+  <circle cx="1238" cy="424" r="4" fill="#8c56c4"/>
+  <text x="1000" y="419" class="pinlab">SCL</text>
+  <!-- INA GND -> nối vào cọc OUT− (cùng là GND, đỡ vướng) -->
+  <path class="gnd" d="M809,402 V414 H1001 V330"/>
+  <!-- OLED GND -> bus -->
+  <path class="gnd" d="M1322,570 H1296 V932"/><circle cx="1296" cy="932" r="4.5" fill="#111"/>
+
+  <!-- pad NÚT -> Q1 D -->
+  <path class="gp" d="M428,434 V478 H642 V794"/>
+
+  <!-- Q1 S -> bus -->
+  <path class="gnd" d="M612,796 V932"/><circle cx="612" cy="932" r="4.5" fill="#111"/>
+
+  <!-- Q1 G -> 100R -> GPIO6 (ben trai ESP32) ; pulldown 100k -->
+  <path class="gp" d="M627,796 V853 H656"/>
+  <path class="gp" d="M734,853 H890 V680 H897"/>
+  <circle cx="627" cy="853" r="4" fill="#2aa32a"/>
+  <path class="gnd" d="M627,853 V858"/>
+  <path class="gnd" d="M627,918 V932"/><circle cx="627" cy="932" r="4.5" fill="#111"/>
+
+  <!-- GPIO4 -> Nut ; Nut -> GND ; tu 104 chong doi -->
+  <path class="gp"  d="M1208,695 H1360 V786 H1400"/>
+  <path class="gnd" d="M1447,786 V932"/><circle cx="1447" cy="932" r="4.5" fill="#111"/>
+  <circle cx="1360" cy="750" r="4" fill="#2aa32a"/>
+  <path class="gp"  d="M1360,750 H1346 V828 H1358"/>
+  <path class="gnd" d="M1370,828 V932"/><circle cx="1370" cy="932" r="4.5" fill="#111"/>
+  <g transform="translate(1364,802)">
+    <ellipse cx="0" cy="0" rx="15" ry="12" fill="#79add9" stroke="#3f6f9c"/>
+    <ellipse cx="-4" cy="-4" rx="5" ry="4" fill="#a9cee6"/>
+    <text x="0" y="4" text-anchor="middle" font-size="9" fill="#0d2f4a" font-weight="bold">104</text>
+    <line x1="-6" y1="11" x2="-6" y2="26" stroke="#8a8a8a" stroke-width="2.5"/>
+    <line x1="6" y1="11" x2="6" y2="26" stroke="#8a8a8a" stroke-width="2.5"/>
+  </g>
+  <text x="1336" y="806" text-anchor="end" class="cap">104 (100nF)</text>
+
+  <!-- GPIO8 -> LED note -->
+  <path class="gnd" d="M1208,760 H1250" stroke-dasharray="4 3"/>
+  <text x="1256" y="764" class="pinlab">→ LED onboard (tùy chọn)</text>
+
+  <!-- GPIO21 -> Coi (+) ; Coi (-) -> GND -->
+  <path class="gp"  d="M1208,810 H1256 V858"/>
+  <path class="gnd" d="M1284,858 V932"/><circle cx="1284" cy="932" r="4.5" fill="#111"/>
+
+  <!-- ============================================================= -->
+  <!-- ========================= PHỤ LỤC ========================== -->
+  <!-- ============================================================= -->
+  <g transform="translate(60,972)">
+    <rect x="0" y="0" width="300" height="210" rx="8" fill="#fafafa" stroke="#bbb"/>
+    <text x="150" y="24" text-anchor="middle" class="h">Chân 2N7000 (TO-92)</text>
+    <!-- than: bo tron 2 goc TREN, day PHANG (mat co chu quay vao minh) -->
+    <path d="M78,54 a22,22 0 0 1 22,-22 h100 a22,22 0 0 1 22,22 v64 h-144 z" fill="#2a2a2d" stroke="#000"/>
+    <text x="150" y="94" text-anchor="middle" font-size="13" font-weight="bold" fill="#cacace">2N7000</text>
+    <!-- 3 chan tu DAY PHANG di xuong -->
+    <line x1="112" y1="118" x2="112" y2="150" stroke="#8a8a8a" stroke-width="5"/>
+    <line x1="150" y1="118" x2="150" y2="156" stroke="#8a8a8a" stroke-width="5"/>
+    <line x1="188" y1="118" x2="188" y2="150" stroke="#8a8a8a" stroke-width="5"/>
+    <text x="112" y="176" text-anchor="middle" class="tag">S</text>
+    <text x="150" y="176" text-anchor="middle" class="tag">G</text>
+    <text x="188" y="176" text-anchor="middle" class="tag">D</text>
+    <text x="150" y="196" text-anchor="middle" class="cap">MẶT CÓ CHỮ quay vào mình · chân chúc xuống</text>
+  </g>
+
+  <g transform="translate(390,972)">
+    <rect x="0" y="0" width="330" height="210" rx="8" fill="#fafafa" stroke="#bbb"/>
+    <text x="165" y="26" text-anchor="middle" class="h">Thay shunt trên INA226</text>
+    <rect x="45" y="54" width="240" height="82" rx="6" fill="url(#gPCBb)" stroke="#1c4568"/>
+    <rect x="150" y="82" width="42" height="26" rx="2" fill="#1b1b1e" stroke="#555"/>
+    <text x="171" y="99" text-anchor="middle" font-size="9" fill="#e0c060">R100</text>
+    <text x="165" y="164" text-anchor="middle" class="tag" fill="#a11">tháo R100 (0,1Ω)  →  hàn R010 (0,01Ω)</text>
+    <text x="165" y="186" text-anchor="middle" class="cap">firmware: setMaxCurrentShunt(8.0, 0.01)</text>
+  </g>
+
+  <g transform="translate(750,972)">
+    <rect x="0" y="0" width="1010" height="232" rx="8" fill="#fffdf5" stroke="#d9c47a"/>
+    <text x="16" y="24" class="h">LƯU Ý LẮP RÁP</text>
+    <text x="16" y="47" class="note">1.  GND CHUNG — nối tất cả về 1 điểm: mạch kích, SY8205, ESP32, INA226, OLED, 2 cọc ra.</text>
+    <text x="16" y="69" class="note">2.  INA226: thay shunt R100 → R010 (0,01Ω); nối VBS ↔ IN−. ESP32 lấy nguồn ở nút (A) TRƯỚC shunt ⇒ số A hiển thị = dòng TẢI thật.</text>
+    <text x="16" y="91" class="note">3.  Mạch kích TỰ QUAY VÒNG (5→9→12→15→20→5…) ⇒ CHỈ CẦN Q1 → 2 chân nút KEY (D vào chân KEY, S vào GND). Gate: 100Ω nối tiếp + 100k xuống GND.</text>
+    <text x="16" y="113" class="note">4.  Để HỞ hết các pad cấu hình: S1 (khóa phím), F1 (Run to LOW), F2 (Run to TOP), F1+F2 (Run Cycle), PD ONLY, DM/DP.  Chỉ hàn dây vào pad + / −.</text>
+    <text x="16" y="135" class="note">5.  SY8205 chốt 5V. Test trước: cấp 5,0V vào IN+ có tải ~200mA, đo OUT. Không giữ nổi 5V → cấp 5V riêng cho ESP32, hoặc ALLOW_5V=false.</text>
+    <text x="16" y="157" class="note">6.  Tụ 1000µF + 100nF đặt SÁT chân 5V/GND của ESP32.</text>
+    <text x="16" y="179" class="note">7.  OLED &amp; INA226 đều có trở kéo I2C sẵn; nếu I2C chập chờn thì tháo trở kéo ở 1 module.</text>
+    <text x="16" y="201" class="note">8.  Dây đỏ (công suất) &amp; đen (GND) dùng ≥ 20AWG — 100W ở 20V = 5A.</text>
+    <text x="16" y="223" class="note">9.  Còi chip 2 chân (đã có driver, cắm thẳng GPIO): + → GPIO21, − → GND. Tít khi cấp nguồn và mỗi lần đổi mức.</text>
+  </g>
+
+</svg>
